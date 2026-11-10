@@ -1,3 +1,5 @@
+### 📂 `data/` – Conjunto de datos
+
 Contiene los archivos y la documentación relacionados con el dataset **PatchCamelyon (PCam)**, utilizado para la clasificación de imágenes histopatológicas.
 
 **Contenido:**
