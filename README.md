@@ -13,7 +13,11 @@ Proyecto académico · Universidad Peruana Cayetano Heredia · 2026-II
 </div>
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:5C2E5D,35:9B65A0,70:D2AACB,100:79BFA9&height=4&section=footer" width="100%" alt="Separador decorativo">
+  <img
+    src="https://capsule-render.vercel.app/api?type=rect&color=0:79BFA9,30:C8B8D4,60:B378A7,100:5C2E5D&height=4&section=header"
+    width="96%"
+    alt="Separador de sección"
+  />
 </p>
 
 ## Explora el proyecto
@@ -43,7 +47,13 @@ Consulta el funcionamiento, las clases, la evaluación y las reglas de participa
 </tr>
 </table>
 
----
+<p align="center">
+  <img
+    src="https://capsule-render.vercel.app/api?type=rect&color=0:79BFA9,30:C8B8D4,60:B378A7,100:5C2E5D&height=4&section=header"
+    width="96%"
+    alt="Separador de sección"
+  />
+</p>
 
 ## 👥 Equipo de trabajo · Grupo 1
 
@@ -63,7 +73,13 @@ El presente proyecto es desarrollado por el **Grupo 1** del curso de Machine Lea
 **Universidad:** Universidad Peruana Cayetano Heredia  
 **Semestre académico:** 2026-II
 
----
+<p align="center">
+  <img
+    src="https://capsule-render.vercel.app/api?type=rect&color=0:79BFA9,30:C8B8D4,60:B378A7,100:5C2E5D&height=4&section=header"
+    width="96%"
+    alt="Separador de sección"
+  />
+</p>
 
 ## 1. Introducción
 
@@ -75,7 +91,13 @@ El proyecto se enfoca en la identificación de tejido metastásico en fragmentos
 
 La participación permite aplicar conceptos de Machine Learning a un problema de análisis de imágenes médicas, comprender la evaluación de modelos supervisados y documentar los resultados obtenidos. Se trata de un ejercicio académico de clasificación de imágenes, **no de una herramienta validada para realizar diagnósticos clínicos**.
 
----
+<p align="center">
+  <img
+    src="https://capsule-render.vercel.app/api?type=rect&color=0:79BFA9,30:C8B8D4,60:B378A7,100:5C2E5D&height=4&section=header"
+    width="96%"
+    alt="Separador de sección"
+  />
+</p>
 
 ## 2. Descripción de la competición
 
@@ -201,7 +223,13 @@ La identificación de tejido metastásico en ganglios linfáticos es un problema
 
 Además, la disponibilidad del conjunto PCam, el criterio de evaluación y la plataforma de envíos de Kaggle permiten documentar experimentos y comparar el desempeño de distintas configuraciones del modelo. Por estas razones, la competición representa una oportunidad para aplicar y evaluar los conocimientos desarrollados en la unidad de clasificación supervisada.
 
----
+<p align="center">
+  <img
+    src="https://capsule-render.vercel.app/api?type=rect&color=0:79BFA9,30:C8B8D4,60:B378A7,100:5C2E5D&height=4&section=header"
+    width="96%"
+    alt="Separador de sección"
+  />
+</p>
 
 ## Estructura del repositorio
 
@@ -215,7 +243,13 @@ Además, la disponibilidad del conjunto PCam, el criterio de evaluación y la pl
 
 > Los datos de gran tamaño deben consultarse desde sus fuentes originales; no es necesario almacenarlos en GitHub.
 
----
+<p align="center">
+  <img
+    src="https://capsule-render.vercel.app/api?type=rect&color=0:79BFA9,30:C8B8D4,60:B378A7,100:5C2E5D&height=4&section=header"
+    width="96%"
+    alt="Separador de sección"
+  />
+</p>
 
 ## Referencias bibliográficas
 
@@ -228,7 +262,13 @@ Además, la disponibilidad del conjunto PCam, el criterio de evaluación y la pl
 [4] *PatchCamelyon benchmark*. (s. f.). Grand Challenge. https://patchcamelyon.grand-challenge.org/
 
 
----
+<p align="center">
+  <img
+    src="https://capsule-render.vercel.app/api?type=rect&color=0:79BFA9,30:C8B8D4,60:B378A7,100:5C2E5D&height=4&section=header"
+    width="96%"
+    alt="Separador de sección"
+  />
+</p>
 
 <div align="center">
 
