@@ -31,6 +31,12 @@ Esta competición permite aplicar conocimientos de Machine Learning a un problem
 
 ### 2.2. Problemática
 
+<div align="center">
+  <img src="images/pcam_ejemplo.jpg" alt="Ejemplo de imagen histopatológica del dataset PCam" width="550">
+
+  <p><em>Figura 1. Ejemplo de imagen histopatológica utilizada en la competición TNM112-Lab2 (2026).</em></p>
+</div>
+
 El cáncer de mama puede propagarse hacia los ganglios linfáticos, donde la presencia de células tumorales constituye un indicador importante para determinar la extensión de la enfermedad y orientar las decisiones médicas.
 
 La identificación de tejido metastásico requiere analizar imágenes histopatológicas obtenidas de muestras de tejido. Este proceso implica reconocer características microscópicas que permitan distinguir regiones con presencia de metástasis de aquellas que no presentan tejido metastásico.
@@ -56,6 +62,14 @@ Desarrollar un modelo de clasificación supervisada basado en redes neuronales c
 5. Generar predicciones sobre el conjunto de prueba y presentar los resultados en la plataforma Kaggle.
 
 ### 2.4. Funcionamiento del reto
+
+
+<div align="center">
+  <img src="images/flujo_clasificacion.jpg" alt="Flujo del proceso de clasificación supervisada" width="700">
+
+  <p><em>Figura 2. Flujo general del proceso de clasificación de imágenes histopatológicas mediante una CNN.</em></p>
+</div>
+
 
 La competición proporciona un conjunto de imágenes histopatológicas correspondientes a pequeños fragmentos extraídos de escaneos digitales de ganglios linfáticos.
 
