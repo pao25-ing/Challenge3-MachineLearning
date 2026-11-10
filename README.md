@@ -1,19 +1,19 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:172554,30:2563EB,65:7C3AED,100:0891B2&height=230&section=header&text=Machine%20Learning&fontSize=52&fontColor=FFFFFF&animation=fadeIn&fontAlignY=38" width="100%" alt="Machine Learning - Challenge 3: Clasificación Supervisada">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:5C2E5D,30:9B65A0,65:D2AACB,100:79BFA9&height=230&section=header&text=Machine%20Learning&fontSize=52&fontColor=FFFFFF&animation=fadeIn&fontAlignY=38" width="100%" alt="Machine Learning - Challenge 3: Clasificación Supervisada">
 
 ### Clasificación de imágenes histopatológicas mediante aprendizaje supervisado
 
 Proyecto académico · Universidad Peruana Cayetano Heredia · 2026-II
 
-![Challenge](https://img.shields.io/badge/CHALLENGE-03-2563EB?style=for-the-badge) ![Enfoque](https://img.shields.io/badge/ENFOQUE-CNN-7C3AED?style=for-the-badge) ![Datos](https://img.shields.io/badge/DATASET-PCam-0891B2?style=for-the-badge) ![Equipo](https://img.shields.io/badge/EQUIPO-GRUPO_1-172554?style=for-the-badge)
+![Challenge](https://img.shields.io/badge/CHALLENGE-03-9B65A0?style=for-the-badge) ![Enfoque](https://img.shields.io/badge/ENFOQUE-CNN-D2AACB?style=for-the-badge) ![Datos](https://img.shields.io/badge/DATASET-PCam-79BFA9?style=for-the-badge) ![Equipo](https://img.shields.io/badge/EQUIPO-GRUPO_1-5C2E5D?style=for-the-badge)
 
 [**Ver competición en Kaggle**](https://www.kaggle.com/competitions/tnm-112-lab-2-2026) · [**Consultar dataset PCam**](https://patchcamelyon.grand-challenge.org/)
 
 </div>
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:172554,35:2563EB,70:7C3AED,100:0891B2&height=4&section=footer" width="100%" alt="Separador decorativo">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:5C2E5D,35:9B65A0,70:D2AACB,100:79BFA9&height=4&section=footer" width="100%" alt="Separador decorativo">
 </p>
 
 ## Explora el proyecto
