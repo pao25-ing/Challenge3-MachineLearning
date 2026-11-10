@@ -1,10 +1,8 @@
-
 # Challenge 3 – Clasificación Supervisada
-
 
 ## 👥 Equipo de trabajo – Grupo 1
 
-El presente proyecto es desarrollado por el **Grupo 1** del curso de Machine Learning de la Universidad Peruana Cayetano Heredia (UPCH), correspondiente al semestre académico 2026-II.
+El presente proyecto es desarrollado por el **Grupo 1** del curso de Machine Learning de la **Universidad Peruana Cayetano Heredia (UPCH)**, correspondiente al semestre académico **2026-II**.
 
 ### Integrantes
 
@@ -15,23 +13,20 @@ El presente proyecto es desarrollado por el **Grupo 1** del curso de Machine Lea
 | 3 | Anderson Josué Delerna Infantes |
 | 4 | Jimena Natalia Vega Sánchez |
 
-**Docente:** Yannick Patrick Carrasco Merma
-
-**Curso:** Machine Learning
-
-**Universidad:** Universidad Peruana Cayetano Heredia
-
+**Docente:** Yannick Patrick Carrasco Merma  
+**Curso:** Machine Learning  
+**Universidad:** Universidad Peruana Cayetano Heredia  
 **Semestre académico:** 2026-II
 
 ## 1. Introducción
 
-El presente proyecto se desarrolla como parte del **Challenge 3 del curso Machine Learning** de la Universidad Peruana Cayetano Heredia (UPCH), correspondiente a la unidad de Algoritmos de Aprendizaje Supervisado.
+El presente proyecto se desarrolla como parte del **Challenge 3 del curso Machine Learning** de la Universidad Peruana Cayetano Heredia (UPCH), correspondiente a la unidad de **Algoritmos de Aprendizaje Supervisado**.
 
-Para este desafío se seleccionó la competición [TNM112-Lab2 (2026)](https://www.kaggle.com/competitions/tnm-112-lab-2-2026), disponible en la plataforma Kaggle, que propone la clasificación de imágenes histopatológicas mediante técnicas de aprendizaje supervisado.
+Para este desafío se seleccionó la competición [TNM112-Lab2 (2026)](https://www.kaggle.com/competitions/tnm-112-lab-2-2026), disponible en Kaggle, que plantea la clasificación de imágenes histopatológicas mediante técnicas de aprendizaje supervisado.
 
-El proyecto se enfoca en la identificación de tejido metastásico en imágenes microscópicas de ganglios linfáticos, utilizando el conjunto de datos **PatchCamelyon (PCam)**. Para resolver este problema, la competición plantea el entrenamiento de redes neuronales convolucionales (*Convolutional Neural Networks*, CNN), capaces de aprender patrones visuales y realizar predicciones sobre imágenes no utilizadas durante su entrenamiento.
+El proyecto se enfoca en la identificación de tejido metastásico en fragmentos de imágenes microscópicas de ganglios linfáticos, utilizando el conjunto de datos **PatchCamelyon (PCam)**. La competición solicita entrenar una red neuronal convolucional (*Convolutional Neural Network*, CNN) para aprender patrones visuales y predecir la clase de imágenes que no se utilizaron durante el entrenamiento.
 
-Esta competición permite aplicar conocimientos de Machine Learning a un problema del ámbito médico y explorar el uso de modelos de clasificación en el análisis automatizado de imágenes.
+La participación permite aplicar conceptos de Machine Learning a un problema de análisis de imágenes médicas, comprender la evaluación de modelos supervisados y documentar los resultados obtenidos. Se trata de un ejercicio académico de clasificación de imágenes, **no de una herramienta validada para realizar diagnósticos clínicos**.
 
 ## 2. Descripción de la competición
 
@@ -42,74 +37,73 @@ Esta competición permite aplicar conocimientos de Machine Learning a un problem
 | **Nombre** | TNM112-Lab2 (2026) |
 | **Plataforma** | Kaggle |
 | **Organizador** | YifanD@LiU |
-| **Área de aplicación** | Salud – Análisis de imágenes médicas |
+| **Área de aplicación** | Salud – Análisis de imágenes histopatológicas |
 | **Tipo de aprendizaje** | Supervisado |
 | **Tipo de problema** | Clasificación binaria |
 | **Dataset** | PatchCamelyon (PCam) |
 | **Modelo solicitado** | Red neuronal convolucional (CNN) |
 | **Métrica de evaluación** | Balanced Accuracy |
-| **Formato de entrega** | Archivo CSV |
-| **Enlace** | [TNM112-Lab2 (2026)](https://www.kaggle.com/competitions/tnm-112-lab-2-2026) |
+| **Formato de entrega** | Archivo CSV con columnas `ID` y `Class` |
+| **Competición** | [TNM112-Lab2 (2026)](https://www.kaggle.com/competitions/tnm-112-lab-2-2026) |
+
+La información sobre las reglas, los envíos y la evaluación se obtuvo de la descripción de la competición publicada por su organizador [1].
 
 ### 2.2. Problemática
 
 <div align="center">
   <img src="images/pcam_ejemplo.jpg" alt="Ejemplo de imagen histopatológica del dataset PCam" width="550">
-
-  <p><em>Figura 1. Ejemplo de imagen histopatológica utilizada en la competición TNM112-Lab2 (2026).</em></p>
+  <p><em>Figura 1. Imagen ilustrativa de los fragmentos histopatológicos utilizados en el reto PCam. Fuente: recurso incluido en el repositorio; verificar y consignar la fuente original de la imagen.</em></p>
 </div>
 
-El cáncer de mama puede propagarse hacia los ganglios linfáticos, donde la presencia de células tumorales constituye un indicador importante para determinar la extensión de la enfermedad y orientar las decisiones médicas.
+El cáncer de mama puede propagarse hacia los ganglios linfáticos. La presencia de células tumorales en estos tejidos es relevante para evaluar la extensión de la enfermedad y orientar decisiones médicas.
 
-La identificación de tejido metastásico requiere analizar imágenes histopatológicas obtenidas de muestras de tejido. Este proceso implica reconocer características microscópicas que permitan distinguir regiones con presencia de metástasis de aquellas que no presentan tejido metastásico.
+El estudio histopatológico permite observar muestras de tejido al microscopio. Sin embargo, revisar un gran volumen de imágenes y distinguir patrones asociados con tejido metastásico puede resultar una tarea exigente debido a la diversidad de estructuras microscópicas.
 
-El análisis de numerosas imágenes puede representar una tarea exigente debido a la cantidad de información visual y a las variaciones en las características de los tejidos.
+En este contexto, el aprendizaje supervisado permite entrenar modelos con imágenes previamente etiquetadas para reconocer patrones visuales y clasificar nuevos fragmentos. La competición **TNM112-Lab2 (2026)** plantea identificar si un fragmento histopatológico contiene o no tejido metastásico [1].
 
-Ante esta problemática, el aprendizaje automático ofrece la posibilidad de desarrollar sistemas capaces de reconocer patrones en imágenes histopatológicas y apoyar su clasificación.
+El conjunto **PCam** está compuesto por imágenes de **96 × 96 píxeles**. Según la definición del conjunto de datos original, la etiqueta positiva depende de la presencia de tejido tumoral en la **región central de 32 × 32 píxeles**, y no simplemente de su presencia en cualquier punto de la imagen [2, 4].
 
-La competición **TNM112-Lab2 (2026)** aborda este problema mediante la construcción de un modelo que permita identificar automáticamente la presencia o ausencia de tejido metastásico en pequeños fragmentos de imágenes de ganglios linfáticos.
-
-### 2.3. Objetivo de la competición
+### 2.3. Objetivos del proyecto
 
 **Objetivo general**
 
-Desarrollar un modelo de clasificación supervisada basado en redes neuronales convolucionales (CNN) que permita identificar la presencia o ausencia de tejido metastásico en imágenes histopatológicas del conjunto de datos PatchCamelyon (PCam).
+Desarrollar un modelo de clasificación supervisada basado en una red neuronal convolucional (CNN) que permita identificar la presencia o ausencia de tejido metastásico en fragmentos histopatológicos del conjunto de datos PatchCamelyon (PCam).
 
 **Objetivos específicos**
 
-1. Comprender la problemática de clasificación de imágenes histopatológicas asociadas con la detección de metástasis.
-2. Utilizar imágenes etiquetadas del dataset PCam para el entrenamiento de un modelo supervisado.
-3. Implementar una red neuronal convolucional para clasificar imágenes según la presencia o ausencia de tejido metastásico.
-4. Evaluar el desempeño del modelo mediante la métrica *Balanced Accuracy*.
-5. Generar predicciones sobre el conjunto de prueba y presentar los resultados en la plataforma Kaggle.
+1. Comprender la problemática de la clasificación de imágenes histopatológicas relacionada con la detección de metástasis.
+2. Utilizar imágenes etiquetadas del dataset PCam para entrenar un modelo supervisado.
+3. Implementar y evaluar una CNN para clasificar imágenes según la presencia o ausencia de tejido metastásico.
+4. Analizar el rendimiento mediante la métrica **Balanced Accuracy**.
+5. Generar predicciones sobre el conjunto de prueba y presentar los archivos correspondientes en Kaggle.
+
+Estos objetivos describen el trabajo académico del grupo; el objetivo central de la competición es predecir correctamente las clases de las imágenes de prueba [1].
 
 ### 2.4. Funcionamiento del reto
 
-
 <div align="center">
   <img src="images/flujo_clasificacion.jpg" alt="Flujo del proceso de clasificación supervisada" width="700">
-
-  <p><em>Figura 2. Flujo general del proceso de clasificación de imágenes histopatológicas mediante una CNN.</em></p>
+  <p><em>Figura 2. Esquema general del proceso propuesto de clasificación de imágenes histopatológicas mediante una CNN.</em></p>
 </div>
 
+La competición proporciona fragmentos de imágenes histopatológicas extraídos de escaneos digitales de ganglios linfáticos. Las imágenes de entrenamiento cuentan con etiquetas que indican la clase correspondiente, mientras que el conjunto de prueba requiere generar predicciones [1].
 
-La competición proporciona un conjunto de imágenes histopatológicas correspondientes a pequeños fragmentos extraídos de escaneos digitales de ganglios linfáticos.
+**Clases de clasificación**
 
-Cada imagen del conjunto de entrenamiento tiene asociada una etiqueta que indica si contiene tejido metastásico.
+| Clase | Categoría | Descripción |
+|:---:|---|---|
+| **0** | Negativa | No se identifica tejido metastásico en la región central de la imagen. |
+| **1** | Positiva | Se identifica tejido metastásico en la región central de la imagen. |
 
-El desafío consiste en desarrollar y entrenar una CNN capaz de aprender las características visuales de ambas categorías y posteriormente clasificar nuevas imágenes.
+El flujo general de resolución comprende:
 
-El procedimiento general comprende las siguientes etapas:
+1. **Obtención de datos:** acceder a los archivos de la competición en Kaggle.
+2. **Preparación:** organizar y procesar las imágenes para que puedan ser utilizadas por el modelo.
+3. **Entrenamiento:** utilizar las imágenes etiquetadas para entrenar una CNN.
+4. **Predicción:** aplicar la CNN a las imágenes del conjunto de prueba.
+5. **Envío y evaluación:** crear un archivo CSV con las predicciones y enviarlo a Kaggle para obtener la puntuación.
 
-1. **Obtención de datos:** acceder al conjunto de imágenes proporcionado por Kaggle.
-2. **Preparación de imágenes:** organizar y preparar los datos para su procesamiento.
-3. **Entrenamiento:** utilizar imágenes etiquetadas para entrenar una CNN.
-4. **Predicción:** aplicar el modelo a imágenes del conjunto de prueba.
-5. **Evaluación:** generar un archivo CSV con las predicciones y enviarlo a Kaggle para obtener una puntuación.
-
-El archivo de predicciones debe contener las columnas `ID` y `Class`, siguiendo el formato establecido por la competición.
-
-**Ejemplo del archivo `submission.csv`:**
+El archivo de entrega, denominado habitualmente `submission.csv`, debe incluir las columnas **`ID`** y **`Class`**. Este es un **ejemplo de formato**, no de predicciones reales del equipo:
 
 ```csv
 ID,Class
@@ -118,57 +112,53 @@ ID,Class
 3,0
 ```
 
-Este procedimiento permite evaluar qué tan bien el modelo aprendido puede clasificar imágenes que no formaron parte de su entrenamiento.
-
 ### 2.5. Evaluación de los resultados
 
-La competición utiliza la métrica **Balanced Accuracy** para evaluar las predicciones realizadas por los modelos participantes.
+La competición utiliza **Balanced Accuracy**, una métrica que calcula el promedio de la sensibilidad (*recall*) obtenida en cada clase. A diferencia de la exactitud convencional (*Accuracy*), no se limita a calcular la proporción total de predicciones correctas [1, 3].
 
-Esta métrica calcula el promedio de la sensibilidad obtenida en cada clase. Resulta especialmente útil cuando existe un desequilibrio entre la cantidad de ejemplos de las diferentes categorías, ya que evita que el desempeño se valore únicamente por la clase más frecuente.
+Para clasificación binaria, puede expresarse como:
 
-En un problema de clasificación binaria, se puede expresar mediante:
+$$
+\text{Balanced Accuracy} = \frac{\text{Sensibilidad} + \text{Especificidad}}{2}
+$$
 
-\[
-\text{Balanced Accuracy} =
-\frac{\text{Sensibilidad}+\text{Especificidad}}{2}
-\]
+Esta métrica es especialmente útil cuando existe un desequilibrio en la cantidad de muestras por clase, ya que considera el desempeño en ambas categorías. **No se asume que los datos de esta competición estén desbalanceados**: esto deberá comprobarse durante el análisis exploratorio.
 
-La competición divide el conjunto de prueba utilizado para la evaluación en dos partes:
+La competición establece dos clasificaciones (*leaderboards*):
 
-| Clasificación | Porcentaje | Descripción |
-|---|---|---|
-| **Public Leaderboard** | 30 % | Permite visualizar el rendimiento de los participantes durante la competición. |
-| **Private Leaderboard** | 70 % | Determina la clasificación final una vez publicados los resultados privados. |
+| Clasificación | Porcentaje del conjunto de prueba | Función |
+|---|:---:|---|
+| **Public Leaderboard** | 30 % | Permite consultar puntuaciones durante la competición. |
+| **Private Leaderboard** | 70 % | Determina la posición final tras su publicación. |
 
-El uso del leaderboard privado permite comprobar si las soluciones mantienen un buen desempeño sobre datos que no se utilizaron para obtener la clasificación pública.
+Según las reglas del reto, la clasificación definitiva depende del **Private Leaderboard**. Una buena puntuación pública no garantiza el mismo resultado en la clasificación privada [1].
 
 ### 2.6. Requisitos de participación
 
-De acuerdo con las indicaciones publicadas en la competición, los participantes deben cumplir los siguientes requisitos:
+De acuerdo con la descripción oficial de **TNM112-Lab2 (2026)**, se solicita [1]:
 
-- Entrenar una red neuronal convolucional para clasificar las imágenes.
-- Realizar al menos **cinco submissions válidas**, con un rendimiento superior a una predicción aleatoria.
-- Documentar las modificaciones utilizadas para mejorar el desempeño de la CNN.
-- Generar y enviar archivos CSV con las predicciones al sistema de evaluación de Kaggle.
+- Entrenar una **red neuronal convolucional (CNN)** para clasificar los fragmentos histopatológicos.
+- Realizar al menos **cinco envíos válidos** (*submissions*) con resultados superiores a una predicción aleatoria, según el requisito de la competición.
+- Explicar en el informe las modificaciones realizadas para mejorar la CNN.
+- Enviar las predicciones en un **archivo CSV** con el formato establecido por Kaggle.
 
-Adicionalmente, la competición incentiva la exploración de técnicas como *data augmentation*, regularización, *transfer learning* y métodos de ensamble para mejorar el desempeño de los modelos.
+Además, se incentiva explorar técnicas como **aumento de datos (*data augmentation*)**, **regularización**, **aprendizaje por transferencia (*transfer learning*)** y **métodos de ensamble (*ensemble learning*)**. Estas técnicas son posibilidades de mejora y no deben presentarse como métodos ya implementados por el grupo.
 
 ### 2.7. Justificación de la elección
 
-Se seleccionó la competición **TNM112-Lab2 (2026)** debido a su relación con los contenidos de clasificación supervisada abordados en el curso de Machine Learning y su aplicación en el análisis de imágenes médicas.
+Se seleccionó **TNM112-Lab2 (2026)** por su relación con el aprendizaje supervisado estudiado en el curso y por su aplicación al análisis de imágenes médicas. A diferencia de problemas basados principalmente en variables tabulares, este reto propone aprender características visuales mediante redes neuronales convolucionales.
 
-A diferencia de problemas tradicionales de clasificación basados únicamente en datos tabulares, esta competición permite explorar el aprendizaje de características visuales mediante redes neuronales convolucionales.
+La identificación de tejido metastásico en ganglios linfáticos es un problema relevante en el estudio del cáncer de mama. Esto permite contextualizar el ejercicio de clasificación y comprender el potencial de las herramientas computacionales como apoyo al análisis de imágenes, sin confundir un resultado experimental con una validación clínica.
 
-Asimismo, la problemática tiene relevancia en el ámbito de la salud, ya que la detección de tejido metastásico en ganglios linfáticos constituye un aspecto importante en la evaluación del cáncer de mama.
-
-La disponibilidad del dataset PCam, las reglas de evaluación y el sistema de clasificación de Kaggle permiten desarrollar experimentos, comparar resultados y analizar el desempeño de diferentes configuraciones del modelo.
-
-Por estas razones, la competición representa una oportunidad para aplicar los conocimientos adquiridos durante el curso y comprender las posibilidades del aprendizaje supervisado en problemas de clasificación de imágenes.
+Además, la disponibilidad del conjunto PCam, el criterio de evaluación y la plataforma de envíos de Kaggle permiten documentar experimentos y comparar el desempeño de distintas configuraciones del modelo. Por estas razones, la competición representa una oportunidad para aplicar y evaluar los conocimientos desarrollados en la unidad de clasificación supervisada.
 
 ## Referencias bibliográficas
 
 [1] YifanD@LiU. (2026). *TNM112-Lab2 (2026)*. Kaggle. https://www.kaggle.com/competitions/tnm-112-lab-2-2026
 
-[2] Veeling, B. S., Linmans, J., Winkens, J., Cohen, T., & Welling, M. (2018). *Rotation equivariant CNNs for digital pathology*. arXiv. https://arxiv.org/abs/1806.03962
+[2] Veeling, B. S., Linmans, J., Winkens, J., Cohen, T., & Welling, M. (2018). *Rotation Equivariant CNNs for Digital Pathology*. arXiv. https://arxiv.org/abs/1806.03962
 
 [3] Scikit-learn developers. (s. f.). *Balanced accuracy score*. Scikit-learn. https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html
+
+[4] *PatchCamelyon benchmark*. (s. f.). Grand Challenge. https://patchcamelyon.grand-challenge.org/
+
