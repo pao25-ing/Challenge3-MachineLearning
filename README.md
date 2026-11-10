@@ -1,6 +1,28 @@
 
 # Challenge 3 – Clasificación Supervisada
 
+
+## 👥 Equipo de trabajo – Grupo 1
+
+El presente proyecto es desarrollado por el **Grupo 1** del curso de Machine Learning de la Universidad Peruana Cayetano Heredia (UPCH), correspondiente al semestre académico 2026-II.
+
+### Integrantes
+
+| N.º | Apellidos y nombres |
+|:---:|---|
+| 1 | César Alejandro Aarón Apcho Meneses |
+| 2 | Paola Andrea Centeno Bazán |
+| 3 | Anderson Josué Delerna Infantes |
+| 4 | Jimena Natalia Vega Sánchez |
+
+**Docente:** Yannick Patrick Carrasco Merma
+
+**Curso:** Machine Learning
+
+**Universidad:** Universidad Peruana Cayetano Heredia
+
+**Semestre académico:** 2026-II
+
 ## 1. Introducción
 
 El presente proyecto se desarrolla como parte del **Challenge 3 del curso Machine Learning** de la Universidad Peruana Cayetano Heredia (UPCH), correspondiente a la unidad de Algoritmos de Aprendizaje Supervisado.
