@@ -1,6 +1,51 @@
-# Challenge 3 – Clasificación Supervisada
+<div align="center">
 
-## 👥 Equipo de trabajo – Grupo 1
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:172554,30:2563EB,65:7C3AED,100:0891B2&height=230&section=header&text=Machine%20Learning&fontSize=52&fontColor=FFFFFF&animation=fadeIn&fontAlignY=38" width="100%" alt="Machine Learning - Challenge 3: Clasificación Supervisada">
+
+### Clasificación de imágenes histopatológicas mediante aprendizaje supervisado
+
+Proyecto académico · Universidad Peruana Cayetano Heredia · 2026-II
+
+![Challenge](https://img.shields.io/badge/CHALLENGE-03-2563EB?style=for-the-badge) ![Enfoque](https://img.shields.io/badge/ENFOQUE-CNN-7C3AED?style=for-the-badge) ![Datos](https://img.shields.io/badge/DATASET-PCam-0891B2?style=for-the-badge) ![Equipo](https://img.shields.io/badge/EQUIPO-GRUPO_1-172554?style=for-the-badge)
+
+[**Ver competición en Kaggle**](https://www.kaggle.com/competitions/tnm-112-lab-2-2026) · [**Consultar dataset PCam**](https://patchcamelyon.grand-challenge.org/)
+
+</div>
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:172554,35:2563EB,70:7C3AED,100:0891B2&height=4&section=footer" width="100%" alt="Separador decorativo">
+</p>
+
+## Explora el proyecto
+
+El **Grupo 1** participa en el reto **TNM112-Lab2 (2026)** de Kaggle: identificar tejido metastásico en fragmentos de imágenes histopatológicas mediante una red neuronal convolucional (CNN).
+
+<table>
+<tr>
+<td width="50%" valign="top" align="center">
+
+**01 · CONTEXTO DEL RETO**
+
+Comprende la problemática médica, el objetivo y la razón de elegir esta competición.
+
+<a href="#1-introducción">Introducción</a> · <a href="#22-problemática">Problemática</a>
+
+</td>
+<td width="50%" valign="top" align="center">
+
+**02 · COMPETICIÓN KAGGLE**
+
+Consulta el funcionamiento, las clases, la evaluación y las reglas de participación.
+
+<a href="#24-funcionamiento-del-reto">Funcionamiento</a> · <a href="#25-evaluación-de-los-resultados">Evaluación</a>
+
+</td>
+</tr>
+</table>
+
+---
+
+## 👥 Equipo de trabajo · Grupo 1
 
 El presente proyecto es desarrollado por el **Grupo 1** del curso de Machine Learning de la **Universidad Peruana Cayetano Heredia (UPCH)**, correspondiente al semestre académico **2026-II**.
 
@@ -18,6 +63,8 @@ El presente proyecto es desarrollado por el **Grupo 1** del curso de Machine Lea
 **Universidad:** Universidad Peruana Cayetano Heredia  
 **Semestre académico:** 2026-II
 
+---
+
 ## 1. Introducción
 
 El presente proyecto se desarrolla como parte del **Challenge 3 del curso Machine Learning** de la Universidad Peruana Cayetano Heredia (UPCH), correspondiente a la unidad de **Algoritmos de Aprendizaje Supervisado**.
@@ -27,6 +74,8 @@ Para este desafío se seleccionó la competición [TNM112-Lab2 (2026)](https://w
 El proyecto se enfoca en la identificación de tejido metastásico en fragmentos de imágenes microscópicas de ganglios linfáticos, utilizando el conjunto de datos **PatchCamelyon (PCam)**. La competición solicita entrenar una red neuronal convolucional (*Convolutional Neural Network*, CNN) para aprender patrones visuales y predecir la clase de imágenes que no se utilizaron durante el entrenamiento.
 
 La participación permite aplicar conceptos de Machine Learning a un problema de análisis de imágenes médicas, comprender la evaluación de modelos supervisados y documentar los resultados obtenidos. Se trata de un ejercicio académico de clasificación de imágenes, **no de una herramienta validada para realizar diagnósticos clínicos**.
+
+---
 
 ## 2. Descripción de la competición
 
@@ -152,6 +201,22 @@ La identificación de tejido metastásico en ganglios linfáticos es un problema
 
 Además, la disponibilidad del conjunto PCam, el criterio de evaluación y la plataforma de envíos de Kaggle permiten documentar experimentos y comparar el desempeño de distintas configuraciones del modelo. Por estas razones, la competición representa una oportunidad para aplicar y evaluar los conocimientos desarrollados en la unidad de clasificación supervisada.
 
+---
+
+## Estructura del repositorio
+
+| Ruta | Propósito |
+|---|---|
+| `README.md` | Documentación académica general del proyecto. |
+| `data/` | Información y archivos pequeños relacionados con el dataset PCam. |
+| `notebooks/` | Cuadernos de análisis, entrenamiento, evaluación y predicciones. |
+| `images/` | Ejemplos de imágenes, diagramas y gráficos del proyecto. |
+| `results/` | Métricas experimentales, evidencias y archivos de entrega a Kaggle. |
+
+> Los datos de gran tamaño deben consultarse desde sus fuentes originales; no es necesario almacenarlos en GitHub.
+
+---
+
 ## Referencias bibliográficas
 
 [1] YifanD@LiU. (2026). *TNM112-Lab2 (2026)*. Kaggle. https://www.kaggle.com/competitions/tnm-112-lab-2-2026
@@ -162,3 +227,13 @@ Además, la disponibilidad del conjunto PCam, el criterio de evaluación y la pl
 
 [4] *PatchCamelyon benchmark*. (s. f.). Grand Challenge. https://patchcamelyon.grand-challenge.org/
 
+
+---
+
+<div align="center">
+
+**Grupo 1 · Machine Learning · UPCH · 2026-II**
+
+*Proyecto académico de clasificación supervisada de imágenes histopatológicas.*
+
+</div>
