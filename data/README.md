@@ -1,18 +1,24 @@
 # Datos de la competición
 
-La competición [TNM112-Lab2 (2026)](https://www.kaggle.com/competitions/tnm-112-lab-2-2026/data) utiliza un subconjunto de PatchCamelyon (PCam). Cada imagen en estos archivos es un recorte RGB de **32 × 32 píxeles**. El PCam original contiene parches de 96 × 96; su etiqueta positiva se define según la presencia de tejido tumoral en la región central de 32 × 32. La competición indica que sus imágenes se recortaron a 32 × 32; no se verificó el procedimiento exacto de recorte.
+La competición [TNM112-Lab2 (2026)](https://www.kaggle.com/competitions/tnm-112-lab-2-2026/data) utiliza un subconjunto de PatchCamelyon (PCam), formado por imágenes de tejido de ganglios linfáticos. Cada imagen de la competición tiene **32 × 32 píxeles y tres canales de color**.
+
+El PCam original contiene fragmentos de 96 × 96 píxeles; la etiqueta positiva se define por la presencia de tejido tumoral en la región central de 32 × 32. Los organizadores indican que las imágenes de la competición fueron recortadas a 32 × 32, aunque no se ha verificado el procedimiento exacto del recorte.
 
 ## Archivos
 
-| Archivo | Uso | Imágenes `x` | Etiquetas `y` | Tamaño |
-|---|---|---:|---|---:|
-| `train.h5` | Entrenamiento | 100 000 | Sí | 307 302 048 bytes |
-| `valid.h5` | Validación | 32 768 | Sí | 100 698 112 bytes |
-| `test_x.h5` | Predicción | 32 768 | No | 100 665 344 bytes |
+| Archivo | Uso | Imágenes | ¿Tiene etiquetas? |
+|---|---|---:|---|
+| `train.h5` | Entrenamiento | 100 000 | Sí |
+| `valid.h5` | Validación | 32 768 | Sí |
+| `test_x.h5` | Prueba | 32 768 | No |
 
-`x` contiene arreglos de `(n, 32, 32, 3)` y `y` es un vector de tamaño `n`; ambas variables son `uint8`. Las etiquetas disponibles son 0 (negativa) y 1 (positiva). `test_x.h5` contiene solo la clave `x`: no incluye etiquetas ni identificadores. Confirmen la correspondencia entre el orden de las imágenes y los `ID` requeridos por Kaggle antes de producir un envío.
+Los archivos tienen formato HDF5. La clave `x` contiene las imágenes; la clave `y` contiene las etiquetas cuando están disponibles: **0** para la clase negativa y **1** para la positiva. Las imágenes y etiquetas son de tipo `uint8`. El archivo de prueba solo contiene `x`: no tiene etiquetas ni identificadores. Para la submission queda pendiente verificar cómo se relaciona el orden de las imágenes con los `ID` que solicita Kaggle.
 
-Descarga los tres `.h5` desde Kaggle y colócalos en esta carpeta. No se incluyen en Git por su tamaño; consulta las condiciones de uso de los datos en la competición. El análisis documentado, los gráficos y las instrucciones están en [results/eda](../results/eda/README.md).
+## Uso de los archivos
+
+Los archivos `.h5` se descargan desde la página de Kaggle y no están incluidos en este repositorio por su tamaño. Para analizarlos en Colab, se colocan los tres archivos descomprimidos en `Mi unidad/Challenge3/data` de Google Drive. Los pasos completos están en el [cuaderno de análisis](../notebooks/README.md).
+
+Los resultados obtenidos se pueden consultar en el [análisis exploratorio](../results/eda/README.md).
 
 ## Fuentes
 

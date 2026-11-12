@@ -193,7 +193,7 @@ $$
 \text{Balanced Accuracy} = \frac{\text{Sensibilidad} + \text{Especificidad}}{2}
 $$
 
-Esta métrica es especialmente útil cuando existe un desequilibrio en la cantidad de muestras por clase, ya que considera el desempeño en ambas categorías. El análisis de los archivos muestra que **entrenamiento y validación están prácticamente equilibrados**; la distribución de clases de prueba es desconocida porque no contiene etiquetas. Consulta el [análisis exploratorio](results/eda/README.md).
+Esta métrica es especialmente útil cuando existe un desequilibrio en la cantidad de muestras por clase, ya que considera el desempeño en ambas categorías. El análisis de los archivos muestra que **entrenamiento y validación están prácticamente equilibrados**; la distribución de clases de prueba es desconocida porque no contiene etiquetas. Los resultados se encuentran en el [análisis exploratorio](results/eda/README.md).
 
 La competición establece dos clasificaciones (*leaderboards*):
 
@@ -238,7 +238,7 @@ Además, la disponibilidad del conjunto PCam, el criterio de evaluación y la pl
 | `README.md` | Documentación académica general del proyecto. |
 | `data/` | Descripción y ubicación local de los datos de PCam. |
 | `scripts/analisis_dataset.py` | Código reproducible de exploración del dataset. |
-| `notebooks/01_analisis_dataset.ipynb` | Cuaderno de carga y análisis exploratorio. |
+| `notebooks/01_analisis_dataset.ipynb` | Cuaderno de carga y análisis exploratorio con resultados visibles. La [guía](notebooks/README.md) explica cómo ejecutarlo en Colab. |
 | `results/eda/` | Resultados, gráficas y documentación del análisis exploratorio. |
 | `notebooks/` | Cuadernos de análisis, entrenamiento, evaluación y predicciones. |
 | `images/` | Ejemplos de imágenes, diagramas y gráficos del proyecto. |
