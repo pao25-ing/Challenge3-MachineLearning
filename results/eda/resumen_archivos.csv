@@ -1,0 +1,6 @@
+archivo,clave,dimensiones,tipo,pixel_min,pixel_max,pixel_media
+train.h5,x,"(100000, 32, 32, 3)",uint8,0,255,163.740
+train.h5,y,"(100000,)",uint8,,,
+valid.h5,x,"(32768, 32, 32, 3)",uint8,0,255,163.096
+valid.h5,y,"(32768,)",uint8,,,
+test_x.h5,x,"(32768, 32, 32, 3)",uint8,0,255,160.398

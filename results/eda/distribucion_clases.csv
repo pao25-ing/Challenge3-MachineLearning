@@ -1,0 +1,5 @@
+archivo,clase,cantidad,porcentaje
+train.h5,0,49964,49.96400
+train.h5,1,50036,50.03600
+valid.h5,0,16399,50.04578
+valid.h5,1,16369,49.95422

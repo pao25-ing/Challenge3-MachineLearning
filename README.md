@@ -132,7 +132,7 @@ El estudio histopatológico permite observar muestras de tejido al microscopio. 
 
 En este contexto, el aprendizaje supervisado permite entrenar modelos con imágenes previamente etiquetadas para reconocer patrones visuales y clasificar nuevos fragmentos. La competición **TNM112-Lab2 (2026)** plantea identificar si un fragmento histopatológico contiene o no tejido metastásico [1].
 
-El conjunto **PCam** está compuesto por imágenes de **96 × 96 píxeles**. Según la definición del conjunto de datos original, la etiqueta positiva depende de la presencia de tejido tumoral en la **región central de 32 × 32 píxeles**, y no simplemente de su presencia en cualquier punto de la imagen [2, 4].
+El conjunto **PCam original** contiene imágenes de **96 × 96 píxeles**; sus etiquetas se definen con respecto a la región central de 32 × 32 píxeles [2, 4]. Para esta competición, los organizadores seleccionaron un subconjunto de PCam y recortaron las imágenes a **32 × 32 × 3 píxeles** [1]. El procedimiento exacto del recorte no se ha verificado.
 
 ### 2.3. Objetivos del proyecto
 
@@ -163,8 +163,8 @@ La competición proporciona fragmentos de imágenes histopatológicas extraídos
 
 | Clase | Categoría | Descripción |
 |:---:|---|---|
-| **0** | Negativa | No se identifica tejido metastásico en la región central de la imagen. |
-| **1** | Positiva | Se identifica tejido metastásico en la región central de la imagen. |
+| **0** | Negativa | Etiqueta negativa según la definición original de PCam. |
+| **1** | Positiva | Etiqueta positiva según la definición original de PCam. |
 
 El flujo general de resolución comprende:
 
@@ -193,7 +193,7 @@ $$
 \text{Balanced Accuracy} = \frac{\text{Sensibilidad} + \text{Especificidad}}{2}
 $$
 
-Esta métrica es especialmente útil cuando existe un desequilibrio en la cantidad de muestras por clase, ya que considera el desempeño en ambas categorías. **No se asume que los datos de esta competición estén desbalanceados**: esto deberá comprobarse durante el análisis exploratorio.
+Esta métrica es especialmente útil cuando existe un desequilibrio en la cantidad de muestras por clase, ya que considera el desempeño en ambas categorías. El análisis de los archivos muestra que **entrenamiento y validación están prácticamente equilibrados**; la distribución de clases de prueba es desconocida porque no contiene etiquetas. Consulta el [análisis exploratorio](results/eda/README.md).
 
 La competición establece dos clasificaciones (*leaderboards*):
 
@@ -236,7 +236,10 @@ Además, la disponibilidad del conjunto PCam, el criterio de evaluación y la pl
 | Ruta | Propósito |
 |---|---|
 | `README.md` | Documentación académica general del proyecto. |
-| `data/` | Información y archivos pequeños relacionados con el dataset PCam. |
+| `data/` | Descripción y ubicación local de los datos de PCam. |
+| `scripts/analisis_dataset.py` | Código reproducible de exploración del dataset. |
+| `notebooks/01_analisis_dataset.ipynb` | Cuaderno de carga y análisis exploratorio. |
+| `results/eda/` | Resultados, gráficas y documentación del análisis exploratorio. |
 | `notebooks/` | Cuadernos de análisis, entrenamiento, evaluación y predicciones. |
 | `images/` | Ejemplos de imágenes, diagramas y gráficos del proyecto. |
 | `results/` | Métricas experimentales, evidencias y archivos de entrega a Kaggle. |
