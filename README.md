@@ -22,7 +22,7 @@ Proyecto académico · Universidad Peruana Cayetano Heredia · 2026-II
 
 ## Explora el proyecto
 
-El **Grupo 1** participa en el reto **TNM112-Lab2 (2026)** de Kaggle: identificar tejido metastásico en fragmentos de imágenes histopatológicas mediante una red neuronal convolucional (CNN).
+El **Grupo 1** participa en el reto **TNM112-Lab2 (2026)** de Kaggle: identificar tejido metastásico en fragmentos de imágenes histopatológicas mediante una red neuronal convolucional (CNN) .
 
 <table>
 <tr>
