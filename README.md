@@ -39,7 +39,7 @@ Explora el proyecto del **Grupo 1** en nuestra landing page: conoce la competici
 - [Notebook de entrenamiento y evaluación](notebooks/02_entrenamiento_cnn.ipynb).
 - [Guía para importar el notebook en Kaggle y realizar la entrega](docs/ENTREGA_KAGGLE.md).
 
-**Estado actual:** el análisis exploratorio tiene salidas guardadas. El notebook de CNN está preparado, pero su ejecución con los archivos oficiales está pendiente. Todavía no se publican métricas de entrenamiento ni predicciones reales. El código genera los resultados al ejecutarse; las cinco configuraciones propuestas no equivalen a cinco envíos válidos.
+**Estado actual:** el análisis exploratorio y el notebook de CNN están ejecutados con los datos oficiales y conservan sus salidas. Se compararon cinco configuraciones; la mejor Balanced Accuracy de validación fue **0,748689** con `02_dropout`. Los [resultados](results/cnn/README.md), las figuras y cinco candidatos CSV están publicados. [Ejecución original en Kaggle](https://www.kaggle.com/code/cesarapcho/challenge-3-upch-grupo-1-cnn-pcam?scriptVersionId=370083154). Todavía no se han realizado envíos a la competición y la correspondencia de los ID permanece pendiente de confirmación.
 
 Según la indicación del docente, una sola cuenta presenta el trabajo en Kaggle e incluye a los cuatro integrantes en la descripción del notebook. No es necesario incorporar las cuatro cuentas a un equipo de competición.
 

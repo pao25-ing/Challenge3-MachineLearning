@@ -1,0 +1,12 @@
+{
+  "experimento": "05_batchnorm",
+  "balanced_accuracy": 0.6899393619461225,
+  "accuracy": 0.690185546875,
+  "precision": 0.9107968811946611,
+  "recall": 0.4210397702975136,
+  "f1": 0.5758689839572193,
+  "roc_auc": 0.8633327810089131,
+  "epocas_ejecutadas": 7,
+  "mejor_epoca": 4,
+  "segundos": 1167.87
+}

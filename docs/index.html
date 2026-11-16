@@ -468,7 +468,7 @@ Estrategia en estudio: Carga diferida por batches para prevenir desbordamientos 
 <h2 class="font-headline-xl text-2xl sm:text-3xl font-bold text-primary mt-2">
               Modelos &amp; Metodología de Redes Neuronales Convolucionales
             </h2>
-<p class="font-body-lg text-base text-on-surface-variant mt-2 leading-relaxed">Técnicas en evaluación y alternativas de investigación propuestas para el abordaje del problema: backbones convolucionales candidatos, preprocesamiento y opciones de regularización planteadas para la experimentación.</p>
+<p class="font-body-lg text-base text-on-surface-variant mt-2 leading-relaxed">La ejecución publicada utiliza TensorFlow/Keras, píxeles divididos entre 255, entropía cruzada binaria, Adam y parada temprana con Balanced Accuracy. Las tarjetas siguientes describen alternativas propuestas; ResNet, EfficientNet, Focal Loss, AdamW y sus planificadores no forman parte de esta ejecución.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 <!-- Pillar 1 -->
@@ -635,15 +635,15 @@ Estrategia en estudio: Carga diferida por batches para prevenir desbordamientos 
               Resultados y Evidencias Disponibles
             </h2>
 <p class="font-body-lg text-base text-on-surface-variant mt-2 leading-relaxed">
-              Transparencia científica: se dispone de análisis exploratorio documentado; los entrenamientos y sus resultados deben incorporarse cuando estén verificados.
+              El análisis exploratorio y cinco configuraciones de CNN están ejecutados con datos oficiales. Los resultados de validación y las predicciones generadas están publicados en GitHub; todavía no hay puntuaciones de envíos a Kaggle.
             </p>
 </div>
 <!-- Scientific Transparency Banner -->
 <div class="mb-8 p-4 rounded-xl bg-surface-container-low border border-secondary-accent/40 flex items-start gap-3"><span class="material-symbols-outlined text-secondary-accent text-[24px] mt-0.5">info</span>
 <div>
-<h4 class="font-headline-sm text-sm font-bold text-primary">Fase Inicial y Estado de la Investigación (UPCH 2026-II)</h4>
+<h4 class="font-headline-sm text-sm font-bold text-primary">Estado de la ejecución (UPCH 2026-II)</h4>
 <p class="font-body-sm text-xs text-on-surface-variant mt-1 leading-relaxed">
-Siguiendo las directivas de integridad académica de la cátedra de Machine Learning, no se presentan métricas simuladas ni falsos puntajes definitivos de leaderboard. Las evidencias consolidadas corresponden rigurosamente al Análisis Exploratorio de Datos verificado en el repositorio.
+Las cifras publicadas corresponden al análisis exploratorio y a una ejecución real de las cinco CNN en Kaggle. La mejor Balanced Accuracy de validación fue 0,748689 con umbral 0,5. Las puntuaciones del leaderboard siguen pendientes; generar los CSV no equivale a realizar envíos válidos.
 </p>
 </div></div>
 <!-- Experiment Table / Cards -->
@@ -693,23 +693,23 @@ Estado: 165,536 matrices íntegras verificadas
 </div>
 <div class="bg-surface-container-lowest p-6 rounded-2xl border border-dashed border-secondary/40 shadow-sm flex flex-col justify-between"><div>
 <div class="flex items-center justify-between mb-3">
-<span class="font-code-sm text-[11px] px-2.5 py-0.5 rounded-full bg-surface-container text-secondary font-semibold">Pendiente de Registro</span>
+<span class="font-code-sm text-[11px] px-2.5 py-0.5 rounded-full bg-surface-container text-secondary font-semibold">Ejecución verificada</span>
 <span class="inline-flex items-center gap-1 font-code-sm text-[11px] text-secondary font-medium">
 <span class="w-2 h-2 rounded-full bg-secondary-accent animate-ping"></span>
-Fase de Modelado
+CNN evaluada
 </span>
 </div>
-<h3 class="font-headline-sm text-base font-bold text-primary">Espacio Reservado para Futuras Métricas de Entrenamiento</h3>
+<h3 class="font-headline-sm text-base font-bold text-primary">Resultados reales de entrenamiento</h3>
 <p class="font-body-sm text-xs text-on-surface-variant mt-2 leading-relaxed">
-Área reservada para incorporar las curvas de aprendizaje, matrices de confusión y puntuaciones de Balanced Accuracy conforme se desarrollen, ejecuten y documenten los entrenamientos de los modelos.
+Se compararon cinco configuraciones. La CNN con Dropout obtuvo la mayor Balanced Accuracy de validación: 0,748689. Se publican el notebook ejecutado, las curvas de aprendizaje, la matriz de confusión y los cinco candidatos CSV. La correspondencia de los ID todavía debe confirmarse.
 </p>
 <div class="mt-4 p-2.5 rounded-lg bg-surface-container-low text-xs font-code-sm text-secondary">
-Alternativas en evaluación: Custom CNN, ResNet, EfficientNet-B0
+Modelo seleccionado: 02_dropout · CNN 16/32 · Dropout 0,3 · mejor época 2
 </div>
 </div>
 <div class="mt-6 pt-3 border-t border-outline-variant/20 flex items-center justify-between text-xs font-code-sm text-outline">
 <span>Métrica Oficial: Balanced Accuracy</span>
-<span class="text-secondary font-semibold">[Por documentar]</span>
+<a class="text-secondary font-semibold" href="https://github.com/pao25-ing/Challenge3-MachineLearning/blob/main/results/cnn/README.md" target="_blank" rel="noopener noreferrer">[Ver resultados]</a>
 </div></div></div>
 </div>
 </section>

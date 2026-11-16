@@ -10,11 +10,17 @@ Kaggle ejecuta el archivo `.ipynb`; no se necesita subir el repositorio completo
 |---|---|
 | Descripción y referencias de la competición | Documentadas en el README |
 | Análisis exploratorio | Ejecutado, con salidas en notebook 01 y resultados en eda |
-| CNN | Código preparado en notebook 02; ejecución oficial pendiente |
-| Métricas y candidatos de entrega | Se generan al completar la ejecución; todavía no publicados |
+| CNN | Ejecutada en Kaggle con datos oficiales; ocho celdas con salidas guardadas |
+| Métricas y candidatos de entrega | Publicados en results/cnn: cinco configuraciones y cinco candidatos CSV |
 | Identificadores de prueba | Correspondencia pendiente de confirmar |
 | Participación grupal | Una cuenta entrega e incluye los cuatro autores, según indicación del docente |
 | Envíos y puntuaciones | No acreditados en este repositorio |
+
+## Ejecución completada
+
+El notebook se guardó y ejecutó en la cuenta **cesarapcho**, con los cuatro autores. La [versión 1 original](https://www.kaggle.com/code/cesarapcho/challenge-3-upch-grupo-1-cnn-pcam?scriptVersionId=370083154) terminó correctamente en **39 min 23 s**, utilizando CPU porque la GPU requiere verificación telefónica. El notebook de esa cuenta tiene visibilidad privada; la copia ejecutada y sus evidencias también se publican en GitHub.
+
+La configuración seleccionada fue **02_dropout**, con Balanced Accuracy de validación **0,748689** y umbral **0,5**. Esto no es una puntuación del leaderboard. Los [resultados](../results/cnn/README.md) explican el método, las métricas y sus límites.
 
 ## Autores que deben figurar en Kaggle
 

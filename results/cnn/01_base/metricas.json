@@ -1,0 +1,12 @@
+{
+  "experimento": "01_base",
+  "balanced_accuracy": 0.7484653048392147,
+  "accuracy": 0.74847412109375,
+  "precision": 0.753004171595791,
+  "recall": 0.7388356038853932,
+  "f1": 0.7458526056120875,
+  "roc_auc": 0.8288122191382546,
+  "epocas_ejecutadas": 5,
+  "mejor_epoca": 2,
+  "segundos": 198.44
+}

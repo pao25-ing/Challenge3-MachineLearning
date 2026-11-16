@@ -34,7 +34,7 @@ En Jupyter se abre `notebooks/01_analisis_dataset.ipynb` y se ejecutan las celda
 
 El cuaderno es independiente: carga los tres HDF5 oficiales, compara cinco configuraciones de CNN, calcula Balanced Accuracy y otras métricas, guarda curvas y matriz de confusión, y genera candidatos CSV. Contiene los cuatro autores del grupo. No realiza envíos automáticos a la competición.
 
-**Estado:** preparado, pendiente de ejecución con los datos oficiales. Las celdas sin salidas no representan resultados obtenidos.
+**Estado:** ejecutado completamente en Kaggle con los HDF5 oficiales. Las ocho celdas conservan sus salidas reales. La ejecución en CPU duró 39 min 23 s. [Ver ejecución original](https://www.kaggle.com/code/cesarapcho/challenge-3-upch-grupo-1-cnn-pcam?scriptVersionId=370083154) y [resultados publicados](../results/cnn/README.md). El cuaderno es compatible con Colab; las salidas guardadas proceden de Kaggle.
 
 ### En Colab
 

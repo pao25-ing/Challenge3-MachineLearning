@@ -1,23 +1,11 @@
 # Resultados del proyecto
 
-## Resultados disponibles
+El [análisis exploratorio](eda/README.md) y el [entrenamiento de la CNN](cnn/README.md) están ejecutados con los archivos oficiales de la competición.
 
-En [eda/](eda/README.md) se publican las tablas y figuras del análisis exploratorio ejecutado con los datos de la competición. El notebook 01 contiene las salidas guardadas.
+En `cnn/` se publican las métricas de cinco configuraciones, historiales, figuras, cinco candidatos CSV. El [notebook 02](../notebooks/02_entrenamiento_cnn.ipynb) conserva las ocho celdas ejecutadas y sus salidas reales.
 
-## Resultados de entrenamiento
+**Mejor configuración con umbral 0,5:** `02_dropout`, con Balanced Accuracy de validación **0,748689**. La diferencia frente a la base es pequeña y procede de una sola ejecución por configuración.
 
-El [notebook 02](../notebooks/02_entrenamiento_cnn.ipynb) está preparado, pendiente de ejecución con los HDF5 oficiales. No hay métricas de CNN ni predicciones reales publicadas en esta versión del repositorio.
+Los CSV tienen 32 768 filas y columnas `ID,Class`. Sus ID consecutivos desde 1 son provisionales: la correspondencia completa con la competición todavía debe confirmarse. No se han realizado envíos ni obtenido puntuaciones de Kaggle.
 
-Al terminar, el notebook guarda en `results/cnn`:
-
-- `metricas_validacion.csv`: comparación de las cinco configuraciones.
-- `curvas_aprendizaje.png` y `matriz_confusion.png`.
-- Un modelo `mejor_modelo.keras`, historial y predicciones de validación por experimento.
-- Cinco candidatos CSV con columnas `ID,Class`.
-- `configuracion.json`, firmas SHA-256 y `estado_ejecucion.json` para documentar la ejecución.
-- `RESUMEN_RESULTADOS.md` con los valores calculados durante la ejecución.
-
-Los candidatos usan provisionalmente ID consecutivos desde 1. Solo se genera `submission.csv` cuando se confirma la correspondencia de los ID en la configuración del notebook.
-
-Los modelos se conservan en los outputs de Kaggle o en Google Drive por su tamaño. Al publicar los resultados en GitHub se incluyen las métricas, figuras, resumen y notebook ejecutado. Las puntuaciones de Kaggle y las evidencias de los envíos se registran por separado, siguiendo la [guía](../docs/ENTREGA_KAGGLE.md).
-
+La [guía de entrega](../docs/ENTREGA_KAGGLE.md) explica los pasos pendientes. Los archivos completos de los cinco modelos y las predicciones detalladas se conservan en los [outputs de la ejecución original](https://www.kaggle.com/code/cesarapcho/challenge-3-upch-grupo-1-cnn-pcam/output?scriptVersionId=370083154).

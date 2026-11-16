@@ -1,0 +1,26 @@
+{
+  "estado": "entrenamiento_y_predicciones_completados",
+  "finalizacion_utc": "2026-11-16T02:01:59.151522+00:00",
+  "autores": [
+    "César Alejandro Aarón Apcho Meneses",
+    "Paola Andrea Centeno Bazán",
+    "Anderson Josué Delerna Infantes",
+    "Jimena Natalia Vega Sánchez"
+  ],
+  "mejor_experimento": "02_dropout",
+  "metricas_mejor": {
+    "experimento": "02_dropout",
+    "balanced_accuracy": 0.7486889938079699,
+    "accuracy": 0.74871826171875,
+    "precision": 0.76534672842325,
+    "recall": 0.7167206304600159,
+    "f1": 0.7402359770332513,
+    "roc_auc": 0.8315960303288208,
+    "epocas_ejecutadas": 5,
+    "mejor_epoca": 2,
+    "segundos": 191.38
+  },
+  "ids_confirmados": false,
+  "envios_a_kaggle_realizados_por_este_cuaderno": 0,
+  "nota": "La validez y puntuación de los envíos se comprueban por separado en Kaggle."
+}

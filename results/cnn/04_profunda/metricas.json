@@ -1,0 +1,12 @@
+{
+  "experimento": "04_profunda",
+  "balanced_accuracy": 0.6987276755784713,
+  "accuracy": 0.6988525390625,
+  "precision": 0.7729448316399362,
+  "recall": 0.5623434540900483,
+  "f1": 0.651036141169814,
+  "roc_auc": 0.7856302159532852,
+  "epocas_ejecutadas": 4,
+  "mejor_epoca": 1,
+  "segundos": 454.23
+}
