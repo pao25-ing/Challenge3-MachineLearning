@@ -46,9 +46,21 @@ Cada candidato contiene **32 768 filas**, columnas **ID,Class** y etiquetas 0/1.
 - [Candidato del mejor modelo](candidato_mejor_modelo.csv).
 - [Base](candidato_01_base.csv), [Dropout](candidato_02_dropout.csv), [aumento de datos](candidato_03_aumento.csv), [CNN profunda](candidato_04_profunda.csv) y [Batch Normalization](candidato_05_batchnorm.csv).
 
-**Pendiente:** confirmar la correspondencia de los ID. Se utilizaron provisionalmente valores de 1 a 32768 porque el ejemplo oficial comienza en 1, pero el HDF5 no contiene identificadores. Por eso los archivos están marcados como candidatos y `ids_confirmados` figura como `false` en el registro. No se han enviado a la competición ni se han obtenido puntuaciones públicas.
+## Entrega confirmada en Kaggle
 
-Cinco candidatos generados no equivalen a los cinco envíos válidos exigidos por la competición. La aceptación y puntuación de cada envío se documentan por separado.
+| Experimento | BA pública | Estado | Seleccionado final |
+|---|---:|---|---|
+| 01_base | 0.73509 | Complete | Sí |
+| 02_dropout | 0.73680 | Complete | Sí |
+| 03_aumento | 0.67441 | Complete |  |
+| 04_profunda | 0.67547 | Complete |  |
+| 05_batchnorm | 0.65238 | Complete |  |
+
+El evaluador aceptó **id,Class**, con ID de **0 a 32767** en el orden original de `test_x.h5`. Los archivos `candidato_*` conservan el formato inicial. Para entregar usar [submission.csv](submission.csv) o las versiones `submission_*.csv`.
+
+El [notebook 03](../../notebooks/03_preparacion_envios.ipynb) reproduce la corrección de encabezado e índice sin cambiar clases. Las firmas coinciden con las registradas antes de enviar los archivos. [Puntuaciones y SHA-256](envios_kaggle.csv).
+
+Dropout y la base quedaron seleccionados para la evaluación final. La puntuación privada depende de la publicación del organizador. [Registro y guía](../../docs/ENTREGA_KAGGLE.md).
 
 ## Comprobaciones realizadas
 
@@ -59,7 +71,7 @@ Cinco candidatos generados no equivalen a los cinco envíos válidos exigidos po
 - Se comprobaron sus firmas SHA-256 contra [archivos_generados.csv](archivos_generados.csv).
 - El candidato seleccionado coincide con el de `02_dropout`.
 
-Estas comprobaciones verifican los archivos producidos; no sustituyen la confirmación de ID ni la evaluación de Kaggle.
+Estas comprobaciones verifican los archivos producidos; se complementan con la aceptación y puntuación real de los cinco envíos.
 
 ## Cómo reproducirlo
 

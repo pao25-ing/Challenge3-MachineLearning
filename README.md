@@ -13,7 +13,7 @@ Proyecto académico · Universidad Peruana Cayetano Heredia · 2026-II
 
 ### 🌐 Plataforma web · PCam Vision
 
-Explora el proyecto del **Grupo 1** en nuestra landing page: conoce la competición, el dataset, el análisis exploratorio, los modelos propuestos y los recursos del repositorio.
+Explora el proyecto del **Grupo 1** en nuestra landing page: conoce la competición, el dataset, el análisis exploratorio, las CNN evaluadas y sus resultados.
 
 <a href="https://pao25-ing.github.io/Challenge3-MachineLearning/">
   <img
@@ -39,7 +39,14 @@ Explora el proyecto del **Grupo 1** en nuestra landing page: conoce la competici
 - [Notebook de entrenamiento y evaluación](notebooks/02_entrenamiento_cnn.ipynb).
 - [Guía para importar el notebook en Kaggle y realizar la entrega](docs/ENTREGA_KAGGLE.md).
 
-**Estado actual:** el análisis exploratorio y el notebook de CNN están ejecutados con los datos oficiales y conservan sus salidas. Se compararon cinco configuraciones; la mejor Balanced Accuracy de validación fue **0,748689** con `02_dropout`. Los [resultados](results/cnn/README.md), las figuras y cinco candidatos CSV están publicados. [Ejecución original en Kaggle](https://www.kaggle.com/code/cesarapcho/challenge-3-upch-grupo-1-cnn-pcam?scriptVersionId=370083154). Todavía no se han realizado envíos a la competición y la correspondencia de los ID permanece pendiente de confirmación.
+**Estado actual:** los cinco envíos de Kaggle están **completos y por encima de 0,5**. El mejor modelo por validación fue **02_dropout**, con BA **0,748689**. Su puntuación pública es **0,73680**. Dropout y la base quedaron seleccionados para la evaluación final.
+
+- [Entrega final, puntajes y archivos](docs/ENTREGA_KAGGLE.md).
+- [Informe final con resultados](Documentación/INFORME_FINAL.md).
+- [Presentación final imprimible](docs/presentacion-final.html).
+- [CSV definitivo](results/cnn/submission.csv) y [notebook de exportación](notebooks/03_preparacion_envios.ipynb).
+
+El formato aceptado por Kaggle es **id,Class**, con ID **0 a 32767**. Los archivos `candidato_*` y los PDF iniciales conservan la propuesta anterior; para entregar usar los materiales finales enlazados arriba. El enlace nativo de Canva sigue pendiente de autorización para importar la copia corregida.
 
 Según la indicación del docente, una sola cuenta presenta el trabajo en Kaggle e incluye a los cuatro integrantes en la descripción del notebook. No es necesario incorporar las cuatro cuentas a un equipo de competición.
 
@@ -137,7 +144,7 @@ La participación permite aplicar conceptos de Machine Learning a un problema de
 | **Dataset** | PatchCamelyon (PCam) |
 | **Modelo solicitado** | Red neuronal convolucional (CNN) |
 | **Métrica de evaluación** | Balanced Accuracy |
-| **Formato de entrega** | Archivo CSV con columnas `ID` y `Class` |
+| **Formato de entrega** | Archivo CSV aceptado con columnas `id` y `Class` (ID desde 0) |
 | **Competición** | [TNM112-Lab2 (2026)](https://www.kaggle.com/competitions/tnm-112-lab-2-2026) |
 
 La información sobre las reglas, los envíos y la evaluación se obtuvo de la descripción de la competición publicada por su organizador [1].
@@ -145,8 +152,8 @@ La información sobre las reglas, los envíos y la evaluación se obtuvo de la d
 ### 2.2. Problemática
 
 <div align="center">
-  <img src="images/pcam_ejemplo.jpg" alt="Ejemplo de imagen histopatológica del dataset PCam" width="550">
-  <p><em>Figura 1. Imagen ilustrativa de los fragmentos histopatológicos utilizados en el reto PCam. Fuente: recurso incluido en el repositorio; verificar y consignar la fuente original de la imagen.</em></p>
+  <img src="results/eda/ejemplos_imagenes.png" alt="Ejemplo de imagen histopatológica del dataset PCam" width="550">
+  <p><em>Figura 1. Imagen ilustrativa de los fragmentos histopatológicos utilizados en el reto PCam. Ejemplos generados por el notebook de análisis. Fuente de los datos: archivos oficiales de TNM112-Lab2 (2026).</em></p>
 </div>
 
 El cáncer de mama puede propagarse hacia los ganglios linfáticos. La presencia de células tumorales en estos tejidos es relevante para evaluar la extensión de la enfermedad y orientar decisiones médicas.
@@ -197,13 +204,13 @@ El flujo general de resolución comprende:
 4. **Predicción:** aplicar la CNN a las imágenes del conjunto de prueba.
 5. **Envío y evaluación:** crear un archivo CSV con las predicciones y enviarlo a Kaggle para obtener la puntuación.
 
-El archivo de entrega, denominado habitualmente `submission.csv`, debe incluir las columnas **`ID`** y **`Class`**. Este es un **ejemplo de formato**, no de predicciones reales del equipo:
+El archivo aceptado por el evaluador utiliza **`id`** y **`Class`**, con ID desde **0**. La página Evaluation mostraba otro encabezado y un ejemplo desde 1, que Kaggle rechazó. Este es un ejemplo ilustrativo del formato aceptado:
 
 ```csv
-ID,Class
-1,0
-2,1
-3,0
+id,Class
+0,0
+1,1
+2,0
 ```
 
 ### 2.5. Evaluación de los resultados

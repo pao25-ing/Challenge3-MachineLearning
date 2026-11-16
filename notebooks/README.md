@@ -54,5 +54,10 @@ El cuaderno es independiente: carga los tres HDF5 oficiales, compara cinco confi
 
 Instalar `python -m pip install -r requirements-cnn.txt`, abrir el notebook en Jupyter y ejecutar en orden. Puede definirse `CHALLENGE3_DATOS` si los HDF5 se encuentran en otra carpeta. El entrenamiento en CPU puede tardar considerablemente más.
 
-Antes de convertir los candidatos en `submission.csv`, se debe confirmar la correspondencia de los ID. La [guía de entrega](../docs/ENTREGA_KAGGLE.md) explica este pendiente y cómo registrar los envíos.
+La exportación inicial del notebook 02 se conserva como evidencia. La entrega final usa **id,Class** con ID **0 a 32767**, formato confirmado por la aceptación de los cinco archivos.
 
+## 03_preparacion_envios.ipynb
+
+Convierte los candidatos sin cambiar sus clases y genera los cinco `submission_*.csv` y `submission.csv` de Dropout. Las salidas restauradas corresponden a la ejecución local verificada durante esta conversación. Sus cinco firmas SHA-256 se cotejaron de nuevo al recuperar los archivos.
+
+Para reproducir, descargar el repositorio completo y abrir este cuaderno desde `notebooks/`, o ejecutar `python scripts/preparar_envios.py` desde su raíz. Solo requiere Python estándar. No vuelve a entrenar ni realiza envíos automáticos. [Consultar guía final](../docs/ENTREGA_KAGGLE.md).

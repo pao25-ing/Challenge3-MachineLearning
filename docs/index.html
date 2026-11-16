@@ -614,11 +614,11 @@ Estrategia en estudio: Carga diferida por batches para prevenir desbordamientos 
 <ul class="space-y-2 font-body-sm text-xs text-on-surface-variant leading-relaxed">
 <li class="flex items-start gap-2">
 <span class="material-symbols-outlined text-tertiary-container text-[16px] mt-0.5">done_all</span>
-<span><strong>Mínimo de 5 submissions válidas en Kaggle:</strong> Requisito oficial de la competición. No hay evidencia de envíos completados en el repositorio revisado.</span>
+<span><strong>Mínimo de 5 submissions válidas en Kaggle:</strong> Requisito cumplido: cinco envíos con estado Complete y puntuación pública superior a 0,5.</span>
 </li>
 <li class="flex items-start gap-2">
 <span class="material-symbols-outlined text-tertiary-container text-[16px] mt-0.5">done_all</span>
-<span><strong>Formato requerido ID,Class:</strong> Las predicciones deben enviarse en un archivo CSV con las columnas ID y Class; su generación todavía debe documentarse.</span>
+<span><strong>Formato aceptado id,Class:</strong> ID de 0 a 32767. El notebook 03 genera los cinco CSV finales sin cambiar las clases.</span>
 </li>
 </ul>
 </div>
@@ -635,7 +635,7 @@ Estrategia en estudio: Carga diferida por batches para prevenir desbordamientos 
               Resultados y Evidencias Disponibles
             </h2>
 <p class="font-body-lg text-base text-on-surface-variant mt-2 leading-relaxed">
-              El análisis exploratorio y cinco configuraciones de CNN están ejecutados con datos oficiales. Los resultados de validación y las predicciones generadas están publicados en GitHub; todavía no hay puntuaciones de envíos a Kaggle.
+              El análisis exploratorio y cinco configuraciones de CNN están ejecutados con datos oficiales. Los resultados de validación y las predicciones generadas están publicados en GitHub; los cinco envíos a Kaggle están completos; el mejor puntaje público es 0,73680.
             </p>
 </div>
 <!-- Scientific Transparency Banner -->
@@ -643,7 +643,7 @@ Estrategia en estudio: Carga diferida por batches para prevenir desbordamientos 
 <div>
 <h4 class="font-headline-sm text-sm font-bold text-primary">Estado de la ejecución (UPCH 2026-II)</h4>
 <p class="font-body-sm text-xs text-on-surface-variant mt-1 leading-relaxed">
-Las cifras publicadas corresponden al análisis exploratorio y a una ejecución real de las cinco CNN en Kaggle. La mejor Balanced Accuracy de validación fue 0,748689 con umbral 0,5. Las puntuaciones del leaderboard siguen pendientes; generar los CSV no equivale a realizar envíos válidos.
+Las cifras publicadas corresponden al análisis exploratorio y a una ejecución real de las cinco CNN en Kaggle. La mejor Balanced Accuracy de validación fue 0,748689 con umbral 0,5. Los cinco envíos terminaron con estado Complete y puntuaciones superiores a 0,5. La mayor puntuación pública es 0,73680.
 </p>
 </div></div>
 <!-- Experiment Table / Cards -->
@@ -701,7 +701,7 @@ CNN evaluada
 </div>
 <h3 class="font-headline-sm text-base font-bold text-primary">Resultados reales de entrenamiento</h3>
 <p class="font-body-sm text-xs text-on-surface-variant mt-2 leading-relaxed">
-Se compararon cinco configuraciones. La CNN con Dropout obtuvo la mayor Balanced Accuracy de validación: 0,748689. Se publican el notebook ejecutado, las curvas de aprendizaje, la matriz de confusión y los cinco candidatos CSV. La correspondencia de los ID todavía debe confirmarse.
+Se compararon cinco configuraciones. La CNN con Dropout obtuvo la mayor Balanced Accuracy de validación: 0,748689. Se publican el notebook ejecutado, las curvas de aprendizaje, la matriz de confusión y los cinco candidatos CSV. El formato aceptado se confirmó: id,Class con ID de 0 a 32767. El notebook 03 reproduce los CSV finales.
 </p>
 <div class="mt-4 p-2.5 rounded-lg bg-surface-container-low text-xs font-code-sm text-secondary">
 Modelo seleccionado: 02_dropout · CNN 16/32 · Dropout 0,3 · mejor época 2
@@ -768,7 +768,7 @@ Script automatizado en Python para lectura directa con h5py, cálculo de frecuen
 <span class="material-symbols-outlined text-[18px]">image</span>
 <span>Ver Evidencias y Gráficos del EDA</span>
 </a>
-<a class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-surface-container-lowest border border-outline-variant/40 hover:border-primary text-on-surface font-body-md text-sm font-semibold transition-all" href="https://github.com/pao25-ing/Challenge3-MachineLearning/tree/main/Actividad%202" rel="noopener noreferrer" target="_blank">
+<a class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-surface-container-lowest border border-outline-variant/40 hover:border-primary text-on-surface font-body-md text-sm font-semibold transition-all" href="https://github.com/pao25-ing/Challenge3-MachineLearning/tree/main/Documentaci%C3%B3n" rel="noopener noreferrer" target="_blank">
 <span class="material-symbols-outlined text-[18px] text-secondary">description</span>
 <span>Documentación de Modelos</span>
 </a>
@@ -799,7 +799,7 @@ Directorio con gráficos generados: <code class="text-primary font-semibold">dis
 <span class="material-symbols-outlined text-[18px]">image</span>
 <span>Ver Evidencias y Gráficos del EDA</span>
 </a>
-<a class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-surface-container-lowest border border-outline-variant/40 hover:border-primary text-on-surface font-body-md text-sm font-semibold transition-all" href="https://github.com/pao25-ing/Challenge3-MachineLearning/tree/main/Actividad%202" rel="noopener noreferrer" target="_blank">
+<a class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-surface-container-lowest border border-outline-variant/40 hover:border-primary text-on-surface font-body-md text-sm font-semibold transition-all" href="https://github.com/pao25-ing/Challenge3-MachineLearning/tree/main/Documentaci%C3%B3n" rel="noopener noreferrer" target="_blank">
 <span class="material-symbols-outlined text-[18px] text-secondary">description</span>
 <span>Documentación de Modelos</span>
 </a>
@@ -809,9 +809,11 @@ Directorio con gráficos generados: <code class="text-primary font-semibold">dis
 <span class="font-code-sm text-xs text-outline">Branch: main</span>
 </div>
 <pre class="font-code-sm text-xs text-primary bg-surface-container-low p-4 rounded-xl overflow-x-auto leading-relaxed">Challenge3-MachineLearning/
-├── Documentación/                # Documentación y lineamientos de modelos propuestos
+├── Documentación/                # Informe final y documentos del proyecto
 ├── notebooks/
-│   └── 01_analisis_dataset.ipynb  # Notebook oficial: carga HDF5 y análisis exploratorio
+│   ├── 01_analisis_dataset.ipynb  # Análisis ejecutado
+│   ├── 02_entrenamiento_cnn.ipynb # Cinco CNN ejecutadas
+│   └── 03_preparacion_envios.ipynb # CSV finales verificados
 ├── scripts/
 │   └── analisis_dataset.py        # Script Python para lectura y verificación de tensores
 ├── results/
@@ -1047,6 +1049,7 @@ YC
 </section>
 </div>
 </main>
+<section class="max-w-5xl mx-auto px-6 py-10" id="entrega-final"><h2 class="text-2xl font-bold">Entrega final: cinco envíos válidos</h2><p>Los cinco archivos terminaron con estado Complete. Mejor puntuación pública: <strong>0,73680</strong> con Dropout. El modelo se seleccionó con validación antes de consultar el leaderboard.</p><p><a href="presentacion-final.html">Abrir presentación final imprimible</a> · <a href="https://github.com/pao25-ing/Challenge3-MachineLearning/blob/main/Documentaci%C3%B3n/INFORME_FINAL.md">Informe final</a> · <a href="https://github.com/pao25-ing/Challenge3-MachineLearning/blob/main/docs/ENTREGA_KAGGLE.md">Guía y puntuaciones</a></p></section>
 <!-- FOOTER -->
 <footer class="w-full bg-surface-container-low border-t border-outline-variant/30">
 <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -1091,8 +1094,8 @@ YC
           </p>
 <div class="flex flex-wrap gap-1.5 pt-1">
 <span class="font-code-sm text-[10px] px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-medium">HDF5</span>
-<span class="font-code-sm text-[10px] px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-medium">PyTorch</span>
-<span class="font-code-sm text-[10px] px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-medium">ResNet-18</span>
+<span class="font-code-sm text-[10px] px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-medium">TensorFlow/Keras</span>
+<span class="font-code-sm text-[10px] px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-medium">CNN con Dropout</span>
 <span class="font-code-sm text-[10px] px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-medium">Balanced Acc</span>
 </div>
 </div>

@@ -1,0 +1,57 @@
+[
+  {
+    "fecha_lima": "2026-11-15",
+    "cuenta": "cesarapcho",
+    "experimento": "01_base",
+    "archivo": "submission_01_base.csv",
+    "sha256": "d6d2301d3ecc5fd7fb6353df79585af62cbabf464ab87db3659064670dc6dbb7",
+    "estado": "Complete",
+    "balanced_accuracy_publica": 0.73509,
+    "seleccionado_final": true,
+    "fuente": "Página Submissions observada en la sesión del 15 de noviembre de 2026"
+  },
+  {
+    "fecha_lima": "2026-11-15",
+    "cuenta": "cesarapcho",
+    "experimento": "02_dropout",
+    "archivo": "submission_02_dropout.csv",
+    "sha256": "09d21c7ca0abd86b25bb121966dd6a55f8fb3ebb51be875d5fa511dbd4543af0",
+    "estado": "Complete",
+    "balanced_accuracy_publica": 0.7368,
+    "seleccionado_final": true,
+    "fuente": "Página Submissions observada en la sesión del 15 de noviembre de 2026"
+  },
+  {
+    "fecha_lima": "2026-11-15",
+    "cuenta": "cesarapcho",
+    "experimento": "03_aumento",
+    "archivo": "submission_03_aumento.csv",
+    "sha256": "8cdf60923ecee7e2a55a14e49c252c7f7c76aa2b798e458783d06e040caf5899",
+    "estado": "Complete",
+    "balanced_accuracy_publica": 0.67441,
+    "seleccionado_final": false,
+    "fuente": "Página Submissions observada en la sesión del 15 de noviembre de 2026"
+  },
+  {
+    "fecha_lima": "2026-11-15",
+    "cuenta": "cesarapcho",
+    "experimento": "04_profunda",
+    "archivo": "submission_04_profunda.csv",
+    "sha256": "22c08914bf40f55e7f463ccb7b52f7556dade97146cb1d01719748a30662a9fe",
+    "estado": "Complete",
+    "balanced_accuracy_publica": 0.67547,
+    "seleccionado_final": false,
+    "fuente": "Página Submissions observada en la sesión del 15 de noviembre de 2026"
+  },
+  {
+    "fecha_lima": "2026-11-15",
+    "cuenta": "cesarapcho",
+    "experimento": "05_batchnorm",
+    "archivo": "submission_05_batchnorm.csv",
+    "sha256": "bebf2a2fb8b98f54f444774ed84612e17b040fca9bc2a93d6610c95f4c47ac2f",
+    "estado": "Complete",
+    "balanced_accuracy_publica": 0.65238,
+    "seleccionado_final": false,
+    "fuente": "Página Submissions observada en la sesión del 15 de noviembre de 2026"
+  }
+]

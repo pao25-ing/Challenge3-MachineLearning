@@ -1,95 +1,77 @@
-# Entrega del Challenge 3 en Kaggle
+# Entrega final del Challenge 3
 
-## Qué se traslada desde GitHub
+## Resultado comprobado
+El 15 de noviembre de 2026 (hora de Lima), la cuenta **cesarapcho** completó los cinco envíos. Todos terminaron con estado **Complete** y una Balanced Accuracy pública superior a 0,5.
 
-Kaggle ejecuta el archivo `.ipynb`; no se necesita subir el repositorio completo. Para entrenar se utiliza [02_entrenamiento_cnn.ipynb](../notebooks/02_entrenamiento_cnn.ipynb). Los HDF5 se añaden desde la competición o se colocan en Drive si se trabaja en Colab. Para obtener una puntuación en la competición se envía después un CSV de predicciones.
+| Experimento | BA pública | Estado | Seleccionado final |
+|---|---:|---|---|
+| 01_base | 0.73509 | Complete | Sí |
+| 02_dropout | 0.73680 | Complete | Sí |
+| 03_aumento | 0.67441 | Complete |  |
+| 04_profunda | 0.67547 | Complete |  |
+| 05_batchnorm | 0.65238 | Complete |  |
 
-## Estado verificado
+Elegimos **02_dropout** con validación antes de consultar el leaderboard. Obtuvo **0,748689** en validación y **0,73680** de puntuación pública. Dropout y la base quedaron seleccionados para la evaluación final. El resultado privado depende de la publicación del organizador.
 
-| Parte | Estado |
-|---|---|
-| Descripción y referencias de la competición | Documentadas en el README |
-| Análisis exploratorio | Ejecutado, con salidas en notebook 01 y resultados en eda |
-| CNN | Ejecutada en Kaggle con datos oficiales; ocho celdas con salidas guardadas |
-| Métricas y candidatos de entrega | Publicados en results/cnn: cinco configuraciones y cinco candidatos CSV |
-| Identificadores de prueba | Correspondencia pendiente de confirmar |
-| Participación grupal | Una cuenta entrega e incluye los cuatro autores, según indicación del docente |
-| Envíos y puntuaciones | No acreditados en este repositorio |
+Las puntuaciones se registraron al observar la página Submissions durante esta conversación. La [página de envíos](https://www.kaggle.com/competitions/tnm-112-lab-2-2026/submissions) permite consultar el historial al iniciar sesión en la cuenta delegada. No se ha repetido el entrenamiento ni se han realizado nuevos envíos al restaurar estos archivos.
 
-## Ejecución completada
+## Material final
+- [Informe final con método y resultados](../Documentación/INFORME_FINAL.md).
+- [Presentación final para lectura e impresión](presentacion-final.html).
+- [Notebook 01: análisis ejecutado](../notebooks/01_analisis_dataset.ipynb).
+- [Notebook 02: entrenamiento ejecutado](../notebooks/02_entrenamiento_cnn.ipynb).
+- [Notebook 03: exportación final y verificación de los CSV](../notebooks/03_preparacion_envios.ipynb).
+- [submission.csv del modelo seleccionado](../results/cnn/submission.csv).
+- [Puntuaciones y SHA-256 de los cinco archivos](../results/cnn/envios_kaggle.csv).
+- [Estado final de entrega](../results/cnn/estado_entrega.json).
 
-El notebook se guardó y ejecutó en la cuenta **cesarapcho**, con los cuatro autores. La [versión 1 original](https://www.kaggle.com/code/cesarapcho/challenge-3-upch-grupo-1-cnn-pcam?scriptVersionId=370083154) terminó correctamente en **39 min 23 s**, utilizando CPU porque la GPU requiere verificación telefónica. El notebook de esa cuenta tiene visibilidad privada; la copia ejecutada y sus evidencias también se publican en GitHub.
+## Integrantes y cuenta delegada
+**Grupo 1, Machine Learning, UPCH, 2026-II**
 
-La configuración seleccionada fue **02_dropout**, con Balanced Accuracy de validación **0,748689** y umbral **0,5**. Esto no es una puntuación del leaderboard. Los [resultados](../results/cnn/README.md) explican el método, las métricas y sus límites.
-
-## Autores que deben figurar en Kaggle
-
-**Grupo 1 — Machine Learning, UPCH, 2026-II**
-
-- César Alejandro Aarón Apcho Meneses
-- Paola Andrea Centeno Bazán
-- Anderson Josué Delerna Infantes
-- Jimena Natalia Vega Sánchez
+- César Alejandro Aarón Apcho Meneses.
+- Paola Andrea Centeno Bazán.
+- Anderson Josué Delerna Infantes.
+- Jimena Natalia Vega Sánchez.
 
 Docente: Yannick Patrick Carrasco Merma.
 
-La competición limita el tamaño de equipo a una persona. Según la indicación recibida del docente, una sola cuenta presenta el trabajo e incluye los cuatro nombres en el notebook. Este reconocimiento académico no cambia la composición técnica del equipo en Kaggle. La cuenta que realice la entrega debe identificarse en la presentación final.
+Según la indicación recibida del docente, una sola cuenta presenta el trabajo en Kaggle e incluye a los cuatro autores académicos. Los cuatro nombres figuran en el notebook de Kaggle y en las descripciones de los envíos. No se exige reunir las cuatro cuentas en un equipo de la competición.
 
-## Ejecutar desde Google Colab
+## Formato aceptado por el evaluador
+La página Evaluation mostraba `ID,Class` y un ejemplo desde 1. Hubo dos intentos rechazados de Dropout:
+1. `ID column id not found in submission`.
+2. `Solution and submission values for id do not match`.
 
-1. Abrir el [notebook 02 en Colab](https://colab.research.google.com/github/pao25-ing/Challenge3-MachineLearning/blob/main/notebooks/02_entrenamiento_cnn.ipynb).
-2. Activar una GPU desde **Entorno de ejecución → Cambiar tipo de entorno de ejecución**.
-3. Colocar `train.h5`, `valid.h5` y `test_x.h5` descomprimidos en `Mi unidad/Challenge3/data`.
-4. Seleccionar **Ejecutar todas** y autorizar Drive.
-5. Esperar la finalización de las cinco configuraciones. Revisar la tabla de validación, las curvas y la matriz de confusión.
-6. Conservar la carpeta `Mi unidad/Challenge3/results/cnn` y guardar el notebook ejecutado en GitHub. Los contadores y salidas deben corresponder a esa ejecución real.
+El formato que Kaggle aceptó fue **`id,Class`**, con identificadores **0 a 32767** en el orden original de `test_x.h5`. Solo se corrigieron el encabezado y la base del índice; las clases predichas permanecieron iguales.
 
-## Importar y ejecutar en Kaggle
+Los archivos `candidato_*`, `criterio_ids.json` y las salidas de la celda de exportación del notebook 02 conservan la ejecución inicial. **Para entregar se utilizan `submission.csv` y `submission_*.csv`.** Las cinco firmas de los archivos restaurados coinciden exactamente con las registradas antes de enviarlos.
 
-1. Iniciar sesión con la cuenta que hará la entrega y comprobar que puede acceder a los datos de [TNM112-Lab2 (2026)](https://www.kaggle.com/competitions/tnm-112-lab-2-2026).
-2. Descargar el archivo [02_entrenamiento_cnn.ipynb](../notebooks/02_entrenamiento_cnn.ipynb) desde GitHub.
-3. Crear un notebook en Kaggle e importar ese archivo mediante la opción **Import Notebook** del editor.
-4. Añadir los archivos de la competición desde **Add Input** y seleccionar una GPU.
-5. Comprobar que la descripción conserva los cuatro nombres, ejecutar y guardar una versión completa.
-6. Descargar el notebook terminado y las métricas para actualizar las evidencias del repositorio.
+## Reproducir la exportación sin entrenar
+1. Descargar o clonar el repositorio completo.
+2. Abrir una terminal dentro de la carpeta del repositorio.
+3. Ejecutar `python scripts/preparar_envios.py`, o abrir el notebook 03 desde `notebooks/` y ejecutar su celda.
+4. Comprobar las cinco firmas SHA-256 y `results/cnn/submission.csv`.
 
-Si la cuenta todavía necesita aceptar las condiciones de la competición o verificar su identidad, ese paso lo completa el titular de la cuenta.
+Solo se requiere Python estándar. Se validan encabezados, cantidad de filas, ID, clases y conservación del orden. El script no realiza envíos a Kaggle.
 
-## Confirmar los ID antes de enviar
+## Reproducir el entrenamiento
+El notebook 02 carga los tres HDF5 oficiales, entrena cinco configuraciones y guarda métricas, modelos, curvas y predicciones.
 
-La página oficial de evaluación pide columnas `ID` y `Class`, y muestra un ejemplo que comienza en 1. El archivo `test_x.h5` no contiene identificadores y el análisis disponible no acredita la correspondencia completa.
+En [Colab](https://colab.research.google.com/github/pao25-ing/Challenge3-MachineLearning/blob/main/notebooks/02_entrenamiento_cnn.ipynb), colocar `train.h5`, `valid.h5` y `test_x.h5` en `Mi unidad/Challenge3/data`, activar GPU si está disponible y ejecutar todas las celdas. En Kaggle se importan los datos oficiales mediante Add Input y se usa Save & Run All.
 
-El notebook conserva el orden de las imágenes y construye candidatos con ID de 1 a 32768. Por defecto utiliza `IDS_CONFIRMADOS = False`, por lo que esos archivos quedan marcados como candidatos. Antes de enviarlos, comprobar el orden y el rango con el notebook de referencia del organizador o una aclaración oficial. Registrar esa fuente en `FUENTE_IDS` y cambiar `IDS_CONFIRMADOS = True` solo cuando se haya confirmado.
+La [ejecución original](https://www.kaggle.com/code/cesarapcho/challenge-3-upch-grupo-1-cnn-pcam?scriptVersionId=370083154) duró 39 min 23 s en CPU con TensorFlow 2.21.0. Es privada en Kaggle; la copia ejecutada se revisa en GitHub. Para repetir desde cero, establecer `REUTILIZAR_COMPLETADOS = False`. Después del entrenamiento, ejecutar la conversión del notebook 03.
 
-Volver a ejecutar la exportación con los ID confirmados genera `submission.csv` para el mejor modelo seleccionado con validación. No deben enviarse probabilidades en lugar de las etiquetas 0/1.
+## Documentación y límites pendientes
+El informe final en Markdown y la presentación HTML describen la implementación real, los cinco puntajes públicos y el formato aceptado. La presentación se puede imprimir desde el navegador.
 
-## Registrar los cinco envíos
+Los PDF anteriores del repositorio conservan la propuesta inicial y no reflejan todos estos resultados. Los PDF corregidos preparados en la conversación no llegaron a publicarse antes de que el entorno dejara de estar disponible. **Para revisar la versión vigente, utilizar los documentos finales enlazados arriba.**
 
-La descripción oficial solicita al menos cinco envíos válidos, con resultados superiores a una predicción aleatoria. Las cinco configuraciones del notebook son experimentos distintos, pero no se afirma de antemano que todos cumplan el requisito. Si una configuración no alcanza un resultado suficiente, se modifica, se vuelve a evaluar y se documenta el cambio.
+La rúbrica solicita un enlace nativo compartido de Canva o Google Slides. No se pudo acceder al diseño original de Canva con la cuenta conectada. La revisión automática rechazó importar una copia corregida a Canva porque faltaba autorización explícita para compartir allí los nombres y resultados del grupo. Ese enlace sigue pendiente de autorización. No se afirma que exista una presentación nativa compartida verificada.
 
-Después de cada envío se registra:
-
-| Fecha | Experimento | Archivo y SHA-256 | Estado en Kaggle | Puntuación pública | Enlace o evidencia |
-|---|---|---|---|---|---|
-| Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
-
-No se completa esta tabla con métricas de validación: la puntuación pública se obtiene al procesar el archivo en Kaggle.
-
-## Criterios para el informe y la presentación finales
-
-La documentación final debe describir la implementación y los resultados reales:
-
-- Entrada de la CNN: **32 × 32 × 3**, correspondiente a esta competición.
-- Métrica principal: **Balanced Accuracy**. Accuracy, precision, recall, F1 y ROC-AUC son complementarias.
-- Entrega: **ID,Class**, con clases 0 o 1 y una fila por imagen de prueba.
-- Describir como realizados únicamente los entrenamientos y comparaciones respaldados por las salidas.
-- Incorporar las configuraciones, resultados y cambios efectivamente probados después de ejecutar el cuaderno.
-
-La rúbrica solicita además una presentación Canva o Google Slides compartida para los primeros tres apartados. El enlace compartido debe añadirse cuando el equipo lo proporcione.
+Los modelos permanecen en los outputs privados de Kaggle. El envío de los pesos a GitHub no forma parte de esta publicación.
 
 ## Fuentes
-
-- [Competición](https://www.kaggle.com/competitions/tnm-112-lab-2-2026).
-- [Evaluación y formato de entrega](https://www.kaggle.com/competitions/tnm-112-lab-2-2026/overview/evaluation).
-- Rúbrica del Challenge 3 de Machine Learning, UPCH, facilitada por el docente.
-
+- [Competición, datos y evaluación](https://www.kaggle.com/competitions/tnm-112-lab-2-2026).
+- [Resultados de validación](../results/cnn/README.md).
+- [Informe final y referencias](../Documentación/INFORME_FINAL.md).
+- Rúbrica del Challenge 3 facilitada por el docente.

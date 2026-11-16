@@ -13,3 +13,17 @@ experimento,balanced_accuracy,accuracy,precision,recall,f1,roc_auc,epocas_ejecut
 
 Identificadores confirmados: False.
 Envíos realizados por este cuaderno: 0. La puntuación de Kaggle se registra después de enviar cada archivo.
+
+## Actualización posterior a la exportación original
+
+Los cinco candidatos se convirtieron a id,Class con ID desde 0 y fueron aceptados por Kaggle. La anotación anterior de cero envíos describe únicamente la ejecución del notebook 02.
+
+| Experimento | BA pública | Estado | Seleccionado final |
+|---|---:|---|---|
+| 01_base | 0.73509 | Complete | Sí |
+| 02_dropout | 0.73680 | Complete | Sí |
+| 03_aumento | 0.67441 | Complete |  |
+| 04_profunda | 0.67547 | Complete |  |
+| 05_batchnorm | 0.65238 | Complete |  |
+
+Para la entrega actual usar [submission.csv](submission.csv) y consultar [estado_entrega.json](estado_entrega.json).

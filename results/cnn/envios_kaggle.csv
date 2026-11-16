@@ -1,0 +1,6 @@
+fecha_lima,cuenta,experimento,archivo,sha256,estado,balanced_accuracy_publica,seleccionado_final
+2026-11-15,cesarapcho,01_base,submission_01_base.csv,d6d2301d3ecc5fd7fb6353df79585af62cbabf464ab87db3659064670dc6dbb7,Complete,0.73509,true
+2026-11-15,cesarapcho,02_dropout,submission_02_dropout.csv,09d21c7ca0abd86b25bb121966dd6a55f8fb3ebb51be875d5fa511dbd4543af0,Complete,0.73680,true
+2026-11-15,cesarapcho,03_aumento,submission_03_aumento.csv,8cdf60923ecee7e2a55a14e49c252c7f7c76aa2b798e458783d06e040caf5899,Complete,0.67441,false
+2026-11-15,cesarapcho,04_profunda,submission_04_profunda.csv,22c08914bf40f55e7f463ccb7b52f7556dade97146cb1d01719748a30662a9fe,Complete,0.67547,false
+2026-11-15,cesarapcho,05_batchnorm,submission_05_batchnorm.csv,bebf2a2fb8b98f54f444774ed84612e17b040fca9bc2a93d6610c95f4c47ac2f,Complete,0.65238,false

@@ -1,0 +1,26 @@
+{
+  "fecha_envios_lima": "2026-11-15",
+  "envios_validos": 5,
+  "cuenta_delegada": "cesarapcho",
+  "mejor_validacion": {
+    "experimento": "02_dropout",
+    "balanced_accuracy": 0.7486889938079699
+  },
+  "mejor_public_score": 0.7368,
+  "seleccionados_finales": [
+    "02_dropout",
+    "01_base"
+  ],
+  "formato": {
+    "columnas": [
+      "id",
+      "Class"
+    ],
+    "primero": 0,
+    "ultimo": 32767,
+    "orden": "orden original de test_x.h5"
+  },
+  "procedencia_puntuaciones": "Observación de la página Submissions en esta conversación, antes de la indisponibilidad del navegador.",
+  "puntuacion_privada": "Pendiente de publicación por el organizador",
+  "canva": "Importación bloqueada por revisión automática: autorización explícita pendiente"
+}
