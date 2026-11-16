@@ -10,6 +10,19 @@ Proyecto académico · Universidad Peruana Cayetano Heredia · 2026-II
 
 [**Ver competición en Kaggle**](https://www.kaggle.com/competitions/tnm-112-lab-2-2026) · [**Consultar dataset PCam**](https://patchcamelyon.grand-challenge.org/)
 
+
+### 🌐 Plataforma web · PCam Vision
+
+Explora el proyecto del **Grupo 1** en nuestra landing page: conoce la competición, el dataset, el análisis exploratorio, los modelos propuestos y los recursos del repositorio.
+
+<a href="https://pao25-ing.github.io/Challenge3-MachineLearning/">
+  <img
+    src="https://img.shields.io/badge/EXPLORAR-PCam_Vision-5C2E5D?style=for-the-badge&logo=googlechrome&logoColor=white"
+    alt="Abrir PCam Vision"
+  />
+</a>
+
+
 </div>
 
 <p align="center">
