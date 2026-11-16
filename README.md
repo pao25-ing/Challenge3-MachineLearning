@@ -20,6 +20,16 @@ Proyecto académico · Universidad Peruana Cayetano Heredia · 2026-II
   />
 </p>
 
+## Ejecución y entrega
+
+- [Abrir entrenamiento en Google Colab](https://colab.research.google.com/github/pao25-ing/Challenge3-MachineLearning/blob/main/notebooks/02_entrenamiento_cnn.ipynb).
+- [Notebook de entrenamiento y evaluación](notebooks/02_entrenamiento_cnn.ipynb).
+- [Guía para importar el notebook en Kaggle y realizar la entrega](docs/ENTREGA_KAGGLE.md).
+
+**Estado actual:** el análisis exploratorio tiene salidas guardadas. El notebook de CNN está preparado, pero su ejecución con los archivos oficiales está pendiente. Todavía no se publican métricas de entrenamiento ni predicciones reales. El código genera los resultados al ejecutarse; las cinco configuraciones propuestas no equivalen a cinco envíos válidos.
+
+Según la indicación del docente, una sola cuenta presenta el trabajo en Kaggle e incluye a los cuatro integrantes en la descripción del notebook. No es necesario incorporar las cuatro cuentas a un equipo de competición.
+
 ## Explora el proyecto
 
 El **Grupo 1** participa en el reto **TNM112-Lab2 (2026)** de Kaggle: identificar tejido metastásico en fragmentos de imágenes histopatológicas mediante una red neuronal convolucional (CNN) .
@@ -280,3 +290,4 @@ Además, la disponibilidad del conjunto PCam, el criterio de evaluación y la pl
 *Proyecto académico de clasificación supervisada de imágenes histopatológicas.*
 
 </div>
+
