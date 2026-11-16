@@ -11,9 +11,9 @@ Proyecto académico · Universidad Peruana Cayetano Heredia · 2026-II
 [**Ver competición en Kaggle**](https://www.kaggle.com/competitions/tnm-112-lab-2-2026) · [**Consultar dataset PCam**](https://patchcamelyon.grand-challenge.org/)
 
 
-### 🌐 Plataforma web · PCam Vision
+### 🌐 Presentación interactiva · PCam Vision
 
-Explora el proyecto del **Grupo 1** en nuestra landing page: conoce la competición, el dataset, el análisis exploratorio, las CNN evaluadas y sus resultados.
+Explora el proyecto del **Grupo 1** en una presentación web con dos modos: página para recorrer y exposición por diapositivas. Incluye notas de apoyo, imágenes y gráficos ampliables, una explicación paso a paso de la CNN y la comparación de las cinco variantes con resultados reales.
 
 <a href="https://pao25-ing.github.io/Challenge3-MachineLearning/">
   <img
@@ -43,10 +43,10 @@ Explora el proyecto del **Grupo 1** en nuestra landing page: conoce la competici
 
 - [Entrega final, puntajes y archivos](docs/ENTREGA_KAGGLE.md).
 - [Informe final con resultados](Documentación/INFORME_FINAL.md).
-- [Presentación final en Canva](https://www.canva.com/d/eCWoPajRcTAC_-C) y [copia imprimible](docs/presentacion-final.html).
+- [Presentación web interactiva](https://pao25-ing.github.io/Challenge3-MachineLearning/) · [guía de uso](docs/PRESENTACION_WEB.md) · [copia imprimible](docs/presentacion-final.html).
 - [CSV definitivo](results/cnn/submission.csv) y [notebook de exportación](notebooks/03_preparacion_envios.ipynb).
 
-El formato aceptado por Kaggle es **id,Class**, con ID **0 a 32767**. Los archivos `candidato_*` y los PDF iniciales conservan la propuesta anterior; para entregar usar los materiales finales enlazados arriba. La [presentación final en Canva](https://www.canva.com/d/eCWoPajRcTAC_-C) ya contiene las 16 diapositivas con los cuatro autores y los resultados reales.
+El formato aceptado por Kaggle es **id,Class**, con ID **0 a 32767**. Los archivos `candidato_*` y los PDF iniciales conservan la propuesta anterior; para entregar usar los materiales finales enlazados arriba. La presentación web reúne a los cuatro autores y los resultados reales en 11 secciones.
 
 Según la indicación del docente, una sola cuenta presenta el trabajo en Kaggle e incluye a los cuatro integrantes en la descripción del notebook. No es necesario incorporar las cuatro cuentas a un equipo de competición.
 

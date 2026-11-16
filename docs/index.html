@@ -1,1123 +1,132 @@
-<!DOCTYPE html><html class="scroll-smooth" lang="es"><head>
+<!doctype html>
+<html lang="es">
+<head>
 <meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>PCam Vision · Repositorio de Investigación UPCH 2026-II · Grupo 1</title>
-<link href="https://fonts.googleapis.com" rel="preconnect">
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<style>
-    @layer base {
-      html, body { margin: 0; padding: 0; }
-      body { overscroll-behavior: none; }
-    }
-    ::-webkit-scrollbar { width: 8px; height: 8px; }
-    ::-webkit-scrollbar-track { background: #fdf0fb; }
-    ::-webkit-scrollbar-thumb { background: #d2aacb; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #9b65a0; }
-  </style>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            "primary": "#431745",
-            "primary-container": "#5c2e5d",
-            "on-primary": "#ffffff",
-            "on-primary-container": "#d298cf",
-            "secondary": "#7f4b84",
-            "secondary-container": "#fbbdfe",
-            "secondary-accent": "#9b65a0",
-            "tertiary": "#003026",
-            "tertiary-container": "#00493a",
-            "tertiary-fixed": "#a9f1d9",
-            "tertiary-mint": "#79bfa9",
-            "on-tertiary": "#ffffff",
-            "on-tertiary-fixed": "#002018",
-            "surface": "#fff7fb",
-            "surface-dim": "#e3d6e1",
-            "surface-container-lowest": "#ffffff",
-            "surface-container-low": "#fdf0fb",
-            "surface-container": "#f7eaf5",
-            "surface-container-high": "#f1e4ef",
-            "surface-container-highest": "#ecdfea",
-            "on-surface": "#201921",
-            "on-surface-variant": "#4e444c",
-            "outline": "#80747d",
-            "outline-variant": "#d1c2cc",
-            "error": "#ba1a1a",
-            "lavender-tint": "#d2aacb"
-          },
-          fontFamily: {
-            "headline-xl": ["Manrope", "sans-serif"],
-            "headline-lg": ["Manrope", "sans-serif"],
-            "headline-md": ["Manrope", "sans-serif"],
-            "headline-sm": ["Manrope", "sans-serif"],
-            "body-lg": ["Inter", "sans-serif"],
-            "body-md": ["Inter", "sans-serif"],
-            "body-sm": ["Inter", "sans-serif"],
-            "label-md": ["Inter", "sans-serif"],
-            "label-sm": ["Inter", "sans-serif"],
-            "code-md": ["JetBrains Mono", "monospace"],
-            "code-sm": ["JetBrains Mono", "monospace"]
-          }
-        }
-      }
-    }
-  </script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#431745">
+<meta name="description" content="Challenge 3 · Grupo 1 UPCH. Explora las imágenes de PCam, recorre una CNN y compara cinco experimentos con sus resultados reales. Incluye modo de exposición y notas.">
+<title>PCam Vision · Aprender a mirar el tejido</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+<script src="assets/data.js" defer></script>
+<script src="assets/app.js" defer></script>
 </head>
-<body class="bg-surface font-body-md text-on-surface antialiased selection:bg-lavender-tint selection:text-primary">
-<!-- NAVBAR MEJORADA -->
-<header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_1px_12px_rgba(67,23,69,0.06)]">
-<div class="h-16 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
-<!-- Brand & Badges -->
-<a class="flex items-center gap-3 shrink-0 group" href="#hero">
-<div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shadow-sm group-hover:scale-105 transition-transform">
-<span class="material-symbols-outlined text-[22px]">biotech</span>
-</div>
-<div class="flex flex-col">
-<div class="flex items-center gap-2">
-<span class="font-headline-sm text-base font-extrabold text-primary tracking-tight">PCam Vision</span>
-<span class="font-code-sm text-[11px] px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-semibold tracking-wide">v1.2-repo</span>
-</div>
-<span class="hidden sm:inline font-code-sm text-[10px] text-secondary font-medium tracking-tight">UPCH 2026-II · Grupo 1</span>
-</div>
-</a>
-<!-- Smooth Navigation Links -->
-<nav class="hidden lg:flex items-center gap-1 bg-surface-container-low/90 p-1 rounded-xl border border-outline-variant/30 text-xs font-label-md">
-<a class="px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" href="#hero">Inicio</a>
-<a class="px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" href="#problematica">Problemática</a>
-<a class="px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" href="#dataset">Dataset &amp; HDF5</a>
-<a class="px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" href="#eda">EDA</a>
-<a class="px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" href="#metodologia">Modelos &amp; CNN</a>
-<a class="px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" href="#evaluacion">Evaluación</a>
-<a class="px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" href="#resultados">Resultados</a>
-<a class="px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" href="#recursos">Recursos</a>
-<a class="px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" href="#equipo">Equipo</a>
+<body>
+<a class="skip-link" href="#contenido">Ir al contenido</a>
+<header class="site-header">
+<a class="brand" href="#inicio" aria-label="PCam Vision, inicio"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>PCam<span class="brand-light"> Vision</span></span></a>
+<span class="header-caption">CHALLENGE 03 <span>UPCH · GRUPO 1</span></span>
+<nav class="header-actions" aria-label="Herramientas de presentación">
+<button id="index-toggle" class="icon-button" aria-label="Abrir índice" aria-controls="site-index" aria-expanded="false" title="Índice"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+<button id="notes-toggle" class="quiet-button" aria-controls="speaker-notes" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h14v18l-4-3H5zM8 7h8M8 11h8M8 15h4"/></svg><span>Notas</span></button>
+<button id="mode-toggle" class="pill-button" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 11 7-11 7z"/></svg><span>Exponer</span></button>
 </nav>
-<!-- Action Buttons -->
-<div class="flex items-center gap-2">
-<!-- GitHub Direct Link -->
-<a class="inline-flex items-center gap-1.5 bg-[#201921] hover:bg-black text-white text-xs font-semibold px-3 py-2 rounded-lg transition-all shadow-sm" href="https://github.com/pao25-ing/Challenge3-MachineLearning" rel="noopener noreferrer" target="_blank">
-<svg aria-hidden="true" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill-rule="evenodd"></path></svg>
-<span class="hidden sm:inline">GitHub</span>
-</a>
-<!-- Kaggle Direct Link -->
-<a class="inline-flex items-center gap-1.5 bg-primary-container hover:bg-primary text-on-primary text-xs font-semibold px-3 py-2 rounded-lg transition-all shadow-sm" href="https://www.kaggle.com/competitions/tnm-112-lab-2-2026" rel="noopener noreferrer" target="_blank">
-<span class="material-symbols-outlined text-[16px]">terminal</span>
-<span class="hidden md:inline">Kaggle TNM112</span>
-</a>
-</div>
-</div>
+<div class="reading-track"><span id="reading-progress"></span></div>
 </header>
-<main class="w-full pt-16 bg-surface">
-<div class="flex flex-col w-full">
-<!-- 1. HERO SECTION -->
-<section class="relative w-full overflow-hidden bg-surface py-16 lg:py-24" id="hero">
-<!-- Ambient Chromophore Background Glows -->
-<div class="pointer-events-none absolute -top-40 right-0 w-[640px] h-[640px] rounded-full bg-gradient-to-br from-primary-container/20 to-tertiary-mint/20 blur-3xl opacity-70"></div>
-<div class="pointer-events-none absolute top-1/2 -left-32 w-[520px] h-[520px] rounded-full bg-gradient-to-tr from-secondary-accent/25 to-transparent blur-3xl opacity-60"></div>
-<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-<!-- Hero Left Column -->
-<div class="lg:col-span-7 flex flex-col space-y-5">
-<!-- Eyebrow Pill -->
-<div class="inline-flex items-center gap-2 self-start px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant/40 text-primary font-code-sm text-xs shadow-xs">
-<span class="w-2 h-2 rounded-full bg-secondary-accent animate-pulse"></span>
-<span>CHALLENGE 03 · GRUPO 1 | UPCH SEMESTRE 2026-II</span>
+<nav id="site-index" class="site-index" aria-label="Índice de la presentación" hidden>
+<p class="eyebrow">EL RECORRIDO</p>
+<a href="#inicio"><span>01</span>Presentación</a><a href="#reto"><span>02</span>El reto</a><a href="#datos"><span>03</span>Los datos</a><a href="#cnn"><span>04</span>La CNN, paso a paso</a><a href="#experimentos"><span>05</span>Los cinco experimentos</a><a href="#comparacion"><span>06</span>Comparación</a><a href="#aprendizaje"><span>07</span>El entrenamiento</a><a href="#errores"><span>08</span>Los errores</a><a href="#kaggle"><span>09</span>Kaggle</a><a href="#conclusiones"><span>10</span>Lo que aprendimos</a><a href="#entrega"><span>11</span>Entrega y fuentes</a>
+</nav>
+<main id="contenido" tabindex="-1">
+<section class="slide hero" id="inicio" aria-labelledby="title-inicio" data-label="Presentación">
+<div class="hero-copy">
+<p class="eyebrow"><span class="live-dot"></span> MACHINE LEARNING · UPCH · 2026-II</p>
+<h1 id="title-inicio">Aprender a<br>mirar <em>el tejido.</em></h1>
+<p class="hero-intro">Cinco redes neuronales. Un mismo reto:<br>identificar tejido metastásico en imágenes pequeñas.</p>
+<div class="hero-actions"><a class="pill-button mint" href="#reto">Explorar el proyecto <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><button class="text-button" data-start-presenting>Iniciar exposición <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 11 7-11 7z"/></svg></button></div>
+<div class="hero-foot"><span>TNM112-Lab2 / PCam</span><span>Investigación académica <i>↗</i></span></div>
 </div>
-<!-- Main Title -->
-<h1 class="font-headline-xl text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary tracking-tight leading-tight">
-                Portal de Investigación: Detección de Metástasis con Deep Learning
-              </h1>
-<!-- Subtitle -->
-<p class="font-body-lg text-base sm:text-lg text-on-surface-variant max-w-2xl leading-relaxed">
-                Repositorio oficial de experimentación y clasificación binaria supervisada sobre cortes histopatológicos de ganglios linfáticos mamarios (PatchCamelyon PCam) en formato binario HDF5 mediante Redes Convolucionales Profundas.
-              </p>
-<!-- Dataset Telemetry Quick Badges -->
-<div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2">
-<div class="bg-surface-container-lowest p-2.5 rounded-lg border border-outline-variant/40">
-<span class="font-code-sm text-[10px] text-outline uppercase tracking-wider block">Entrenamiento</span>
-<span class="font-headline-sm text-sm font-bold text-primary">100,000 imágenes</span>
+<div class="hero-art" aria-label="Muestras reales del conjunto de datos">
+<div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><span class="art-cross">+</span>
+<div class="sample sample-main"><div class="tissue-crop crop-a"><img src="assets/tejidos-pcam.png" alt="Muestra real de entrenamiento, clase 0, índice 0." width="1025" height="1120"></div><span class="sample-label"><b>01</b> Fragmento de tejido <span>32 × 32 px</span></span></div>
+<div class="sample sample-small"><div class="tissue-crop crop-b"><img src="assets/tejidos-pcam.png" alt="Muestra real de entrenamiento, clase 1, índice 1." width="1025" height="1120"></div><span class="sample-label"><b>02</b> Otra mirada</span></div>
+<span class="art-caption">PATRONES REALES.<br>RESULTADOS MEDIBLES.</span><div class="pixel-stamp"><span>32</span><span>× 32</span><small>PÍXELES RGB</small></div>
 </div>
-<div class="bg-surface-container-lowest p-2.5 rounded-lg border border-outline-variant/40">
-<span class="font-code-sm text-[10px] text-outline uppercase tracking-wider block">Validación</span>
-<span class="font-headline-sm text-sm font-bold text-secondary">32,768 imágenes</span>
-</div>
-<div class="bg-surface-container-lowest p-2.5 rounded-lg border border-outline-variant/40">
-<span class="font-code-sm text-[10px] text-outline uppercase tracking-wider block">Prueba (Test)</span>
-<span class="font-headline-sm text-sm font-bold text-secondary-accent">32,768 imágenes</span>
-</div>
-<div class="bg-surface-container-lowest p-2.5 rounded-lg border border-outline-variant/40">
-<span class="font-code-sm text-[10px] text-outline uppercase tracking-wider block">Estructura</span>
-<span class="font-headline-sm text-sm font-bold text-tertiary-container">HDF5 32×32×3</span>
-</div>
-</div>
-<!-- CTAs -->
-<div class="flex flex-wrap items-center gap-3 pt-3">
-<a class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-[#201921] hover:bg-black text-white font-body-md text-sm font-semibold shadow-sm transition-all" href="https://github.com/pao25-ing/Challenge3-MachineLearning" rel="noopener noreferrer" target="_blank">
-<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill-rule="evenodd"></path></svg>
-<span>Ver Repositorio GitHub</span>
-</a>
-<a class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-primary-container text-on-primary font-body-md text-sm font-semibold hover:bg-primary shadow-sm transition-all" href="#dataset">
-<span>Explorar Metodología</span>
-<span class="material-symbols-outlined text-[18px]">arrow_downward</span>
-</a>
-<a class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-surface-container-high text-primary font-body-md text-sm font-semibold hover:bg-surface-container transition-all" href="https://www.kaggle.com/competitions/tnm-112-lab-2-2026" rel="noopener noreferrer" target="_blank">
-<span class="material-symbols-outlined text-[18px]">open_in_new</span>
-<span>Competición Kaggle</span>
-</a>
-</div>
-<!-- GitHub Repo Tag -->
-<div class="pt-2 flex items-center gap-2 font-code-sm text-xs text-outline">
-<span class="material-symbols-outlined text-secondary text-[16px]">folder_zip</span>
-<span>Repo: <code class="text-primary font-semibold">pao25-ing/Challenge3-MachineLearning</code></span>
-</div>
-</div>
-<!-- Hero Right Column: High-tech Patch Inspector -->
-<div class="lg:col-span-5 flex flex-col items-center">
-<div class="relative w-full max-w-[460px] bg-surface-container-lowest p-5 rounded-2xl shadow-xl border border-outline-variant/50">
-<div class="flex items-center justify-between pb-3 mb-3 border-b border-outline-variant/30">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-secondary-accent text-[22px]">lens_blur</span>
-<span class="font-headline-sm text-sm text-primary font-bold">Microscopía Digital H&amp;E</span>
-</div>
-<span class="font-code-sm text-xs px-2.5 py-0.5 rounded-full bg-surface-container text-secondary font-medium">Patch PCam 32×32</span>
-</div>
-<div class="relative aspect-square w-full rounded-xl overflow-hidden bg-surface-container-highest flex items-center justify-center border border-outline-variant/40">
-<img alt="Histological breast patch preview" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-qrPpItKgsKh1OPMWB7pJDp_epFO4-Jn7iWKyy6Urtj9G8b1D-sm4gO6Gh4T0uopLXnt4gT4xKOshiyWJY1X95BBGShePmOL_Ef4s-6N1O_VKIlvTtmyPvWuCEvmEhv-ft3bV3CFe7K--UYZTaIBAVgKvrodQMyxXWTJpO8ysQsXnBTLbqqTE_L5g9xVrTpIsYP4sb0L1oawz7tx6gYblEmfBrqmURqSu5mxT8os6">
-<!-- Central ROI Overlay -->
-<div class="absolute inset-0 bg-primary/10 pointer-events-none"></div>
-<div class="absolute w-1/2 h-1/2 border-2 border-dashed border-tertiary-mint bg-tertiary-mint/20 shadow-[0_0_15px_rgba(121,191,169,0.5)] rounded flex items-center justify-center pointer-events-none">
-<span class="font-code-sm text-[10px] text-tertiary font-bold tracking-tight bg-surface/90 px-1.5 py-0.5 rounded shadow-sm">
-                      ROI 32×32
-                    </span>
-</div>
-<div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-surface/90 font-code-sm text-[10px] text-primary font-semibold shadow-xs">
-                    H&amp;E Stain
-                  </div>
-<div class="absolute top-2 right-2 px-2 py-0.5 rounded bg-surface/90 font-code-sm text-[10px] text-primary font-semibold shadow-xs">
-                    0.97 µm/px
-                  </div>
-<div class="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-surface/90 font-code-sm text-[10px] text-primary font-semibold shadow-xs">
-                    RGB (3 Canales)
-                  </div>
-</div>
-<div class="mt-4 p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-start gap-3">
-<span class="material-symbols-outlined text-tertiary-container text-[22px] mt-0.5">verified</span>
-<div class="flex-1 text-xs">
-<div class="flex items-center justify-between">
-<span class="font-headline-sm font-bold text-primary">Región Central 32×32 px</span>
-<span class="font-code-sm px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-semibold">y ∈ {0, 1}</span>
-</div>
-<p class="font-body-sm text-on-surface-variant mt-1 leading-relaxed">A diferencia del benchmark PCam original (96×96 con ROI central de 32×32), en este reto las muestras se proporcionan directamente recortadas a 32×32×3 píxeles, etiquetadas positivamente ante la presencia de células metastásicas.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+<a href="#reto" class="scroll-cue">Desliza para descubrir <span>↓</span></a>
 </section>
-<!-- 2. PROBLEMÁTICA & CONTEXTO BIOMÉDICO -->
-<section class="w-full bg-surface-container-low py-16 lg:py-20 border-y border-outline-variant/30" id="problematica">
-<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-<div class="max-w-3xl mb-12">
-<span class="font-code-sm text-xs uppercase tracking-wider text-secondary font-bold">CONTEXTO BIOMÉDICO &amp; MOTIVACIÓN</span>
-<h2 class="font-headline-xl text-2xl sm:text-3xl font-bold text-primary mt-2">
-              Relevancia Crítica en Estadificación Oncológica
-            </h2>
-<p class="font-body-lg text-base text-on-surface-variant mt-2 leading-relaxed">
-              La inspección histopatológica de ganglios centinela es fundamental para clasificar el estadio TNM y determinar la terapia adyuvante en pacientes con cáncer de mama.
-            </p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<!-- Card 1 -->
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between hover:border-secondary transition-all">
-<div>
-<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center mb-4 text-primary">
-<span class="material-symbols-outlined text-[26px]">vital_signs</span>
-</div>
-<h3 class="font-headline-md text-lg font-bold text-primary">Pronóstico &amp; Estadificación TNM</h3>
-<p class="font-body-md text-sm text-on-surface-variant mt-2 leading-relaxed">
-                  El compromiso metastásico en ganglios linfáticos define la estadificación N (Node). Su detección precoz diferencia el manejo quirúrgico conservador de linfadenectomías radicales y quimioterapias sistémicas agresivas.
-                </p>
-</div>
-<div class="mt-6 pt-3 border-t border-outline-variant/20 flex items-center justify-between text-secondary font-code-sm text-xs">
-<span>Factor N: Ganglio Linfático</span>
-<span class="material-symbols-outlined text-[16px]">medical_services</span>
-</div>
-</div>
-<!-- Card 2 -->
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between hover:border-secondary transition-all">
-<div>
-<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center mb-4 text-secondary-accent">
-<span class="material-symbols-outlined text-[26px]">hourglass_empty</span>
-</div>
-<h3 class="font-headline-md text-lg font-bold text-primary">Fatiga y Variabilidad Diagnóstica</h3>
-<p class="font-body-md text-sm text-on-surface-variant mt-2 leading-relaxed">
-                  El cribado manual de láminas teñidas con Hematoxilina y Eosina (H&amp;E) genera agotamiento visual y desacuerdos inter/intra-observador. Focos micrometastásicos de pocas micras son susceptibles de omisión en jornadas extensas.
-                </p>
-</div>
-<div class="mt-6 pt-3 border-t border-outline-variant/20 flex items-center justify-between text-secondary font-code-sm text-xs">
-<span>Variabilidad Inter-Observador</span>
-<span class="material-symbols-outlined text-[16px]">visibility</span>
-</div>
-</div>
-<!-- Card 3 -->
-<div class="bg-surface-container-high p-6 rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between hover:border-primary transition-all">
-<div>
-<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary flex items-center justify-center mb-4">
-<span class="material-symbols-outlined text-[26px]">psychology</span>
-</div>
-<h3 class="font-headline-md text-lg font-bold text-primary">Propósito Computacional y Soporte</h3>
-<p class="font-body-md text-sm text-on-surface-variant mt-2 leading-relaxed">
-                  Esta plataforma y pipeline actúan exclusivamente como herramientas de apoyo investigativo y priorización algorítmica (triage), nunca como dispositivo de reemplazo del patólogo colegiado.
-                </p>
-</div>
-<div class="mt-6 p-2.5 rounded-lg bg-surface-container-lowest border border-outline-variant/30 flex items-center gap-2 font-code-sm text-xs text-primary font-semibold">
-<span class="material-symbols-outlined text-[16px] text-tertiary-container">shield</span>
-<span>Objetivo: Triage y Aceleración Preclínica</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- 3. DATASET PCAM & ARQUITECTURA DE ARCHIVOS HDF5 -->
-<section class="w-full bg-surface py-16 lg:py-20" id="dataset">
-<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-<div class="max-w-3xl mb-10">
-<span class="font-code-sm text-xs uppercase tracking-wider text-secondary font-bold">BENCHMARK HISTOPATOLÓGICO</span>
-<h2 class="font-headline-xl text-2xl sm:text-3xl font-bold text-primary mt-2">
-              Dataset PCam &amp; Arquitectura de Archivos HDF5
-            </h2>
-<p class="font-body-lg text-base text-on-surface-variant mt-2 leading-relaxed">
-              Estructura binaria, almacenamiento de alta velocidad I/O y visualización comparativa de tejidos procesados en el repositorio de GitHub.
-            </p>
-</div>
-<!-- HDF5 File Architecture Cards -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm">
-<div class="flex items-center gap-2 text-primary font-bold mb-3">
-<span class="material-symbols-outlined text-secondary-accent text-[22px]">folder_data</span>
-<h3 class="font-headline-sm text-base">Archivos HDF5 del reto (.h5)</h3>
-</div>
-<ul class="font-code-sm text-xs space-y-1.5 text-on-surface-variant"><li class="p-1.5 bg-surface-container-low rounded"><code class="text-primary font-semibold">train.h5</code> (100,000)</li>
 
-<li class="p-1.5 bg-surface-container-low rounded"><code class="text-secondary font-semibold">valid.h5</code> (32,768)</li>
+<section class="slide paper" id="reto" aria-labelledby="title-reto" data-label="El reto">
+<header class="section-head"><p class="eyebrow"><span>01</span> EL RETO</p><h2 id="title-reto">Dos clases.<br>Una tarea concreta.</h2><p class="lead">Aprendemos con imágenes que ya tienen una etiqueta. Después evaluamos la red con imágenes que no usó para entrenar.</p></header>
+<div class="class-gallery">
+<figure class="class-example"><div class="image-frame"><div class="tissue-crop crop-c"><img src="assets/tejidos-pcam.png" alt="Ejemplo de clase 0: train.h5, índice 2." width="1025" height="1120"></div><button class="zoom-float" data-zoom="#sample-sheet" data-zoom-title="Muestras reales de PCam · archivo de análisis" aria-label="Ampliar las imágenes de tejido"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6M10 7v6M7 10h6"/></svg></button></div><figcaption><span class="class-number">0</span><div><h3>Sin tejido metastásico</h3><p>Etiqueta de ausencia en este fragmento.</p></div></figcaption></figure>
+<figure class="class-example"><div class="image-frame"><div class="tissue-crop crop-d"><img src="assets/tejidos-pcam.png" alt="Ejemplo de clase 1: train.h5, índice 3." width="1025" height="1120"></div><button class="zoom-float" data-zoom="#sample-sheet" data-zoom-title="Muestras reales de PCam · archivo de análisis" aria-label="Ampliar las imágenes de tejido"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6M10 7v6M7 10h6"/></svg></button></div><figcaption><span class="class-number positive">1</span><div><h3>Con tejido metastásico</h3><p>Etiqueta de presencia en este fragmento.</p></div></figcaption></figure>
+</div>
+<div class="section-bottom"><span>Imágenes reales de entrenamiento · índices 2 y 3</span><p>Proyecto académico. Los resultados no tienen validación clínica.</p></div>
+</section>
 
-<li class="p-1.5 bg-surface-container-low rounded"><code class="text-secondary-accent font-semibold">test_x.h5</code> (32,768)</li></ul>
-</div>
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm">
-<div class="flex items-center gap-2 text-primary font-bold mb-3">
-<span class="material-symbols-outlined text-secondary-accent text-[22px]">storage</span>
-<h3 class="font-headline-sm text-base">Dimensiones y Partición</h3>
-</div>
-<div class="space-y-3 font-body-sm text-xs text-on-surface-variant">
-<div class="flex justify-between pb-1.5 border-b border-outline-variant/20">
-<span class="font-semibold text-primary">Tamaño de imagen:</span>
-<span class="font-code-sm">32 × 32 × 3 (RGB)</span>
-</div>
-<div class="flex justify-between pb-1.5 border-b border-outline-variant/20">
-<span class="font-semibold text-primary">Formato numérico:</span>
-<span class="font-code-sm">uint8 [0 - 255]</span>
-</div>
-<div class="flex justify-between pb-1.5 border-b border-outline-variant/20">
-<span class="font-semibold text-primary">Train Split:</span>
-<span class="font-code-sm">100,000 muestras</span>
-</div>
-<div class="flex justify-between pb-1.5 border-b border-outline-variant/20">
-<span class="font-semibold text-primary">Validation Split:</span>
-<span class="font-code-sm">32,768 muestras</span>
-</div>
-<div class="flex justify-between pb-1.5 border-b border-outline-variant/20">
-<span class="font-semibold text-primary">Test Split:</span>
-<span class="font-code-sm">32,768 muestras</span>
-</div>
-<div class="flex justify-between pt-1 font-bold text-primary">
-<span>Total Muestras PCam:</span>
-<span class="font-code-sm text-secondary">165,536 parches</span>
-</div><div class="mt-2 pt-2 border-t border-outline-variant/30 text-[11px] font-body-sm text-secondary leading-normal"><span class="font-semibold text-primary">Nota técnica:</span> El benchmark original (Veeling et al., 2018) usa parches de 96×96 px con ROI central de 32×32 px. En este repositorio y competición los datos vienen pre-recortados directamente a 32×32×3 px.</div>
-</div>
-</div>
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between"><div>
-<div class="flex items-center gap-2 text-primary font-bold mb-3">
-<span class="material-symbols-outlined text-tertiary-container text-[22px]">memory</span>
-<h3 class="font-headline-sm text-base">Estrategias de Procesamiento HDF5 (Propuesta Técnica)</h3>
-</div>
-<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
-Para mitigar el consumo de memoria RAM debido al volumen de datos (165,536 matrices), se evalúan alternativas de optimización I/O como lectura por lotes (chunking) o generadores iterativos perezosos con <code>h5py</code> y <code>torch.utils.data</code>, formuladas como opciones para viabilizar el flujo de entrenamiento.
-</p>
-</div>
-<div class="mt-4 p-3 rounded-lg bg-surface-container-low border border-outline-variant/30 font-code-sm text-[11px] text-tertiary-container">
-Estrategia en estudio: Carga diferida por batches para prevenir desbordamientos de memoria.
-</div></div>
-</div>
-<!-- Microscopic Comparison Visual Grid (IMAGE_5) -->
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm">
-<div class="flex flex-col md:flex-row md:items-center justify-between pb-4 mb-4 border-b border-outline-variant/30 gap-3">
-<div>
-<span class="font-code-sm text-xs uppercase tracking-wider text-secondary font-bold">EVIDENCIA VISUAL HISTOPATOLÓGICA</span>
-<h3 class="font-headline-md text-lg font-bold text-primary">Matriz Comparativa de Tejidos 32×32: Clase 0 vs Clase 1</h3>
-</div>
-<div class="flex items-center gap-2">
-<span class="font-code-sm text-xs px-2.5 py-1 rounded-full bg-surface-container-high text-primary font-medium">Tinción H&amp;E 10x</span>
-<span class="font-code-sm text-xs px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-semibold">Resolución 0.97 µm/px</span>
-</div>
-</div>
-<!-- Image with interactive scientific caption -->
-<div class="rounded-xl overflow-hidden border border-outline-variant/30 bg-surface-container-high mb-6">
-<img alt="Ejemplos auténticos de imágenes etiquetadas (32 x 32) train.h5 y valid.h5 generados por el EDA del repositorio" class="w-full h-auto object-cover" src="https://raw.githubusercontent.com/pao25-ing/Challenge3-MachineLearning/main/results/eda/ejemplos_imagenes.png">
-</div>
-<!-- Detailed explanation cards -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<!-- Clase 0 -->
-<div class="p-4 rounded-xl bg-surface-container-low border border-tertiary-mint/40">
-<div class="flex items-center justify-between mb-2">
-<span class="font-headline-sm text-sm font-bold text-primary flex items-center gap-1.5">
-<span class="w-3 h-3 rounded-full bg-tertiary-mint inline-block"></span>
-                    Clase 0: Tejido Sano / No Neoplásico
-                  </span>
-<span class="font-code-sm text-xs text-outline font-semibold">y = 0</span>
-</div>
-<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
-                  Ausencia total de células tumorales en la región central de 32×32 px. Muestra linfocitos sanos esféricos regulares, abundante estroma conectivo eosinófilo (rosa claro), espacios intersticiales ordenados y arquitectura tisular conservada.
-                </p>
-</div>
-<!-- Clase 1 -->
-<div class="p-4 rounded-xl bg-surface-container-low border border-primary-container/40">
-<div class="flex items-center justify-between mb-2">
-<span class="font-headline-sm text-sm font-bold text-primary flex items-center gap-1.5">
-<span class="w-3 h-3 rounded-full bg-primary-container inline-block"></span>
-                    Clase 1: Invasión Neoplásica Metastásica
-                  </span>
-<span class="font-code-sm text-xs text-outline font-semibold">y = 1</span>
-</div>
-<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
-                  Presencia comprobada de al menos una célula tumoral invasiva en el ROI central de 32×32 px. Se distingue por núcleos gigantes e hipercromáticos (azul/púrpura denso), marcado pleomorfismo nuclear, alteración en la relación núcleo-citoplasma y pérdida del patrón trabecular benigno.
-                </p>
-</div>
-</div>
-</div>
+<section class="slide lavender" id="datos" aria-labelledby="title-datos" data-label="Los datos">
+<header class="section-head"><p class="eyebrow"><span>02</span> LOS DATOS</p><h2 id="title-datos">165 536 imágenes.<br><em>Tres funciones.</em></h2><p class="lead">Usamos los recortes de 32 × 32 píxeles de la competición. Cada imagen tiene tres canales de color.</p></header>
+<div class="data-layout">
+<div class="split-list"><div class="split-row"><span class="split-index">01</span><div><h3>Entrenamiento</h3><p>train.h5 · Aprender patrones</p></div><strong>100,000</strong></div><div class="split-row"><span class="split-index">02</span><div><h3>Validación</h3><p>valid.h5 · Comparar y elegir</p></div><strong>32,768</strong></div><div class="split-row"><span class="split-index">03</span><div><h3>Prueba</h3><p>test.h5 · Generar el envío</p></div><strong>32,768</strong></div><p class="small-note">Conservamos la separación oficial. Prueba no tiene etiquetas y se reserva para el envío.</p></div>
+<figure class="balance-figure"><div class="figure-top"><h3>Clases casi equilibradas</h3><button class="icon-button" data-zoom="#balance-chart" data-zoom-title="Distribución de clases · entrenamiento y validación" aria-label="Ampliar la distribución de clases"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg></button></div>
+<svg id="balance-chart" viewBox="0 0 620 305" role="img" aria-labelledby="balance-title balance-desc"><title id="balance-title">Distribución de clases en entrenamiento y validación</title><desc id="balance-desc">Entrenamiento: clase 0, 49 964; clase 1, 50 036. Validación: clase 0, 16 399; clase 1, 16 369. Ambas clases representan aproximadamente la mitad de cada conjunto.</desc>
+<text x="0" y="32" class="chart-heading">Entrenamiento</text><text x="620" y="32" text-anchor="end" class="chart-value">100 000 imágenes</text><rect x="0" y="55" width="309.7768" height="54" rx="8" fill="#5C2E5D"/><rect x="309.7768" y="55" width="310.2232" height="54" rx="8" fill="#79BFA9"/><text x="155" y="88" text-anchor="middle" class="chart-inverse">49 964</text><text x="465" y="88" text-anchor="middle" class="chart-dark">50 036</text>
+<text x="0" y="163" class="chart-heading">Validación</text><text x="620" y="163" text-anchor="end" class="chart-value">32 768 imágenes</text><rect x="0" y="186" width="310.2838134765625" height="54" rx="8" fill="#5C2E5D"/><rect x="310.2838134765625" y="186" width="309.7161865234375" height="54" rx="8" fill="#79BFA9"/><text x="155" y="219" text-anchor="middle" class="chart-inverse">16 399</text><text x="465" y="219" text-anchor="middle" class="chart-dark">16 369</text><circle cx="8" cy="283" r="7" fill="#5C2E5D"/><text x="26" y="289" class="chart-value">Clase 0</text><circle cx="193" cy="283" r="7" fill="#79BFA9"/><text x="211" y="289" class="chart-value">Clase 1</text></svg>
+<figcaption>Fuente: análisis de los archivos HDF5 de la competición.</figcaption></figure>
 </div>
 </section>
-<!-- 4. ANÁLISIS EXPLORATORIO DE DATOS (EDA) -->
-<section class="w-full bg-surface-container-low py-16 lg:py-20 border-y border-outline-variant/30" id="eda">
-<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-<div class="max-w-3xl mb-10">
-<span class="font-code-sm text-xs uppercase tracking-wider text-secondary font-bold">ANALÍTICA &amp; DIAGNÓSTICO DEL REPOSITORIO</span>
-<h2 class="font-headline-xl text-2xl sm:text-3xl font-bold text-primary mt-2">
-              Análisis Exploratorio de Datos (EDA)
-            </h2>
-<p class="font-body-lg text-base text-on-surface-variant mt-2 leading-relaxed">
-              Distribución balanceada de clases, variabilidad cromática de hematoxilina-eosina y justificación biológica para el preprocesamiento de imágenes.
-            </p>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-8">
-<!-- Real EDA Chart Image (IMAGE_6) -->
-<div class="lg:col-span-7 bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm">
-<div class="flex items-center justify-between pb-3 mb-4 border-b border-outline-variant/30">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-secondary-accent text-[20px]">bar_chart</span>
-<h3 class="font-headline-sm text-sm font-bold text-primary">Distribución de Muestras y Clases (EDA Real)</h3>
-</div>
-<span class="font-code-sm text-xs text-outline">Total: 165,536 parches</span>
-</div>
-<div class="rounded-xl overflow-hidden border border-outline-variant/30 bg-white">
-<img alt="Distribución real de etiquetas en PCam: Entrenamiento (49,964 vs 50,036) y Validación (16,399 vs 16,369)" class="w-full h-auto object-cover" src="https://raw.githubusercontent.com/pao25-ing/Challenge3-MachineLearning/main/results/eda/distribucion_clases.png">
-</div>
-</div>
-<!-- EDA Findings & Insights -->
-<div class="lg:col-span-5 flex flex-col space-y-4">
-<!-- Finding 1: Perfect Balance -->
-<div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/40 shadow-sm">
-<div class="flex items-center gap-2 text-primary font-bold mb-2">
-<span class="material-symbols-outlined text-tertiary-container text-[20px]">balance</span>
-<h4 class="font-headline-sm text-sm font-semibold">Balance de Clases 50/50</h4>
-</div>
-<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">El gráfico auténtico del repositorio evidencia un balance simétrico casi perfecto: el conjunto de entrenamiento posee <strong>49,964 Clase 0 (49.96%)</strong> frente a <strong>50,036 Clase 1 (50.04%)</strong>. El split de validación consta de <strong>16,399 Clase 0 (50.05%)</strong> y <strong>16,369 Clase 1 (49.95%)</strong>, sin que esto permita descartar otros posibles sesgos de los datos.</p>
-</div>
-<!-- Finding 2: Color Stain Variability -->
-<div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/40 shadow-sm">
-<div class="flex items-center gap-2 text-primary font-bold mb-2">
-<span class="material-symbols-outlined text-secondary-accent text-[20px]">palette</span>
-<h4 class="font-headline-sm text-sm font-semibold">Variabilidad Cromática de Tinción H&amp;E</h4>
-</div>
-<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
-                  Las imágenes histopatológicas pueden presentar variaciones de color relacionadas con la tinción. La normalización de Macenko y Color Jitter son técnicas candidatas que requerirían evaluación antes de incorporarse.
-                </p>
-</div>
-<!-- Finding 3: Histological Artifacts -->
-<div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/40 shadow-sm">
-<div class="flex items-center gap-2 text-primary font-bold mb-2">
-<span class="material-symbols-outlined text-primary text-[20px]">auto_fix_high</span>
-<h4 class="font-headline-sm text-sm font-semibold">Artefactos Histológicos &amp; Grupo D4</h4>
-</div>
-<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">En imágenes histopatológicas pueden existir artefactos microscópicos; su presencia y frecuencia no se cuantificaron en el análisis del repositorio. Dado que el tejido no posee una orientación preferencial en el espacio biológico, podría evaluarse la aumentación bajo el grupo simétrico D4 (rotaciones ortogonales y reflexiones) como alternativa metodológica.</p>
-</div>
-</div>
-</div>
-</div>
+
+<section class="slide dark cnn-section" id="cnn" aria-labelledby="title-cnn" data-label="La CNN">
+<header class="section-head"><p class="eyebrow"><span>03</span> DENTRO DE LA RED</p><h2 id="title-cnn">Del píxel<br>a <em>la clase.</em></h2><p class="lead">Recorre la CNN base, que también usa la variante con Dropout.</p></header>
+<div class="cnn-workbench">
+<div id="cnn-steps" class="cnn-steps" role="group" aria-label="Pasos de la CNN"><button data-step="0" aria-pressed="true" class="cnn-step selected"><span>01</span>Píxeles RGB</button><button data-step="1" aria-pressed="false" class="cnn-step"><span>02</span>Convolución + ReLU</button><button data-step="2" aria-pressed="false" class="cnn-step"><span>03</span>MaxPooling 2 × 2</button><button data-step="3" aria-pressed="false" class="cnn-step"><span>04</span>Conv 32 + ReLU + Pool</button><button data-step="4" aria-pressed="false" class="cnn-step"><span>05</span>Promedio global + Dense 32</button><button data-step="5" aria-pressed="false" class="cnn-step"><span>06</span>Sigmoid</button></div>
+<div class="cnn-content"><div class="cnn-visual" id="cnn-visual" aria-hidden="true"></div><div class="cnn-explanation" aria-live="polite"><p class="eyebrow">PASO <span id="cnn-counter">01 / 06</span></p><h3 id="cnn-title">La imagen entra</h3><p id="cnn-text">Cada fragmento tiene 32 píxeles de ancho, 32 de alto y tres canales de color. Dividimos los valores entre 255 para llevarlos al intervalo de 0 a 1.</p><p class="tensor" id="cnn-size">32 × 32 × 3</p><p class="small-note" id="cnn-note">Este tamaño corresponde al recorte de la competición. Las imágenes originales de PCam son de 96 × 96.</p><div class="step-navigation"><button id="cnn-prev" class="round-button" aria-label="Paso anterior" disabled><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></button><button id="cnn-next" class="round-button" aria-label="Paso siguiente"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button></div></div></div>
+<p class="scheme-note">Esquema explicativo. No muestra filtros aprendidos ni ejecuta predicciones.</p></div>
 </section>
-<!-- 5. MODELOS Y METODOLOGÍA CNN -->
-<section class="w-full bg-surface py-16 lg:py-20" id="metodologia">
-<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-<div class="max-w-3xl mb-10">
-<span class="font-code-sm text-xs uppercase tracking-wider text-secondary font-bold">PIPELINE DE MACHINE LEARNING</span>
-<h2 class="font-headline-xl text-2xl sm:text-3xl font-bold text-primary mt-2">
-              Modelos &amp; Metodología de Redes Neuronales Convolucionales
-            </h2>
-<p class="font-body-lg text-base text-on-surface-variant mt-2 leading-relaxed">La ejecución publicada utiliza TensorFlow/Keras, píxeles divididos entre 255, entropía cruzada binaria, Adam y parada temprana con Balanced Accuracy. Las tarjetas siguientes describen alternativas propuestas; ResNet, EfficientNet, Focal Loss, AdamW y sus planificadores no forman parte de esta ejecución.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-<!-- Pillar 1 -->
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between">
-<div>
-<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-4">
-<span class="material-symbols-outlined text-[24px]">architecture</span>
-</div>
-<h3 class="font-headline-sm text-base font-bold text-primary">Arquitecturas CNN</h3>
-<ul class="mt-3 font-body-sm text-xs text-on-surface-variant space-y-2 leading-relaxed">
-<li><strong>Custom CNN Baseline:</strong> 4 bloques de Conv2D (3×3), BatchNorm, ReLU, MaxPooling y Dropout (0.3).</li>
-<li><strong>ResNet-18 / ResNet-50:</strong> Conexiones residuales adaptadas para entrada de 32×32 px reemplazando el stride del primer conv.</li>
-<li><strong>EfficientNet-B0:</strong> Transfer learning pre-entrenado adaptado a patología digital.</li>
-</ul>
-</div>
-<div class="mt-5 pt-3 border-t border-outline-variant/20 font-code-sm text-[11px] text-secondary">Propuestas de Arquitectura (Candidatas)</div>
-</div>
-<!-- Pillar 2 -->
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between">
-<div>
-<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary mb-4">
-<span class="material-symbols-outlined text-[24px]">filter_vintage</span>
-</div>
-<h3 class="font-headline-sm text-base font-bold text-primary">Preprocesamiento</h3>
-<ul class="mt-3 font-body-sm text-xs text-on-surface-variant space-y-2 leading-relaxed">
-<li><strong>Normalización RGB:</strong> Ajuste de media y desviación estándar de ImageNet o cálculo empírico de PCam.</li>
-<li><strong>Stain Normalization (propuesta):</strong> Descomposición espectral por vectores de absorción óptica Macenko para H&amp;E.</li>
-<li><strong>Color Jittering (propuesta):</strong> Perturbaciones de brillo y contraste que deberán ajustarse y evaluarse experimentalmente.</li>
-</ul>
-</div>
-<div class="mt-5 pt-3 border-t border-outline-variant/20 font-code-sm text-[11px] text-secondary">Propuesta Técnica: Normalización y Perturbación</div>
-</div>
-<!-- Pillar 3 -->
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between">
-<div>
-<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-tertiary-container mb-4">
-<span class="material-symbols-outlined text-[24px]">functions</span>
-</div>
-<h3 class="font-headline-sm text-base font-bold text-primary">Funciones de Pérdida</h3>
-<ul class="mt-3 font-body-sm text-xs text-on-surface-variant space-y-2 leading-relaxed">
-<li><strong>BCE with Logits Loss:</strong> Pérdida de entropía cruzada binaria numéricamente estable con activación sigmoide integrada.</li>
-<li><strong>Focal Loss (γ=2.0):</strong> Ponderación dinámica para penalizar con mayor peso los ejemplos difíciles y falsos negativos críticos.</li>
-<li><strong>Label Smoothing:</strong> Regularización contra la sobreconfianza de predicción.</li>
-</ul>
-</div>
-<div class="mt-5 pt-3 border-t border-outline-variant/20 font-code-sm text-[11px] text-secondary">
-                Optimización Focal &amp; BCE
-              </div>
-</div>
-<!-- Pillar 4 -->
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between">
-<div>
-<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary-container mb-4">
-<span class="material-symbols-outlined text-[24px]">tune</span>
-</div>
-<h3 class="font-headline-sm text-base font-bold text-primary">Optimizador &amp; LR</h3>
-<ul class="mt-3 font-body-sm text-xs text-on-surface-variant space-y-2 leading-relaxed">
-<li><strong>AdamW Optimizer:</strong> Weight decay decoupled (1e-4) para prevención activa de sobreajuste de pesos.</li>
-<li><strong>Cosine Annealing LR:</strong> Decaimiento suave de la tasa de aprendizaje con ciclos periódicos.</li>
-<li><strong>Warmup Lineal:</strong> Estabilización de gradientes durante las primeras 3 épocas de entrenamiento.</li>
-</ul>
-</div>
-<div class="mt-5 pt-3 border-t border-outline-variant/20 font-code-sm text-[11px] text-secondary">
-                AdamW + Cosine Scheduler
-              </div>
-</div>
-</div>
-</div>
+
+<section class="slide paper" id="experimentos" aria-labelledby="title-experimentos" data-label="Los experimentos">
+<header class="section-head"><p class="eyebrow"><span>04</span> LOS EXPERIMENTOS</p><h2 id="title-experimentos">Cinco formas<br>de <em>aprender.</em></h2><p class="lead">Partimos de una misma idea y cambiamos la arquitectura o el entrenamiento. Toca una variante para conocerla.</p></header>
+<div class="experiment-layout"><div class="experiment-list" role="group" aria-label="Seleccionar experimento"><button class="experiment-button" data-model="0" aria-pressed="false"><span>01</span><strong>Base</strong><span class="experiment-arrow">↗</span></button><button class="experiment-button selected" data-model="1" aria-pressed="true"><span>02</span><strong>Dropout</strong><span class="experiment-arrow">↗</span></button><button class="experiment-button" data-model="2" aria-pressed="false"><span>03</span><strong>Aumento de datos</strong><span class="experiment-arrow">↗</span></button><button class="experiment-button" data-model="3" aria-pressed="false"><span>04</span><strong>Más profunda</strong><span class="experiment-arrow">↗</span></button><button class="experiment-button" data-model="4" aria-pressed="false"><span>05</span><strong>BatchNorm</strong><span class="experiment-arrow">↗</span></button></div>
+<article class="experiment-detail" aria-live="polite"><p class="eyebrow" id="experiment-tag">La mejor validación</p><h3 id="experiment-name">Dropout<span>02</span></h3><p id="experiment-description">Añade Dropout de 0,3 antes de la salida. Durante el entrenamiento desactiva al azar parte de las activaciones para reducir la dependencia de unas pocas señales.</p><div class="architecture-label">ARQUITECTURA</div><p id="experiment-architecture" class="architecture-line">Base + Dropout 0,3 antes de la salida</p><dl class="experiment-stats"><div><dt>Épocas ejecutadas</dt><dd id="experiment-epochs">5 / 12</dd></div><div><dt>Mejor época</dt><dd id="experiment-best">2</dd></div><div><dt>Tiempo de entrenamiento</dt><dd id="experiment-time">191,38 s</dd></div></dl></article></div>
+<div class="training-recipe"><span>SEMILLA <b>42</b></span><span>LOTE <b>256</b></span><span>OPTIMIZADOR <b>Adam</b></span><span>PÉRDIDA <b>Entropía cruzada binaria</b></span><span>PARADA <b>3 épocas sin mejora</b></span></div>
 </section>
-<!-- 6. EVALUACIÓN Y CRITERIOS DE COMPETICIÓN -->
-<section class="w-full bg-surface-container-low py-16 lg:py-20 border-y border-outline-variant/30" id="evaluacion">
-<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-<div class="max-w-3xl mb-10">
-<span class="font-code-sm text-xs uppercase tracking-wider text-secondary font-bold">MÉTRICAS OFICIALES TNM112-LAB2</span>
-<h2 class="font-headline-xl text-2xl sm:text-3xl font-bold text-primary mt-2">
-              Evaluación y Protocolo de Competición
-            </h2>
-<p class="font-body-lg text-base text-on-surface-variant mt-2 leading-relaxed">
-              Lineamientos técnicos, métrica oficial rectora y protocolo de validación para la competencia semestral de la cátedra UPCH 2026-II.
-            </p>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-<!-- Metric Card -->
-<div class="lg:col-span-6 bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between">
-<div>
-<div class="flex items-center justify-between pb-3 mb-4 border-b border-outline-variant/30">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-secondary-accent text-[22px]">calculate</span>
-<h3 class="font-headline-md text-base font-bold text-primary">Métrica Oficial: Balanced Accuracy</h3>
-</div>
-<span class="font-code-sm text-xs px-2.5 py-0.5 rounded-full bg-surface-container text-primary font-semibold">Kaggle Metric</span>
-</div>
-<div class="bg-surface-container-low p-4 rounded-xl font-code-md text-xs sm:text-sm text-primary mb-4 border border-outline-variant/30">
-<div class="text-center font-bold">
-                    Balanced Accuracy = ½ × ( Sensibilidad + Especificidad )
-                  </div>
-<div class="text-center text-outline text-xs mt-1">
-                    = ½ × [ TP / (TP + FN) + TN / (TN + FP) ]
-                  </div>
-</div>
-<p class="font-body-md text-xs sm:text-sm text-on-surface-variant leading-relaxed">
-                  A diferencia del Accuracy convencional, la <strong>Exactitud Balanceada</strong> penaliza severamente el sesgo predictivo hacia una sola clase. Calcula el promedio aritmético de la tasa de verdaderos positivos (sensibilidad) y de verdaderos negativos (especificidad), previniendo que clasificadores triviales monopolicen el ranking.
-                </p>
-</div>
-<div class="mt-6 pt-3 border-t border-outline-variant/20 flex items-center justify-between font-code-sm text-xs text-on-surface-variant">
-<span class="flex items-center gap-1">
-<span class="material-symbols-outlined text-tertiary-container text-[16px]">check_circle</span>
-                  Equivalente a Macro Recall
-                </span>
-<span class="text-secondary font-semibold">Rango: [0.0 - 1.0]</span>
-</div>
-</div>
-<!-- Rules & Leaderboard Split -->
-<div class="lg:col-span-6 flex flex-col space-y-4">
-<!-- Split Card -->
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm">
-<div class="flex items-center gap-2 mb-2">
-<span class="material-symbols-outlined text-primary text-[22px]">splitscreen</span>
-<h3 class="font-headline-sm text-base font-bold text-primary">Partición del Leaderboard de Kaggle</h3>
-</div>
-<p class="font-body-sm text-xs text-on-surface-variant mb-4 leading-relaxed">
-                  El conjunto de prueba ciego de Kaggle está rigurosamente fragmentado para mitigar el sobreajuste al test público:
-                </p>
-<div class="grid grid-cols-2 gap-4">
-<div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30">
-<span class="font-code-sm text-[10px] text-outline uppercase tracking-wider block">Público (30%)</span>
-<p class="font-headline-sm text-sm font-bold text-secondary mt-0.5">30% del test set</p>
-<p class="font-body-sm text-[11px] text-on-surface-variant mt-1">Retroalimentación visible y scoring durante la fase activa.</p>
-</div>
-<div class="p-3.5 rounded-xl bg-surface-container border border-outline-variant/30">
-<span class="font-code-sm text-[10px] text-outline uppercase tracking-wider block">Privado (70%)</span>
-<p class="font-headline-sm text-sm font-bold text-primary mt-0.5">70% del test set</p>
-<p class="font-body-sm text-[11px] text-on-surface-variant mt-1">Evaluación decisiva a ciegas al término del challenge.</p>
-</div>
-</div>
-</div>
-<!-- Rigor Academic Card -->
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm">
-<div class="flex items-center gap-2 mb-2">
-<span class="material-symbols-outlined text-secondary-accent text-[22px]">policy</span>
-<h3 class="font-headline-sm text-base font-bold text-primary">Rigor Académico y Envío Mínimo</h3>
-</div>
-<ul class="space-y-2 font-body-sm text-xs text-on-surface-variant leading-relaxed">
-<li class="flex items-start gap-2">
-<span class="material-symbols-outlined text-tertiary-container text-[16px] mt-0.5">done_all</span>
-<span><strong>Mínimo de 5 submissions válidas en Kaggle:</strong> Requisito cumplido: cinco envíos con estado Complete y puntuación pública superior a 0,5.</span>
-</li>
-<li class="flex items-start gap-2">
-<span class="material-symbols-outlined text-tertiary-container text-[16px] mt-0.5">done_all</span>
-<span><strong>Formato aceptado id,Class:</strong> ID de 0 a 32767. El notebook 03 genera los cinco CSV finales sin cambiar las clases.</span>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
+
+<section class="slide lavender" id="comparacion" aria-labelledby="title-comparacion" data-label="Comparación">
+<header class="section-head"><p class="eyebrow"><span>05</span> LA COMPARACIÓN</p><h2 id="title-comparacion">La mejor BA de validación:<br><em>Dropout.</em></h2><p class="lead">Elegimos el modelo con validación. La puntuación pública de Kaggle se consulta por separado.</p></header>
+<div class="chart-controls"><fieldset class="segmented"><legend class="sr-only">Conjunto de evaluación</legend><label><input type="radio" name="score-source" value="validation" checked><span>Validación</span></label><label><input type="radio" name="score-source" value="public"><span>Kaggle público</span></label></fieldset><label class="select-label" for="metric-select">Métrica<select id="metric-select"><option value="balanced_accuracy">Balanced accuracy</option><option value="accuracy">Accuracy</option><option value="precision">Precision</option><option value="recall">Recall</option><option value="f1">F1</option><option value="roc_auc">ROC AUC</option></select></label><button class="icon-button" data-zoom="#comparison-chart" data-zoom-title="Comparación de las cinco CNN" aria-label="Ampliar el gráfico de comparación"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg></button></div>
+<div class="comparison-layout"><figure class="comparison-figure"><svg id="comparison-chart" viewBox="0 0 820 390" role="img" aria-labelledby="comparison-chart-title comparison-chart-desc"></svg><figcaption id="comparison-caption">Balanced accuracy de validación · escala completa de 0 a 1.</figcaption></figure><aside class="result-callout"><span class="callout-label" id="score-label">DROPOUT · VALIDACIÓN</span><strong id="score-highlight">0,748689</strong><p id="score-description">Balanced accuracy</p><div class="callout-divider"></div><span class="delta">+0,0224 <small>puntos porcentuales</small></span><p class="small-note">Ventaja sobre la base en BA de validación. Es pequeña y se obtuvo con una sola semilla.</p></aside></div>
+<p id="metric-explainer" class="metric-explainer" aria-live="polite">Balanced accuracy: promedio del acierto dentro de cada clase.</p>
+<details class="data-table"><summary>Ver los valores exactos y sus archivos fuente</summary><div class="table-scroll"><table><caption>Métricas de validación y puntuación pública de Kaggle</caption><thead><tr><th>Modelo</th><th>BA validación</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>F1</th><th>ROC AUC</th><th>Kaggle público</th></tr></thead><tbody><tr><th>Base</th><td>0.748465</td><td>0.748474</td><td>0.753004</td><td>0.738836</td><td>0.745853</td><td>0.828812</td><td>0.73509</td></tr><tr><th>Dropout</th><td>0.748689</td><td>0.748718</td><td>0.765347</td><td>0.716721</td><td>0.740236</td><td>0.831596</td><td>0.73680</td></tr><tr><th>Aumento de datos</th><td>0.708144</td><td>0.708282</td><td>0.797848</td><td>0.557212</td><td>0.656163</td><td>0.788403</td><td>0.67441</td></tr><tr><th>Más profunda</th><td>0.698728</td><td>0.698853</td><td>0.772945</td><td>0.562343</td><td>0.651036</td><td>0.785630</td><td>0.67547</td></tr><tr><th>BatchNorm</th><td>0.689939</td><td>0.690186</td><td>0.910797</td><td>0.421040</td><td>0.575869</td><td>0.863333</td><td>0.65238</td></tr></tbody></table></div><p><a href="https://github.com/pao25-ing/Challenge3-MachineLearning/blob/main/results/cnn/metricas_validacion.csv">Métricas de validación ↗</a> · <a href="https://github.com/pao25-ing/Challenge3-MachineLearning/blob/main/results/cnn/envios_kaggle.csv">Registro de Kaggle ↗</a></p></details>
 </section>
-<!-- 7. RESULTADOS Y EVIDENCIAS DISPONIBLES (NUEVA SECCIÓN) -->
-<section class="w-full bg-surface py-16 lg:py-20" id="resultados">
-<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-<div class="max-w-3xl mb-10">
-<span class="font-code-sm text-xs uppercase tracking-wider text-secondary font-bold">ESTADO DE EXPERIMENTACIÓN</span>
-<h2 class="font-headline-xl text-2xl sm:text-3xl font-bold text-primary mt-2">
-              Resultados y Evidencias Disponibles
-            </h2>
-<p class="font-body-lg text-base text-on-surface-variant mt-2 leading-relaxed">
-              El análisis exploratorio y cinco configuraciones de CNN están ejecutados con datos oficiales. Los resultados de validación y las predicciones generadas están publicados en GitHub; los cinco envíos a Kaggle están completos; el mejor puntaje público es 0,73680.
-            </p>
-</div>
-<!-- Scientific Transparency Banner -->
-<div class="mb-8 p-4 rounded-xl bg-surface-container-low border border-secondary-accent/40 flex items-start gap-3"><span class="material-symbols-outlined text-secondary-accent text-[24px] mt-0.5">info</span>
-<div>
-<h4 class="font-headline-sm text-sm font-bold text-primary">Estado de la ejecución (UPCH 2026-II)</h4>
-<p class="font-body-sm text-xs text-on-surface-variant mt-1 leading-relaxed">
-Las cifras publicadas corresponden al análisis exploratorio y a una ejecución real de las cinco CNN en Kaggle. La mejor Balanced Accuracy de validación fue 0,748689 con umbral 0,5. Los cinco envíos terminaron con estado Complete y puntuaciones superiores a 0,5. La mayor puntuación pública es 0,73680.
-</p>
-</div></div>
-<!-- Experiment Table / Cards -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6"><div class="bg-surface-container-lowest p-6 rounded-2xl border border-tertiary-mint/40 shadow-sm flex flex-col justify-between">
-<div>
-<div class="flex items-center justify-between mb-3">
-<span class="font-code-sm text-[11px] px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-semibold">Evidencia Concluida</span>
-<span class="inline-flex items-center gap-1 font-code-sm text-[11px] text-tertiary-container font-medium">
-<span class="w-2 h-2 rounded-full bg-tertiary-mint"></span>
-Verificado en EDA
-</span>
-</div>
-<h3 class="font-headline-sm text-base font-bold text-primary">Balance Simétrico de Clases</h3>
-<p class="font-body-sm text-xs text-on-surface-variant mt-2 leading-relaxed">
-Análisis exploratorio verificado en <code class="text-primary font-semibold">01_analisis_dataset.ipynb</code>. Comprobación matemática de 49,964 vs 50,036 muestras en Train (~50/50) y 16,399 vs 16,369 en Validación.
-</p>
-<div class="mt-4 p-2.5 rounded-lg bg-surface-container-low text-xs font-code-sm text-tertiary-container">
-Estado: Concluido y graficado en /results/eda/
-</div>
-</div>
-<div class="mt-6 pt-3 border-t border-outline-variant/20 flex items-center justify-between text-xs font-code-sm text-outline">
-<span>Artefacto: distribucion_clases.png</span>
-<span class="text-tertiary-container font-semibold">[Comprobado]</span>
-</div>
-</div>
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-tertiary-mint/40 shadow-sm flex flex-col justify-between">
-<div>
-<div class="flex items-center justify-between mb-3">
-<span class="font-code-sm text-[11px] px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-semibold">Evidencia Concluida</span>
-<span class="inline-flex items-center gap-1 font-code-sm text-[11px] text-tertiary-container font-medium">
-<span class="w-2 h-2 rounded-full bg-tertiary-mint"></span>
-Verificado en EDA
-</span>
-</div>
-<h3 class="font-headline-sm text-base font-bold text-primary">Integridad de Tensores 32×32×3</h3>
-<p class="font-body-sm text-xs text-on-surface-variant mt-2 leading-relaxed">
-Inspección de archivos HDF5 sin datos nulos ni estructuras corruptas. Validación del formato numérico <code class="text-primary font-semibold">uint8 [0-255]</code> y generación de mosaicos de inspección visual celular.
-</p>
-<div class="mt-4 p-2.5 rounded-lg bg-surface-container-low text-xs font-code-sm text-tertiary-container">
-Estado: 165,536 matrices íntegras verificadas
-</div>
-</div>
-<div class="mt-6 pt-3 border-t border-outline-variant/20 flex items-center justify-between text-xs font-code-sm text-outline">
-<span>Artefacto: ejemplos_imagenes.png</span>
-<span class="text-tertiary-container font-semibold">[Comprobado]</span>
-</div>
-</div>
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-dashed border-secondary/40 shadow-sm flex flex-col justify-between"><div>
-<div class="flex items-center justify-between mb-3">
-<span class="font-code-sm text-[11px] px-2.5 py-0.5 rounded-full bg-surface-container text-secondary font-semibold">Ejecución verificada</span>
-<span class="inline-flex items-center gap-1 font-code-sm text-[11px] text-secondary font-medium">
-<span class="w-2 h-2 rounded-full bg-secondary-accent animate-ping"></span>
-CNN evaluada
-</span>
-</div>
-<h3 class="font-headline-sm text-base font-bold text-primary">Resultados reales de entrenamiento</h3>
-<p class="font-body-sm text-xs text-on-surface-variant mt-2 leading-relaxed">
-Se compararon cinco configuraciones. La CNN con Dropout obtuvo la mayor Balanced Accuracy de validación: 0,748689. Se publican el notebook ejecutado, las curvas de aprendizaje, la matriz de confusión y los cinco candidatos CSV. El formato aceptado se confirmó: id,Class con ID de 0 a 32767. El notebook 03 reproduce los CSV finales.
-</p>
-<div class="mt-4 p-2.5 rounded-lg bg-surface-container-low text-xs font-code-sm text-secondary">
-Modelo seleccionado: 02_dropout · CNN 16/32 · Dropout 0,3 · mejor época 2
-</div>
-</div>
-<div class="mt-6 pt-3 border-t border-outline-variant/20 flex items-center justify-between text-xs font-code-sm text-outline">
-<span>Métrica Oficial: Balanced Accuracy</span>
-<a class="text-secondary font-semibold" href="https://github.com/pao25-ing/Challenge3-MachineLearning/blob/main/results/cnn/README.md" target="_blank" rel="noopener noreferrer">[Ver resultados]</a>
-</div></div></div>
-</div>
+
+<section class="slide paper" id="aprendizaje" aria-labelledby="title-aprendizaje" data-label="El entrenamiento">
+<header class="section-head"><p class="eyebrow"><span>06</span> EL ENTRENAMIENTO</p><h2 id="title-aprendizaje">Aprender más tiempo<br>no siempre es <em>mejor.</em></h2></header>
+<div class="learning-layout"><figure class="learning-figure"><div class="figure-top"><fieldset class="segmented"><legend class="sr-only">Curva de entrenamiento</legend><label><input type="radio" name="learning-metric" value="balanced" checked><span>BA de validación</span></label><label><input type="radio" name="learning-metric" value="loss"><span>Pérdida</span></label></fieldset><button class="icon-button" data-zoom="#learning-chart" data-zoom-title="Evolución de Dropout durante el entrenamiento" aria-label="Ampliar las curvas de aprendizaje"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg></button></div><svg id="learning-chart" viewBox="0 0 780 420" role="img" aria-labelledby="learning-title learning-desc"></svg><figcaption id="learning-caption">Dropout · cinco épocas ejecutadas · escala de 0 a 1.</figcaption></figure>
+<div class="learning-story"><span class="huge-number">02<span>/05</span></span><h3>La segunda época<br>fue la mejor.</h3><p>Después de tres épocas sin mejorar la BA de validación, detuvimos el entrenamiento y restauramos ese punto.</p><p class="small-note">Curvas reales de la variante Dropout. El mejor punto se eligió por BA, no por la pérdida.</p></div></div>
 </section>
-<!-- 8. RECURSOS DEL REPOSITORIO (NUEVA SECCIÓN) -->
-<section class="w-full bg-surface-container-low py-16 lg:py-20 border-y border-outline-variant/30" id="recursos">
-<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-<div class="max-w-3xl mb-10">
-<span class="font-code-sm text-xs uppercase tracking-wider text-secondary font-bold">ECOSISTEMA DE CÓDIGO ABIERTO</span>
-<h2 class="font-headline-xl text-2xl sm:text-3xl font-bold text-primary mt-2">
-              Recursos y Código del Repositorio
-            </h2>
-<p class="font-body-lg text-base text-on-surface-variant mt-2 leading-relaxed">
-              Módulos reproducibles disponibles en el GitHub oficial de la investigación.
-            </p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10"><a class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm hover:border-primary hover:shadow-md transition-all flex flex-col justify-between group" href="https://github.com/pao25-ing/Challenge3-MachineLearning/blob/main/notebooks/01_analisis_dataset.ipynb" rel="noopener noreferrer" target="_blank">
-<div>
-<div class="flex items-center justify-between mb-4">
-<div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center">
-<span class="material-symbols-outlined text-[22px]">menu_book</span>
-</div>
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">open_in_new</span>
-</div>
-<h3 class="font-headline-sm text-base font-bold text-primary">Notebook de Análisis EDA</h3>
-<p class="font-body-sm text-xs text-on-surface-variant mt-2 leading-relaxed">
-Notebook Jupyter oficial con carga de archivos HDF5, análisis estadístico de etiquetas y generación de gráficos histológicos.
-</p>
-</div>
-<div class="mt-4 pt-2 font-code-sm text-xs text-secondary font-semibold flex items-center gap-1">
-<span>notebooks/01_analisis_dataset.ipynb</span>
-</div>
-</a>
-<a class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm hover:border-primary hover:shadow-md transition-all flex flex-col justify-between group" href="https://github.com/pao25-ing/Challenge3-MachineLearning/blob/main/scripts/analisis_dataset.py" rel="noopener noreferrer" target="_blank">
-<div>
-<div class="flex items-center justify-between mb-4">
-<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary transition-colors">
-<span class="material-symbols-outlined text-[22px]">terminal</span>
-</div>
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">open_in_new</span>
-</div>
-<h3 class="font-headline-sm text-base font-bold text-primary">Script de Procesamiento Python</h3>
-<p class="font-body-sm text-xs text-on-surface-variant mt-2 leading-relaxed">
-Script automatizado en Python para lectura directa con h5py, cálculo de frecuencias de clase e inspección de dimensiones.
-</p>
-</div>
-<div class="mt-4 font-code-sm text-xs text-tertiary-container font-semibold flex items-center gap-1">
-<span>scripts/analisis_dataset.py</span>
-</div>
-</a>
-<div class="mb-6 flex flex-wrap items-center gap-3">
-<a class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-body-md text-sm font-semibold shadow-sm transition-all" href="https://colab.research.google.com/github/pao25-ing/Challenge3-MachineLearning/blob/main/notebooks/01_analisis_dataset.ipynb" rel="noopener noreferrer" target="_blank">
-<span class="material-symbols-outlined text-[18px]">play_circle</span>
-<span>Abrir Notebook en Google Colab</span>
-</a>
-<a class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-surface-container-high hover:bg-surface-container text-primary font-body-md text-sm font-semibold transition-all" href="https://github.com/pao25-ing/Challenge3-MachineLearning/tree/main/results/eda" rel="noopener noreferrer" target="_blank">
-<span class="material-symbols-outlined text-[18px]">image</span>
-<span>Ver Evidencias y Gráficos del EDA</span>
-</a>
-<a class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-surface-container-lowest border border-outline-variant/40 hover:border-primary text-on-surface font-body-md text-sm font-semibold transition-all" href="https://github.com/pao25-ing/Challenge3-MachineLearning/tree/main/Documentaci%C3%B3n" rel="noopener noreferrer" target="_blank">
-<span class="material-symbols-outlined text-[18px] text-secondary">description</span>
-<span>Documentación de Modelos</span>
-</a>
-</div><a class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm hover:border-primary hover:shadow-md transition-all flex flex-col justify-between group" href="https://github.com/pao25-ing/Challenge3-MachineLearning/tree/main/results/eda" rel="noopener noreferrer" target="_blank">
-<div>
-<div class="flex items-center justify-between mb-4">
-<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-secondary group-hover:bg-primary-container group-hover:text-on-primary transition-colors">
-<span class="material-symbols-outlined text-[22px]">folder</span>
-</div>
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">open_in_new</span>
-</div>
-<h3 class="font-headline-sm text-base font-bold text-primary">Carpeta de Resultados EDA</h3>
-<p class="font-body-sm text-xs text-on-surface-variant mt-2 leading-relaxed">
-Directorio con gráficos generados: <code class="text-primary font-semibold">distribucion_clases.png</code> y mosaico histológico <code class="text-primary font-semibold">ejemplos_imagenes.png</code>.
-</p>
-</div>
-<div class="mt-4 font-code-sm text-xs text-secondary font-semibold flex items-center gap-1">
-<span>results/eda/</span>
-</div>
-</a></div>
-<!-- Quick Code Repository Directory Tree -->
-<div class="mb-6 flex flex-wrap items-center gap-3">
-<a class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-body-md text-sm font-semibold shadow-sm transition-all" href="https://colab.research.google.com/github/pao25-ing/Challenge3-MachineLearning/blob/main/notebooks/01_analisis_dataset.ipynb" rel="noopener noreferrer" target="_blank">
-<span class="material-symbols-outlined text-[18px]">play_circle</span>
-<span>Abrir Notebook en Google Colab</span>
-</a>
-<a class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-surface-container-high hover:bg-surface-container text-primary font-body-md text-sm font-semibold transition-all" href="https://github.com/pao25-ing/Challenge3-MachineLearning/tree/main/results/eda" rel="noopener noreferrer" target="_blank">
-<span class="material-symbols-outlined text-[18px]">image</span>
-<span>Ver Evidencias y Gráficos del EDA</span>
-</a>
-<a class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-surface-container-lowest border border-outline-variant/40 hover:border-primary text-on-surface font-body-md text-sm font-semibold transition-all" href="https://github.com/pao25-ing/Challenge3-MachineLearning/tree/main/Documentaci%C3%B3n" rel="noopener noreferrer" target="_blank">
-<span class="material-symbols-outlined text-[18px] text-secondary">description</span>
-<span>Documentación de Modelos</span>
-</a>
-</div><div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm">
-<div class="flex items-center justify-between pb-3 mb-3 border-b border-outline-variant/30">
-<span class="font-code-sm text-xs uppercase tracking-wider text-secondary font-bold">ESTRUCTURA DEL PROYECTO EN GITHUB</span>
-<span class="font-code-sm text-xs text-outline">Branch: main</span>
-</div>
-<pre class="font-code-sm text-xs text-primary bg-surface-container-low p-4 rounded-xl overflow-x-auto leading-relaxed">Challenge3-MachineLearning/
-├── Documentación/                # Informe final y documentos del proyecto
-├── notebooks/
-│   ├── 01_analisis_dataset.ipynb  # Análisis ejecutado
-│   ├── 02_entrenamiento_cnn.ipynb # Cinco CNN ejecutadas
-│   └── 03_preparacion_envios.ipynb # CSV finales verificados
-├── scripts/
-│   └── analisis_dataset.py        # Script Python para lectura y verificación de tensores
-├── results/
-│   └── eda/                       # Gráficos auténticos generados
-│       ├── distribucion_clases.png
-│       └── ejemplos_imagenes.png
-├── README.md                      # Documentación del proyecto UPCH Grupo 1
-└── .gitignore</pre>
-</div>
-</div>
+
+<section class="slide dark" id="errores" aria-labelledby="title-errores" data-label="Los errores">
+<header class="section-head"><p class="eyebrow"><span>07</span> MIRAR LOS ERRORES</p><h2 id="title-errores">¿Dónde se<br><em>equivoca?</em></h2><p class="lead">La matriz de confusión de Dropout muestra sus aciertos y sus límites en validación. Toca cada celda.</p></header>
+<div class="error-layout"><figure class="matrix-figure"><div class="matrix-col-label">CLASE PREDICHA</div><div class="matrix"><span></span><span class="matrix-heading">Clase 0</span><span class="matrix-heading">Clase 1</span><span class="matrix-heading row-heading">Real 0</span><button data-cell="0" class="matrix-cell correct"><strong>12 802</strong><span>Aciertos de clase 0</span></button><button data-cell="1" class="matrix-cell incorrect"><strong>3 597</strong><span>Falsos positivos</span></button><span class="matrix-heading row-heading">Real 1</span><button data-cell="2" class="matrix-cell incorrect selected" aria-pressed="true"><strong>4 637</strong><span>Falsos negativos</span></button><button data-cell="3" class="matrix-cell correct"><strong>11 732</strong><span>Aciertos de clase 1</span></button></div><figcaption>32 768 imágenes · filas: clase real · columnas: predicción</figcaption><button class="text-button light" data-zoom="#matrix-original" data-zoom-title="Matriz de confusión de Dropout · validación">Ampliar gráfico original <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg></button></figure>
+<div class="error-story"><p class="eyebrow" id="cell-label">FALSOS NEGATIVOS</p><h3 id="cell-title">4 637 fragmentos<br>no detectados.</h3><p id="cell-description" aria-live="polite">Tenían etiqueta de clase 1, pero la red los clasificó como clase 0.</p><dl class="error-stats"><div><dt>Acierto en clase 1<br><span>Sensibilidad</span></dt><dd>71,67<small> %</small></dd></div><div><dt>Acierto en clase 0<br><span>Especificidad</span></dt><dd>78,07<small> %</small></dd></div></dl><p class="formula">BA = (71,67 % + 78,07 %) / 2 ≈ 74,87 %</p></div></div>
 </section>
-<!-- 9. JUSTIFICACIÓN DE ELECCIÓN -->
-<section class="w-full bg-surface py-16 lg:py-20">
-<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-<div class="max-w-3xl mb-10">
-<span class="font-code-sm text-xs uppercase tracking-wider text-secondary font-bold">RELEVANCIA DEL DESAFÍO</span>
-<h2 class="font-headline-xl text-2xl sm:text-3xl font-bold text-primary mt-2">
-              ¿Por qué este desafío?
-            </h2>
-<p class="font-body-lg text-base text-on-surface-variant mt-2 leading-relaxed">
-              Tres pilares fundamentales que articulan la pertinencia científica y formativa de abordar el problema de clasificación histopatológica PatchCamelyon.
-            </p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between">
-<div>
-<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center font-headline-sm text-sm font-bold text-primary mb-4">
-                  1
-                </div>
-<h3 class="font-headline-md text-base font-bold text-primary">Clasificación Supervisada Robusta</h3>
-<p class="font-body-md text-xs sm:text-sm text-on-surface-variant mt-2 leading-relaxed">
-                  Ofrece una formulación binaria rigurosamente etiquetada sobre el ROI central de 32×32 px. Constituye un laboratorio experimental idóneo para contrastar arquitecturas convolucionales modernas, estrategias de regularización y funciones de pérdida diseñadas contra el desbalance.
-                </p>
-</div>
-<div class="mt-6 pt-2 text-secondary font-code-sm text-xs">
-                #SupervisedLearning #Classification
-              </div>
-</div>
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between">
-<div>
-<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center font-headline-sm text-sm font-bold text-primary mb-4">
-                  2
-                </div>
-<h3 class="font-headline-md text-base font-bold text-primary">Frontera en Visión por Computadora</h3>
-<p class="font-body-md text-xs sm:text-sm text-on-surface-variant mt-2 leading-relaxed">
-                  La imagen histológica difiere radicalmente de fotografías naturales. Exige a los modelos capturar invariancia rotacional, modelar variaciones cromáticas de tinción de laboratorio (color jitter de hematoxilina y eosina) y discernir texturas celulares microscópicas densas.
-                </p>
-</div>
-<div class="mt-6 pt-2 text-secondary font-code-sm text-xs">
-                #ComputerVision #StainInvariance
-              </div>
-</div>
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between">
-<div>
-<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center font-headline-sm text-sm font-bold text-primary mb-4">
-                  3
-                </div>
-<h3 class="font-headline-md text-base font-bold text-primary">Impacto en Salud e Investigación</h3>
-<p class="font-body-md text-xs sm:text-sm text-on-surface-variant mt-2 leading-relaxed">
-                  Permite a los estudiantes de ciencias de la computación e ingeniería biomédica enfrentarse a datos biológicos reales, dimensionando la trascendencia de la especificidad y la sensibilidad cuando un algoritmo asiste en la estratificación oncológica.
-                </p>
-</div>
-<div class="mt-6 pt-2 text-secondary font-code-sm text-xs">
-                #BiomedicalAI #TranslationalResearch
-              </div>
-</div>
-</div>
-</div>
+
+<section class="slide mint-paper" id="kaggle" aria-labelledby="title-kaggle" data-label="Kaggle">
+<header class="section-head"><p class="eyebrow"><span>08</span> LA ENTREGA EN KAGGLE</p><h2 id="title-kaggle">Del notebook<br><em>a la competición.</em></h2><p class="lead">Los cinco envíos quedaron completos. Dropout y la base se seleccionaron para la evaluación final.</p></header>
+<div class="kaggle-layout"><div class="submission-receipt"><div class="receipt-top"><span>TNM112-Lab2 / 2026</span><span class="status-dot">Complete</span></div><p class="eyebrow">DROPOUT · PUNTUACIÓN PÚBLICA</p><strong class="receipt-score">0,73680</strong><div class="receipt-bottom"><span>5 de 5 envíos completos</span><span>15 NOV 2026</span></div></div><div class="submission-info"><h3>Un archivo.<br>32 768 predicciones.</h3><div class="csv-sample"><span>submission.csv</span><code>id,Class</code><p>id: de 0 a 32767<br>Class: 0 o 1<br>Mismo orden que test.h5</p></div><p class="small-note">La puntuación pública usa una parte de prueba. No equivale al resultado privado final.</p><a class="pill-button plum" href="https://github.com/pao25-ing/Challenge3-MachineLearning/blob/main/docs/ENTREGA_KAGGLE.md">Ver evidencia de los envíos <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div></div>
 </section>
-<!-- 10. EQUIPO Y DOCENTE RESPONSABLE -->
-<section class="w-full bg-surface-container-low py-16 lg:py-20 border-t border-outline-variant/30" id="equipo">
-<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-<div class="max-w-3xl mb-10">
-<span class="font-code-sm text-xs uppercase tracking-wider text-secondary font-bold">UNIVERSIDAD PERUANA CAYETANO HEREDIA</span>
-<h2 class="font-headline-xl text-2xl sm:text-3xl font-bold text-primary mt-2">
-              Grupo 1 · Challenge 3
-            </h2>
-<p class="font-body-lg text-base text-on-surface-variant mt-2 leading-relaxed">
-              Equipo de investigación del curso de Machine Learning, semestre académico 2026-II.
-            </p>
-</div>
-<!-- Student Members Grid -->
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10"><!-- Member 1 -->
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between">
-<div>
-<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center font-headline-sm text-sm font-bold text-primary mb-4">
-CA
-</div>
-<h3 class="font-headline-sm text-sm font-bold text-primary">César Alejandro Aarón Apcho Meneses</h3>
-<p class="font-code-sm text-xs text-secondary font-semibold mt-1">Estudiante Investigador · Grupo 1</p>
-<p class="font-body-sm text-xs text-on-surface-variant mt-3 leading-relaxed">
-Integrante del Grupo 1 del Challenge 3 de Machine Learning.
-</p>
-</div>
-<div class="mt-4 pt-2 flex items-center gap-1 font-code-sm text-[11px] text-outline">
-<span class="material-symbols-outlined text-[14px]">school</span>
-<span>UPCH 2026-II</span>
-</div>
-</div>
-<!-- Member 2 -->
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between">
-<div>
-<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center font-headline-sm text-sm font-bold text-secondary mb-4">
-PC
-</div>
-<h3 class="font-headline-sm text-sm font-bold text-primary">Paola Andrea Centeno Bazán</h3>
-<p class="font-code-sm text-xs text-secondary font-semibold mt-1">Estudiante Investigadora · Grupo 1</p>
-<p class="font-body-sm text-xs text-on-surface-variant mt-3 leading-relaxed">
-Integrante del Grupo 1 del Challenge 3 de Machine Learning.
-</p>
-</div>
-<div class="mt-4 pt-2 flex items-center gap-1 font-code-sm text-[11px] text-outline">
-<span class="material-symbols-outlined text-[14px]">school</span>
-<span>UPCH 2026-II</span>
-</div>
-</div>
-<!-- Member 3 -->
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between">
-<div>
-<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center font-headline-sm text-sm font-bold text-primary mb-4">
-AD
-</div>
-<h3 class="font-headline-sm text-sm font-bold text-primary">Anderson Josué Delerna Infantes</h3>
-<p class="font-code-sm text-xs text-secondary font-semibold mt-1">Estudiante Investigador · Grupo 1</p>
-<p class="font-body-sm text-xs text-on-surface-variant mt-3 leading-relaxed">
-Integrante del Grupo 1 del Challenge 3 de Machine Learning.
-</p>
-</div>
-<div class="mt-4 pt-2 flex items-center gap-1 font-code-sm text-[11px] text-outline">
-<span class="material-symbols-outlined text-[14px]">school</span>
-<span>UPCH 2026-II</span>
-</div>
-</div>
-<!-- Member 4 -->
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between">
-<div>
-<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center font-headline-sm text-sm font-bold text-secondary mb-4">
-JV
-</div>
-<h3 class="font-headline-sm text-sm font-bold text-primary">Jimena Natalia Vega Sánchez</h3>
-<p class="font-code-sm text-xs text-secondary font-semibold mt-1">Estudiante Investigadora · Grupo 1</p>
-<p class="font-body-sm text-xs text-on-surface-variant mt-3 leading-relaxed">
-Integrante del Grupo 1 del Challenge 3 de Machine Learning.
-</p>
-</div>
-<div class="mt-4 pt-2 flex items-center gap-1 font-code-sm text-[11px] text-outline">
-<span class="material-symbols-outlined text-[14px]">school</span>
-<span>UPCH 2026-II</span>
-</div>
-</div></div>
-<!-- Docente Responsable -->
-<div class="bg-surface-container-high p-6 rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4"><div class="flex items-center gap-4">
-<div class="w-14 h-14 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-headline-md text-base font-bold shrink-0">
-YC
-</div>
-<div>
-<span class="font-code-sm text-xs text-secondary font-bold uppercase tracking-wider">Docente Cátedra · UPCH</span>
-<h3 class="font-headline-md text-base font-bold text-primary">Yannick Patrick Carrasco Merma</h3>
-<p class="font-body-md text-xs sm:text-sm text-on-surface-variant">Docente del curso de Machine Learning · Universidad Peruana Cayetano Heredia</p>
-</div>
-</div>
-<div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-container-lowest border border-outline-variant/30 font-code-sm text-xs text-primary font-semibold">
-<span class="material-symbols-outlined text-secondary text-[18px]">verified_user</span>
-<span>Supervisión Académica UPCH</span>
-</div></div>
-</div>
+
+<section class="slide paper conclusion" id="conclusiones" aria-labelledby="title-conclusiones" data-label="Conclusiones">
+<header class="section-head"><p class="eyebrow"><span>09</span> LO QUE APRENDIMOS</p><h2 id="title-conclusiones">Una mejora pequeña.<br>Una conclusión <em>honesta.</em></h2></header>
+<div class="takeaways"><article><span>01</span><h3>Más complejidad<br>no aseguró más aciertos.</h3><p>Las variantes profunda y BatchNorm tuvieron menor BA que la base en validación.</p></article><article><span>02</span><h3>Dropout ganó<br>por muy poco.</h3><p>Su ventaja fue de 0,0224 puntos porcentuales. Una sola semilla no prueba que la mejora sea estable.</p></article><article><span>03</span><h3>Los errores<br>también cuentan.</h3><p>El modelo omitió 4 637 fragmentos de clase 1. La matriz ayuda a ver lo que el puntaje resume.</p></article></div>
+<p class="next-step"><span>SIGUIENTE PASO</span> Repetir con más semillas y evaluar si la ventaja se mantiene.</p>
 </section>
-<!-- 11. REFERENCIAS Y DISCLAIMER -->
-<section class="w-full bg-surface py-16" id="referencias">
-<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-<div class="mb-8">
-<span class="font-code-sm text-xs uppercase tracking-wider text-secondary font-bold">REPOSITORIOS Y LITERATURA</span>
-<h2 class="font-headline-lg text-xl sm:text-2xl font-bold text-primary mt-1">
-              Referencias y Enlaces Oficiales
-            </h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-<!-- GitHub Link -->
-<a class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/40 shadow-sm hover:shadow-md transition-all flex items-center justify-between group" href="https://github.com/pao25-ing/Challenge3-MachineLearning" rel="noopener noreferrer" target="_blank">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-lg bg-black text-white flex items-center justify-center">
-<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill-rule="evenodd"></path></svg>
-</div>
-<div>
-<h3 class="font-headline-sm text-sm font-bold text-primary">Repositorio GitHub</h3>
-<p class="font-body-sm text-xs text-on-surface-variant">pao25-ing/Challenge3-MachineLearning</p>
-</div>
-</div>
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_forward</span>
-</a>
-<!-- Kaggle Link -->
-<a class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/40 shadow-sm hover:shadow-md transition-all flex items-center justify-between group" href="https://www.kaggle.com/competitions/tnm-112-lab-2-2026" rel="noopener noreferrer" target="_blank">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary transition-colors">
-<span class="material-symbols-outlined text-[22px]">terminal</span>
-</div>
-<div>
-<h3 class="font-headline-sm text-sm font-bold text-primary">Kaggle TNM112-Lab2</h3>
-<p class="font-body-sm text-xs text-on-surface-variant">Competición y Leaderboard 2026</p>
-</div>
-</div>
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_forward</span>
-</a>
-<!-- Paper Link -->
-<a class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/40 shadow-sm hover:shadow-md transition-all flex items-center justify-between group" href="https://arxiv.org/abs/1806.03962" rel="noopener noreferrer" target="_blank">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary group-hover:bg-primary-container group-hover:text-on-primary transition-colors">
-<span class="material-symbols-outlined text-[22px]">menu_book</span>
-</div>
-<div>
-<h3 class="font-headline-sm text-sm font-bold text-primary">Paper Veeling et al. (2018)</h3>
-<p class="font-body-sm text-xs text-on-surface-variant">PCam Benchmark (arXiv:1806.03962)</p>
-</div>
-</div>
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_forward</span>
-</a>
-</div>
-<!-- Formal Academic Disclaimer -->
-<div class="bg-surface-container-lowest p-6 rounded-2xl border border-error/30 shadow-sm">
-<div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-error text-[26px] mt-0.5">gavel</span>
-<div>
-<h4 class="font-headline-sm text-sm font-bold text-primary">
-                  Aviso Ético, Regulatorio y Responsabilidad Académica
-                </h4>
-<p class="font-body-md text-xs sm:text-sm text-on-surface-variant mt-1 leading-relaxed">
-                  Este proyecto corresponde a una actividad académica y de investigación formativa para el curso de Machine Learning de la Universidad Peruana Cayetano Heredia (semestre académico 2026-II). El software y modelos desarrollados <strong>no constituyen un dispositivo médico de diagnóstico clínico in vitro</strong> ni cuentan con certificación sanitaria para uso terapéutico en seres humanos. Cualquier hallazgo computacional debe ser corroborado por patólogos colegiados mediante biopsia histopatológica formal.
-                </p>
-</div>
-</div>
-</div>
-</div>
+
+<section class="slide final-section" id="entrega" aria-labelledby="title-entrega" data-label="Entrega y fuentes">
+<div class="final-top"><header class="section-head"><p class="eyebrow"><span>10</span> ENTREGA Y FUENTES</p><h2 id="title-entrega">El trabajo, <em>abierto.</em></h2><p class="lead">Los datos, el análisis y las decisiones quedan documentados en el repositorio.</p></header><a class="pill-button plum" href="https://github.com/pao25-ing/Challenge3-MachineLearning">Abrir GitHub <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
+<div class="delivery-layout"><div class="delivery-links"><a href="https://github.com/pao25-ing/Challenge3-MachineLearning/blob/main/notebooks/01_analisis_dataset.ipynb"><span>01</span><div><strong>Explorar los datos</strong><small>Notebook ejecutado · carga y análisis</small></div><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><a href="https://github.com/pao25-ing/Challenge3-MachineLearning/blob/main/notebooks/02_entrenamiento_cnn.ipynb"><span>02</span><div><strong>Revisar el entrenamiento</strong><small>Las cinco CNN · métricas y curvas</small></div><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><a href="https://github.com/pao25-ing/Challenge3-MachineLearning/blob/main/Documentaci%C3%B3n/INFORME_FINAL.md"><span>03</span><div><strong>Leer el informe final</strong><small>Método · resultados · conclusiones</small></div><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><a href="https://github.com/pao25-ing/Challenge3-MachineLearning/blob/main/results/cnn/submission.csv"><span>04</span><div><strong>Consultar el CSV definitivo</strong><small>id,Class · entrega a Kaggle</small></div><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
+<div class="team"><p class="eyebrow">GRUPO 1 · UPCH · 2026-II</p><ul><li>César Alejandro Aarón Apcho Meneses</li><li>Paola Andrea Centeno Bazán</li><li>Anderson Josué Delerna Infantes</li><li>Jimena Natalia Vega Sánchez</li></ul><p class="small-note">Docente<br><strong>Yannick Patrick Carrasco Merma</strong></p></div></div>
+<details class="references"><summary>Fuentes y trazabilidad de los resultados</summary><ol><li><a href="https://www.kaggle.com/competitions/tnm-112-lab-2-2026">TNM112-Lab2 (2026) · competición y reglas.</a></li><li><a href="https://patchcamelyon.grand-challenge.org/">PatchCamelyon · conjunto de datos original.</a></li><li><a href="https://arxiv.org/abs/1806.03962">Veeling et al. (2018) · Rotation Equivariant CNNs for Digital Pathology.</a></li><li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html">Scikit-learn · definición de balanced accuracy.</a></li></ol><p>Resultados: <a href="https://github.com/pao25-ing/Challenge3-MachineLearning/tree/main/results/cnn">results/cnn</a>. Imágenes y conteos: <a href="https://github.com/pao25-ing/Challenge3-MachineLearning/blob/main/notebooks/01_analisis_dataset.ipynb">notebook 01</a>. Registro de Kaggle: 15 de noviembre de 2026. Las figuras de la CNN son esquemas explicativos.</p></details>
+<footer class="site-footer"><a class="brand" href="#inicio"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>PCam<span class="brand-light"> Vision</span></span></a><span>Challenge 3 · Clasificación supervisada</span><a href="#inicio">Volver al inicio ↑</a></footer>
 </section>
-</div>
 </main>
-<section class="max-w-5xl mx-auto px-6 py-10" id="entrega-final"><h2 class="text-2xl font-bold">Entrega final: cinco envíos válidos</h2><p>Los cinco archivos terminaron con estado Complete. Mejor puntuación pública: <strong>0,73680</strong> con Dropout. El modelo se seleccionó con validación antes de consultar el leaderboard.</p><p><a href="presentacion-final.html">Abrir presentación final imprimible</a> · <a href="https://github.com/pao25-ing/Challenge3-MachineLearning/blob/main/Documentaci%C3%B3n/INFORME_FINAL.md">Informe final</a> · <a href="https://github.com/pao25-ing/Challenge3-MachineLearning/blob/main/docs/ENTREGA_KAGGLE.md">Guía y puntuaciones</a></p></section>
-<!-- FOOTER -->
-<footer class="w-full bg-surface-container-low border-t border-outline-variant/30">
-<div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
-<div class="space-y-3">
-<div class="flex items-center gap-2">
-<span class="font-headline-sm text-base font-extrabold text-primary">PCam Vision</span>
-<span class="font-code-sm text-[11px] px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-semibold">v1.2-repo</span>
-</div>
-<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
-            Portal integral de investigación y clasificación automatizada de metástasis ganglionar en biopsias de cáncer de mama sobre el dataset PatchCamelyon.
-          </p>
-<p class="font-code-sm text-[11px] text-outline uppercase tracking-wider">Universidad Peruana Cayetano Heredia</p>
-</div>
-<div class="space-y-3">
-<h3 class="font-label-md text-xs text-on-surface font-bold uppercase tracking-wider">Repositorio &amp; Código</h3>
-<ul class="space-y-2 text-xs font-body-sm">
-<li>
-<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5" href="https://github.com/pao25-ing/Challenge3-MachineLearning" rel="noopener noreferrer" target="_blank">
-<span class="material-symbols-outlined text-[15px] text-secondary">code</span>
-<span>GitHub: Challenge3-MachineLearning</span>
-</a>
-</li>
-<li>
-<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5" href="https://www.kaggle.com/competitions/tnm-112-lab-2-2026" rel="noopener noreferrer" target="_blank">
-<span class="material-symbols-outlined text-[15px] text-secondary">terminal</span>
-<span>Kaggle: TNM112-Lab2 Challenge</span>
-</a>
-</li>
-<li>
-<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5" href="https://arxiv.org/abs/1806.03962" rel="noopener noreferrer" target="_blank">
-<span class="material-symbols-outlined text-[15px] text-secondary">menu_book</span>
-<span>Paper PCam (Veeling et al. 2018)</span>
-</a>
-</li>
-</ul>
-</div>
-<div class="space-y-3">
-<h3 class="font-label-md text-xs text-on-surface font-bold uppercase tracking-wider">Estructura de Trabajo</h3>
-<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
-            Desarrollado para el Machine Learning Challenge 3 por el Grupo 1 (UPCH 2026-II). Procesamiento sobre 165,536 parches H&amp;E en formato binario HDF5 (32×32 px).
-          </p>
-<div class="flex flex-wrap gap-1.5 pt-1">
-<span class="font-code-sm text-[10px] px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-medium">HDF5</span>
-<span class="font-code-sm text-[10px] px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-medium">TensorFlow/Keras</span>
-<span class="font-code-sm text-[10px] px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-medium">CNN con Dropout</span>
-<span class="font-code-sm text-[10px] px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-medium">Balanced Acc</span>
-</div>
-</div>
-<div class="space-y-3">
-<h3 class="font-label-md text-xs text-on-surface font-bold uppercase tracking-wider">Supervisión Académica</h3>
-<div class="p-3 rounded-xl bg-surface-container-high border border-outline-variant/30 text-xs font-body-sm text-on-surface-variant">
-<p class="font-semibold text-primary">División de Machine Learning UPCH</p>
-<p class="mt-1">Tutor: Yannick Patrick Carrasco Merma</p>
-<p class="text-[11px] text-outline mt-1">Facultad de Ciencias e Ingeniería</p>
-</div>
-</div>
-</div>
-<div class="pt-6 border-t border-outline-variant/30 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-body-sm">
-<p class="text-outline">© 2026 Universidad Peruana Cayetano Heredia · Grupo 1 · Machine Learning Challenge 3</p>
-<div class="flex items-center gap-3 text-on-surface-variant font-code-sm"><span class="inline-flex items-center gap-1.5">
-<span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
-Investigación en Desarrollo
-</span>
-<span>UPCH Ingeniería Biomédica / Informática</span></div>
-</div>
-</div>
-</footer>
-
-
-</body></html>
+<aside id="speaker-notes" class="speaker-notes" aria-labelledby="notes-heading" hidden><div class="notes-top"><span class="eyebrow">APOYO PARA EXPONER</span><button id="notes-close" class="icon-button" aria-label="Cerrar notas"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div><h2 id="notes-heading">Presentación</h2><p id="notes-body">Somos el Grupo 1 de Machine Learning de la UPCH. Estudiamos si una red neuronal convolucional puede distinguir fragmentos con y sin tejido metastásico en el reto TNM112-Lab2. Vamos a explicar los datos, las cinco variantes y los resultados reales.</p><p class="notes-hint">Las notas siguen la sección que estás viendo.<br>Si compartes toda la pantalla, también serán visibles.</p></aside>
+<nav class="presentation-controls" aria-label="Navegación de exposición" hidden><button id="slide-prev" class="round-button" aria-label="Diapositiva anterior"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></button><span id="slide-position" aria-live="polite">01 / 11</span><span id="slide-label">Presentación</span><button id="slide-next" class="round-button" aria-label="Diapositiva siguiente"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button><span class="control-divider"></span><button id="fullscreen-toggle" class="icon-button" aria-label="Pantalla completa" aria-pressed="false" title="Pantalla completa"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg></button><button id="end-presentation" class="quiet-button">Salir <kbd>Esc</kbd></button></nav>
+<dialog id="zoom-dialog" class="zoom-dialog" aria-labelledby="zoom-heading"><div class="zoom-top"><h2 id="zoom-heading">Vista ampliada</h2><button id="zoom-close" class="round-button" aria-label="Cerrar vista ampliada"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div><div id="zoom-content" class="zoom-content"></div><p class="zoom-hint">Puedes desplazarte si la imagen supera el tamaño de la pantalla. Esc para cerrar.</p></dialog>
+<div hidden id="figure-sources"><img id="sample-sheet" src="assets/tejidos-pcam.png" width="1025" height="1120" alt="Dieciséis muestras reales de PCam, agrupadas por entrenamiento y validación, clases 0 y 1, con sus índices originales."><img id="matrix-original" src="assets/matriz-confusion.png" alt="Matriz de confusión de Dropout. Real 0: 12802 predichos 0 y 3597 predichos 1. Real 1: 4637 predichos 0 y 11732 predichos 1."></div>
+<p id="app-status" class="sr-only" role="status"></p>
+<noscript><div class="noscript-message">Puedes leer el contenido y consultar la tabla de resultados. Activa JavaScript para usar el modo de exposición, las notas, la ampliación y los gráficos interactivos.</div></noscript>
+</body>
+</html>
