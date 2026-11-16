@@ -43,10 +43,10 @@ Explora el proyecto del **Grupo 1** en nuestra landing page: conoce la competici
 
 - [Entrega final, puntajes y archivos](docs/ENTREGA_KAGGLE.md).
 - [Informe final con resultados](Documentación/INFORME_FINAL.md).
-- [Presentación final imprimible](docs/presentacion-final.html).
+- [Presentación final en Canva](https://www.canva.com/d/eCWoPajRcTAC_-C) y [copia imprimible](docs/presentacion-final.html).
 - [CSV definitivo](results/cnn/submission.csv) y [notebook de exportación](notebooks/03_preparacion_envios.ipynb).
 
-El formato aceptado por Kaggle es **id,Class**, con ID **0 a 32767**. Los archivos `candidato_*` y los PDF iniciales conservan la propuesta anterior; para entregar usar los materiales finales enlazados arriba. El enlace nativo de Canva sigue pendiente de autorización para importar la copia corregida.
+El formato aceptado por Kaggle es **id,Class**, con ID **0 a 32767**. Los archivos `candidato_*` y los PDF iniciales conservan la propuesta anterior; para entregar usar los materiales finales enlazados arriba. La [presentación final en Canva](https://www.canva.com/d/eCWoPajRcTAC_-C) ya contiene las 16 diapositivas con los cuatro autores y los resultados reales.
 
 Según la indicación del docente, una sola cuenta presenta el trabajo en Kaggle e incluye a los cuatro integrantes en la descripción del notebook. No es necesario incorporar las cuatro cuentas a un equipo de competición.
 

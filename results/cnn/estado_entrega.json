@@ -22,5 +22,16 @@
   },
   "procedencia_puntuaciones": "Observación de la página Submissions en esta conversación, antes de la indisponibilidad del navegador.",
   "puntuacion_privada": "Pendiente de publicación por el organizador",
-  "canva": "Importación bloqueada por revisión automática: autorización explícita pendiente"
+  "canva": {
+    "estado": "presentacion_creada",
+    "design_id": "DAHbHpnj9J0",
+    "diapositivas": 16,
+    "url_consulta": "https://www.canva.com/d/eCWoPajRcTAC_-C",
+    "contenido_verificado": {
+      "cuatro_autores": true,
+      "cinco_puntajes_publicos": true,
+      "formato_csv": "id,Class"
+    },
+    "acceso_terceros": "No comprobado; sujeto a los permisos del diseño"
+  }
 }

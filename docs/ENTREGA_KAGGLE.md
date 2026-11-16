@@ -17,7 +17,8 @@ Las puntuaciones se registraron al observar la página Submissions durante esta 
 
 ## Material final
 - [Informe final con método y resultados](../Documentación/INFORME_FINAL.md).
-- [Presentación final para lectura e impresión](presentacion-final.html).
+- [Presentación final en Canva, 16 diapositivas](https://www.canva.com/d/eCWoPajRcTAC_-C).
+- [Copia HTML para lectura e impresión](presentacion-final.html).
 - [Notebook 01: análisis ejecutado](../notebooks/01_analisis_dataset.ipynb).
 - [Notebook 02: entrenamiento ejecutado](../notebooks/02_entrenamiento_cnn.ipynb).
 - [Notebook 03: exportación final y verificación de los CSV](../notebooks/03_preparacion_envios.ipynb).
@@ -66,7 +67,7 @@ El informe final en Markdown y la presentación HTML describen la implementació
 
 Los PDF anteriores del repositorio conservan la propuesta inicial y no reflejan todos estos resultados. Los PDF corregidos preparados en la conversación no llegaron a publicarse antes de que el entorno dejara de estar disponible. **Para revisar la versión vigente, utilizar los documentos finales enlazados arriba.**
 
-La rúbrica solicita un enlace nativo compartido de Canva o Google Slides. No se pudo acceder al diseño original de Canva con la cuenta conectada. La revisión automática rechazó importar una copia corregida a Canva porque faltaba autorización explícita para compartir allí los nombres y resultados del grupo. Ese enlace sigue pendiente de autorización. No se afirma que exista una presentación nativa compartida verificada.
+La presentación final se importó a Canva después de recibir autorización del usuario. Se verificaron las **16 diapositivas**, los cuatro nombres, la arquitectura, el formato `id,Class` y los cinco puntajes públicos. [Abrir presentación en Canva](https://www.canva.com/d/eCWoPajRcTAC_-C). El enlace de consulta es el devuelto por Canva. El acceso de una persona ajena a la cuenta conectada no se comprobó; si Canva solicita permiso al docente, debe concederse desde Compartir en el diseño.
 
 Los modelos permanecen en los outputs privados de Kaggle. El envío de los pesos a GitHub no forma parte de esta publicación.
 

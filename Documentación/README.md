@@ -1,9 +1,10 @@
 # Material vigente de entrega
 
+- [Presentación final en Canva, 16 diapositivas](https://www.canva.com/d/eCWoPajRcTAC_-C).
 - [Informe final con método y resultados](INFORME_FINAL.md).
-- [Presentación final imprimible](../docs/presentacion-final.html).
+- [Copia HTML de la presentación](../docs/presentacion-final.html).
 - [Guía de entrega y cinco puntuaciones públicas](../docs/ENTREGA_KAGGLE.md).
 
-Los PDF existentes conservan la propuesta inicial. Los PDF corregidos preparados en esta conversación no llegaron a publicarse antes de que el entorno dejara de estar disponible. Para consultar los resultados reales y el formato aceptado usar el informe y la presentación finales enlazados arriba.
+La presentación de Canva incluye los cuatro integrantes, los datos y la arquitectura utilizados, la comparación de las cinco CNN y sus cinco puntajes públicos. Los PDF anteriores conservan la propuesta inicial. Para consultar los resultados vigentes usar los materiales finales enlazados arriba.
 
-La importación de una copia a Canva fue bloqueada por revisión automática al faltar autorización explícita para compartir allí los nombres y resultados del equipo.
+El enlace de consulta es el devuelto por Canva. El acceso de terceros depende de los permisos del diseño.
